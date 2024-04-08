@@ -24,32 +24,32 @@ static int ft_strlen(const char *str)
 	return (count);
 }
 
-static size_t ft_strlcpy(char *dest, const char *src, size_t size)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	size_t	i;
-	size_t	src_lenght;
+	size_t		i;
+	char		*to;
+	const char	*from;
 
 	i = 0;
-	src_lenght = ft_strlen(src);
-	if (size == 0)
+	to = (char *)dest;
+	from = (const char *)src;
+	while (i < n)
 	{
-		return (src_lenght);
-	}
-	while ((src[i] != '\0') && (i < (size - 1)))
-	{
-		dest[i] = src[i];
+		*to = *from;
+		to++;
+		from++;
 		i++;
 	}
-	dest[i] = '\0';
-	return(src_lenght);
+	return (dest);
 }
 
 char	*ft_strdup(const char *s)
 {
-	const char	*str;
+	char	*str;
 
-	str = ft_strlcpy(str, s, malloc(ft_strlen(s + 1)));
-	return (str);
+	str = malloc(ft_strlen(s + 1));
+	str = ft_memcpy(str, s, ft_strlen(s));
+	return (char *)(str);
 }
 
 #include <stdio.h>
@@ -61,6 +61,6 @@ int	main(void)
 
 	printf("%p\t%s\n", test, test);
 	test2 = ft_strdup(test);
-	printf("%p\t%s\n", test2);
-
+	printf("%p\t%s\n", test2, test2);
+	free(test2);
 }
