@@ -6,7 +6,7 @@
 /*   By: bgretic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 16:16:43 by bgretic           #+#    #+#             */
-/*   Updated: 2024/04/03 18:22:33 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/04/09 14:55:25 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,3 +32,4 @@ int	main(void)
 
 	printf("The stringlenght is :%d", ft_strlen(str));
 }
+*/

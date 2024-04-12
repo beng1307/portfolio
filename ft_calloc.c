@@ -6,7 +6,7 @@
 /*   By: bgretic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:11:41 by bgretic           #+#    #+#             */
-/*   Updated: 2024/04/08 17:45:10 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/04/09 16:21:13 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 //test
 /*
 #include <stdio.h>
-/*
+
 int main(void)
 {
 	char	*test = "Hello World!";

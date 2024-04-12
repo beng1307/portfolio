@@ -6,7 +6,7 @@
 /*   By: bgretic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 10:48:11 by bgretic           #+#    #+#             */
-/*   Updated: 2024/04/08 12:25:00 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/04/09 14:56:05 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	size_t					i;
-	const unsigned char 	*str;
+	size_t				i;
+	const unsigned char	*str;
 
 	i = 0;
 	str = (const unsigned char *)s;
@@ -23,7 +23,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	{
 		if (str[i] == c)
 		{
-			return (void *)(str + i);
+			return ((void *)(str + i));
 		}
 		i++;
 	}

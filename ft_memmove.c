@@ -6,7 +6,7 @@
 /*   By: bgretic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 15:20:45 by bgretic           #+#    #+#             */
-/*   Updated: 2024/04/08 10:45:07 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/04/10 12:29:48 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,47 +14,42 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	size_t		i;
-	char		*to;
-	char		*from;
-	char		temp[n];
+	size_t			i;
+	char			*to;
+	const char		*from;
 
 	i = 0;
 	to = (char *)dest;
-	from = (char *)src;
-	if (dest == src)
-	{
-		return (dest);
-	}
-	else if (dest < src)
+	from = (const char *)src;
+	if (to > from)
 	{
 		while (i < n)
 		{
+			to[i] = from[i];
+			i++;
 		}
 	}
-	else
+	else if (to < from)
 	{
-		while (i < n)
-		{	
-		}
-		while (i > 0)
+		while (n > 0)
 		{
+			to[n - 1] = from[n - 1];
+			n--;
 		}
 	}
 	return (dest);
 }
 
 //test
-
+/*
 #include <stdio.h>
 
 int	main(void)
 {
-	char str[20] = "Moin User!";
+	char	str[20] = "Test Case!";
 
 	ft_memmove(str+5, str, 12);
 	printf("%s", str);
 	return 0;
 }
-
-
+*/

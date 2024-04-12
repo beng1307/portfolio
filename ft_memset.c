@@ -6,7 +6,7 @@
 /*   By: bgretic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 13:24:22 by bgretic           #+#    #+#             */
-/*   Updated: 2024/04/07 13:50:12 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/04/09 17:15:06 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	*ft_memset(void *s, int c, size_t n)
 {
-	int		i;
-	char	*set;
+	size_t		i;
+	char		*set;
 
 	i = 0;
 	set = (char *)s;

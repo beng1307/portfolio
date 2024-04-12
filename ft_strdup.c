@@ -6,25 +6,25 @@
 /*   By: bgretic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 18:22:19 by bgretic           #+#    #+#             */
-/*   Updated: 2024/04/08 19:13:11 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/04/09 17:21:43 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-static int ft_strlen(const char *str)
+static int	ft_strlen(const char *str)
 {
 	int	count;
 
 	count = 0;
-	while (*str)
+	while (str[count] != '\0')
 	{
 		count++;
 	}
 	return (count);
 }
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+static void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	size_t		i;
 	char		*to;
@@ -46,12 +46,20 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 char	*ft_strdup(const char *s)
 {
 	char	*str;
+	int		len;
 
-	str = malloc(ft_strlen(s + 1));
-	str = ft_memcpy(str, s, ft_strlen(s));
-	return (char *)(str);
+	len = ft_strlen(s) + 1;
+	str = malloc(len);
+	if (str == NULL)
+	{
+		return (NULL);
+	}
+	str = ft_memcpy(str, s, len);
+	return ((char *)(str));
 }
 
+//test
+/*
 #include <stdio.h>
 
 int	main(void)
@@ -63,4 +71,4 @@ int	main(void)
 	test2 = ft_strdup(test);
 	printf("%p\t%s\n", test2, test2);
 	free(test2);
-}
+}*/

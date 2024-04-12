@@ -1,47 +1,57 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgretic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/03 18:48:20 by bgretic           #+#    #+#             */
-/*   Updated: 2024/04/09 19:25:40 by bgretic          ###   ########.fr       */
+/*   Created: 2024/04/12 19:13:48 by bgretic           #+#    #+#             */
+/*   Updated: 2024/04/12 20:52:04 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalnum(int argument)
+#include <stdlib.h>
+
+static int	*ft_numlen(int *n)
 {
-	if ((argument >= 'a' && argument <= 'z')
-		|| (argument >= 'A' && argument <= 'Z')
-		|| (argument >= '0' && argument <= '9'))
+	int	num;
+	int	len;
+	int	digit;
+
+	num = n;
+	len = 0;
+	digit = 0;
+	if (num < 0)
 	{
-		return (1);
+		 num = -num;
+		 len++;
 	}
-	else
+	while (num >= 10)
 	{
-		return (0);
+		digit = num % 10;
+		num -= digit;
+		digit = 0;
+		len++;
 	}
+	len += 2;
+	return (len);
 }
 
-//test
-/*
-#include <stdio.h>
-
-int	main(void)
+char *ft_itoa(int n)
 {
-	char	c;
+	char	*str;
 
-	printf("Enter a character: ");
-	scanf("%c", &c);
+	str = malloc(ft_numlen(n));
+	if (n < 0)
+	{
+		n = -n;
+	}
+	while (num >= 10)
+	{
+		digit = num % 10;
+		num -= digit;
+		digit = 0;
+	}
 
-	if (isalnum(c) == 0)
-	{
-		printf("%c is not an alphanumeric character.", c);
-	}
-	else
-	{
-		printf("%c is an alphanumeric character.", c);
-	}
+	return (str);
 }
-*/

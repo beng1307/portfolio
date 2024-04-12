@@ -6,11 +6,11 @@
 /*   By: bgretic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 17:35:35 by bgretic           #+#    #+#             */
-/*   Updated: 2024/04/04 18:03:44 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/04/09 15:02:37 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-static int	<F12>ft_strlen(char *str)
+static int	ft_strlen(char *str)
 {
 	int	i;
 
@@ -52,4 +52,3 @@ unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 	printf("%d\t", ft_strlcat(test,test2,3));
 	printf("%s", test);
 }*/
-

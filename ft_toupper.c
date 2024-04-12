@@ -6,13 +6,13 @@
 /*   By: bgretic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 16:18:31 by bgretic           #+#    #+#             */
-/*   Updated: 2024/04/03 19:01:03 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/04/09 15:00:29 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_toupper(int ch)
 {
-	if ((ch >= 'a') && (ch <= 'z'))
+	if (ch >= 'a' && ch <= 'z')
 	{
 		ch -= 32;
 	}
@@ -30,3 +30,4 @@ int	main(void)
 	ch = 'a';
 	printf("%c in uppercase is represented as  %c", ch, toupper(ch));
 }
+*/

@@ -6,15 +6,15 @@
 /*   By: bgretic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 18:21:59 by bgretic           #+#    #+#             */
-/*   Updated: 2024/04/07 15:15:09 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/04/09 14:54:00 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 
-static int ft_strlen(const char *str)
+static int	ft_strlen(const char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i] != '\0')
@@ -24,7 +24,7 @@ static int ft_strlen(const char *str)
 	return (i);
 }
 
-size_t ft_strlcpy(char *dest, const char *src, size_t size)
+size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
 	size_t	i;
 	size_t	src_lenght;
@@ -35,13 +35,13 @@ size_t ft_strlcpy(char *dest, const char *src, size_t size)
 	{
 		return (src_lenght);
 	}
-	while ((src[i] != '\0') && (i < (size - 1)))
+	while (src[i] != '\0' && i < (size - 1))
 	{
 		dest[i] = src[i];
 		i++;
 	}
 	dest[i] = '\0';
-	return(src_lenght);
+	return (src_lenght);
 }
 
 //test

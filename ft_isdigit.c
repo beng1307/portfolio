@@ -6,11 +6,11 @@
 /*   By: bgretic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 18:24:21 by bgretic           #+#    #+#             */
-/*   Updated: 2024/04/03 19:02:21 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/04/09 19:26:38 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	isdigit(int arg)
+int	ft_isdigit(int arg)
 {
 	if (arg >= '0' && arg <= '9')
 	{
@@ -42,3 +42,4 @@ int main(void)
 		printf("%c is a digit.",c);
 	}
 }
+*/
