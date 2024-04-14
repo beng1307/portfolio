@@ -60,13 +60,11 @@ static int	ft_strchr(const char *str, const char *c)
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	int		len_str;
-	char	*str;
+	char		*str;
 	int		i;
 	int		j;
 	int		k;
 
-	len_str = ft_strlen(s1);
 	i = 0;
 	j = 0;
 	k = 0;
@@ -96,7 +94,8 @@ int	main(void)
 	char	*test1 = "iilhgutiw5464";
 	char	*test2 = ft_strtrim(test, test1);
 	printf("%s\n", ft_strtrim("     \t \n olol", " \t\n"));
-	printf("%s\n", ft_strtrim("__05468     lolol 456487 _ ", " _0123456789"));					
+	printf("%s\n", ft_strtrim("__05468  ", " _0123456789"));					
+	printf("%s\n", ft_strtrim("123", " _0123456789"));
 	printf("%s", test2);
 }
 
