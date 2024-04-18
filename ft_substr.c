@@ -6,7 +6,7 @@
 /*   By: bgretic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 12:45:15 by bgretic           #+#    #+#             */
-/*   Updated: 2024/04/10 14:40:04 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/04/18 17:19:58 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	{
 		return (NULL);
 	}
-	while(i < start - 1)
+	while (i < start - 1)
 		i++;
-	while(j < len)
+	while (j < len)
 	{
 		if (s[i + j] == '\0')
 		{

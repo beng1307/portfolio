@@ -6,7 +6,7 @@
 /*   By: bgretic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 16:16:31 by bgretic           #+#    #+#             */
-/*   Updated: 2024/04/12 18:42:02 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/04/18 13:50:12 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ static int	ft_strchr(const char *str, const char *c)
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char		*str;
+	char	*str;
 	int		i;
 	int		j;
 	int		k;
@@ -80,12 +80,12 @@ char	*ft_strtrim(char const *s1, char const *set)
 	str = malloc(ft_strlen(s1) - (k + 1));
 	if (str == NULL)
 		return (NULL);
-	ft_memcpy(str, &s1[i], ft_strlen(s1) -  (i + k));
+	ft_memcpy(str, &s1[i], ft_strlen(s1) - (i + k));
 	return (str);
 }
 
 //test
-
+/*
 #include <stdio.h>
 
 int	main(void)
@@ -94,8 +94,7 @@ int	main(void)
 	char	*test1 = "iilhgutiw5464";
 	char	*test2 = ft_strtrim(test, test1);
 	printf("%s\n", ft_strtrim("     \t \n olol", " \t\n"));
-	printf("%s\n", ft_strtrim("__05468  ", " _0123456789"));					
-	printf("%s\n", ft_strtrim("123", " _0123456789"));
+	printf("%s\n", ft_strtrim("__05468     lolol 456487 _ "));					
 	printf("%s", test2);
 }
-
+*/

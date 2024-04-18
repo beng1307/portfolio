@@ -6,9 +6,11 @@
 /*   By: bgretic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 11:57:39 by bgretic           #+#    #+#             */
-/*   Updated: 2024/04/09 14:52:11 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/04/18 15:26:57 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stddef.h>
 
 char	*ft_strchr(char *str, int c)
 {
@@ -20,6 +22,8 @@ char	*ft_strchr(char *str, int c)
 		}
 		str++;
 	}
+	if (c == '\0')
+		return (str + 1);
 	return (0);
 }
 

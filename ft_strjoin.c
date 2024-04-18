@@ -6,7 +6,7 @@
 /*   By: bgretic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 14:37:36 by bgretic           #+#    #+#             */
-/*   Updated: 2024/04/10 16:13:31 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/04/18 13:43:58 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ static int	ft_strlen(const char *str)
 	}
 	return (lenght);
 }
-
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {

@@ -1,47 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgretic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/07 13:49:13 by bgretic           #+#    #+#             */
-/*   Updated: 2024/04/18 14:01:49 by bgretic          ###   ########.fr       */
+/*   Created: 2024/04/15 12:21:11 by bgretic           #+#    #+#             */
+/*   Updated: 2024/04/15 12:33:19 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include <unistd.h>
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+void	ft_putstr_fd(char *s, int fd)
 {
-	size_t		i;
-	char		*to;
-	const char	*from;
-
-	if (!dest || !src)
-		return (NULL);
-	i = 0;
-	to = (char *)dest;
-	from = (const char *)src;
-	while (i < n)
+	while (*s)
 	{
-		*to = *from;
-		to++;
-		from++;
-		i++;
+		write(fd, &*s, 1);
+		s++;
 	}
-	return (dest);
 }
 
 //test
 /*
-#include <stdio.h>
 int	main(void)
 {
-	char	test[6] = "Hello";
-	char	test2[6];
+	char	*test;
 
-	ft_memcpy(test2, test, 6);
-	printf("%s", test2);
+	test = "Hello Friene!";
+	ft_putstr_fd(test, 1);
 }
 */
