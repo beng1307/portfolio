@@ -14,6 +14,5 @@
 
 void	print_c(int c, size_t to_return)
 {
-	write(1, &c,1);
-	to_return++;
+	to_return += write(1, &c,1);
 }

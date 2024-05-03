@@ -11,44 +11,55 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 void	print_c(int c, size_t to_return);
+void	print_s(char *arg, size_t to_return);
+void	print_d(int n, size_t to_return);
 
 //Handles the edgecase when there is a single % sign without spezifier.
-/*size_t	error_handle_single_pers(const char *str)
+size_t	error_handle_single_pers(const char *str)
 {
-	const char  *formats;
+	const char	*formats;
+	size_t		multiple_pers_check;
 
 	formats = "cspdiuxX%";
+	multiple_pers_check = 0;
 	while (*str)
 	{
-		if (*str == '%' && ft_strchr(formats, (int)str + 1) == 0)
-			return (1);
-		str++;
+		if (*str == '%')
+		{
+			if (*str == '%' && ft_strchr(formats, *(str + 1)) == 0)
+				return (1);
+			multiple_pers_check = 1;
+		}
+		if (multiple_pers_check == 0)
+			str++;
+		else
+			str += 2;
+		multiple_pers_check = 0;
 	}
 	return (0);
-}*/
+}
 
 //Prints the needed format.
 void	print_it(const char *str, size_t to_return, va_list list)
 {
-	if (*str + 1 == 'c')
+	if (*(str + 1) == 'c')
 		print_c(va_arg(list, int), to_return);
-/*	else if (*str + 1 == '%')
-		print_c(va_arg(list, int));
-	else if (*str + 1 == 's')
-		print_s(va_arg(list, char*));
-	else if (*str + 1 == 'd')
-		print_(va_arg(list, int));
-	else if (*str + 1 == 'i')
-		print_(va_arg(list, int));
-	else if (*str + 1 == 'u')
+	else if (*(str + 1) == '%')
+		to_return += write(1, "%", 1);
+	else if (*(str + 1) == 's')
+		print_s(va_arg(list, char*), to_return);
+	else if (*(str + 1) == 'd' || *(str + 1) == 'i')
+		print_d(va_arg(list, int), to_return);
+/*	else if (*(str + 1) == 'u')
 		print_(va_arg(list, unsigned int));
-	else if (*str + 1 == 'x')
+	else if (*(str + 1) == 'x')
 		print_(va_arg(list, ));
-	else if (*str + 1 == 'X')
+	else if (*(str + 1) == 'X')
 		print_(va_arg(list, ));
-	else if (*str + 1 == 'p')
+	else if (*(str + 1) == 'p')
 		print_(va_arg(list, void*));*/
 }
 
@@ -60,8 +71,8 @@ int	ft_printf(const char *str, ...)
 
 	to_return = 0;
 	va_start(list, str);
-	/*if (error_handle_single_pers(str) == 1)
-		return (-1);*/
+	if (error_handle_single_pers(str) == 1)
+		return (-1);
 	while (*str)
 	{
 		if (*str == '%')
@@ -69,6 +80,7 @@ int	ft_printf(const char *str, ...)
 		else
 			ft_putchar_fd(*str, 1);
 		str++;
+		to_return++;
 	}
 	va_end(list);
 	return (to_return);
@@ -78,12 +90,17 @@ int	ft_printf(const char *str, ...)
 
 int	main(void)
 {
-	char	test = 'b';
-	ft_printf("Hello World! %c 42!\n", test);
+	int	test_return;
+	char	*test = "yoo";
+
+	printf("%d\n", test_return = ft_printf("Hello World! %% %% 42!\n"));
+	printf("%d\n", test_return = ft_printf("Hello World! %s 42!\n", test));
+	printf("%d\n", test_return = ft_printf("Hello World! %s %d!\n", test, test_di));
+	//printf("Hello World! %% 42!\n");
 }
 
 //Notes
 //
 //I have to check for edgecases.
-//I have to handle printf format and look up the Video from Oceano again.
-//How can i put the right type inside of va_arg.
+//My print_s returns not the right return value!
+//Let's check my %d and %i
