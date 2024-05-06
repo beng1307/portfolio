@@ -12,7 +12,21 @@
 
 #include "libft.h"
 
-void	print_c(int c, size_t to_return)
+size_t	ft_print_c(int c)
 {
-	to_return += write(1, &c,1);
+	size_t	count;
+
+	count = 0;
+	return (count += write(1, &c,1));
 }
+
+size_t	ft_print_s(char *str)
+{
+	size_t count;
+
+	count = 0;
+	while (str[count] != '\0')
+		count += write(1, &str[count], 1);
+	return (count);
+}
+
