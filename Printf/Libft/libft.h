@@ -20,6 +20,8 @@
 # include <stdarg.h>
 
 
+int         ft_printf(const char *str, ...);
+
 char	    *ft_utoa(unsigned int n);
 
 size_t      ft_print_c(int c);

@@ -14,7 +14,7 @@
 #include <stdio.h>
 
 //Handles the edgecase when there is a % sign without spezifier.
-size_t	ft_error_handle_single_pers(const char *str)
+static size_t	ft_error_handle_single_pers(const char *str)
 {
 	const char	*formats;
 	size_t		multiple_pers_check;
@@ -39,7 +39,7 @@ size_t	ft_error_handle_single_pers(const char *str)
 }
 
 //Prints the needed format.
-void	ft_print_it(const char *str, size_t *to_return, va_list list)
+static void	ft_print_it(const char *str, size_t *to_return, va_list list)
 {
 	if (*(str + 1) == 'c')
 		*to_return += ft_print_c(va_arg(list, int));
@@ -82,7 +82,7 @@ int	ft_printf(const char *str, ...)
 }
 
 //test
-
+/*
 int	main(void)
 {
 	int	test_return;
@@ -92,7 +92,7 @@ int	main(void)
 	printf("%d\n", test_return = printf("Real Printf: %s\n", test));
 	printf("%d\n", test_return = ft_printf("Bens Printf: %s\n", test));
 }
-
+*/
 //Notes
 //
 //%p return 0x if the pointer is NULL, it should return (nil).
