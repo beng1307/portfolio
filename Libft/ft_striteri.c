@@ -6,16 +6,33 @@
 /*   By: bgretic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:46:22 by bgretic           #+#    #+#             */
-/*   Updated: 2024/04/18 13:51:20 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/04/29 11:31:38 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
+{
+	unsigned int	i;
+
+	if (f != NULL)
+	{
+		i = 0;
+		while (*s)
+		{
+			f(i++, s++);
+		}
+	}
+}
+
+//test
 /*
 static void increment(unsigned int num, char *c)
 {
-	char	help;
+    char    help;
 
-	help = *c;
+    help = *c;
         if (*c >= 'a' && *c <= 'y')
         {
                 help += num;
@@ -24,13 +41,13 @@ static void increment(unsigned int num, char *c)
         {
                 help = 'a';
         }
-	*c = help;
+    *c = help;
 }
 
 static void decrement(unsigned int num, char *c)
 {
 
-	printf("%c", *c);
+    printf("%c", *c);
         if (*c >= 'b' && *c <= 'z')
         {
                 c -= num;
@@ -40,21 +57,7 @@ static void decrement(unsigned int num, char *c)
                 c = 'z';
         }
 }
-*/
 
-void	ft_striteri(char *s, void (*f)(unsigned int, char*))
-{
-	unsigned int	i;
-
-	i = 0;
-	while (*s)
-	{
-		f(i++, s++);
-	}
-}
-
-//test
-/*
 #include <stdio.h>
 
 int     main(void)

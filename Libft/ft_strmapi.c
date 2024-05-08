@@ -6,37 +6,45 @@
 /*   By: bgretic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/15 11:50:43 by bgretic           #+#    #+#             */
-/*   Updated: 2024/04/18 14:05:29 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/04/29 12:10:23 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stddef.h>
+#include "libft.h"
 
-static int	ft_strlen(char const *str)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	int	count;
+	char			*str;
+	unsigned int	i;
 
-	count = 0;
-	while (str[count] != '\0')
+	i = 0;
+	if (f == NULL)
+		return (NULL);
+	str = malloc(ft_strlen(s) + 1);
+	if (str == NULL)
+		return (NULL);
+	while (s[i] != '\0')
 	{
-		count++;
+		str[i] = f(i, s[i]);
+		i++;
 	}
-	return (count);
+	str[i] = '\0';
+	return (str);
 }
 
+//test
 /* 
 static char increment(unsigned int num, char c)
-{	
-	if (c >= 'a' && c <= 'y')
-	{
-		c += num;
-	}        
-	else if (c == 'z')
-	{
-		c = 'a';
-	}
-	return (c);
+{   
+    if (c >= 'a' && c <= 'y')
+    {
+        c += num;
+    }        
+    else if (c == 'z')
+    {
+        c = 'a';
+    }
+    return (c);
 }
 
 static char decrement(unsigned int num, char c)
@@ -52,28 +60,7 @@ static char decrement(unsigned int num, char c)
         }
         return (c);
 }
-*/
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
-{
-	char			*str;
-	unsigned int	i;
-
-	i = 0;
-	str = malloc(ft_strlen(s) + 1);
-	if (str == NULL)
-		return (NULL);
-	while (s[i] != '\0')
-	{
-		str[i] = f(i, s[i]);
-		i++;
-	}
-	str[i] = '\0';
-	return (str);
-}
-
-//test
-/*
 #include <stdio.h>
 
 int	main(void)

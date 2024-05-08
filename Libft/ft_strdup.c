@@ -6,54 +6,21 @@
 /*   By: bgretic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 18:22:19 by bgretic           #+#    #+#             */
-/*   Updated: 2024/04/09 17:21:43 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/04/26 12:53:57 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-
-static int	ft_strlen(const char *str)
-{
-	int	count;
-
-	count = 0;
-	while (str[count] != '\0')
-	{
-		count++;
-	}
-	return (count);
-}
-
-static void	*ft_memcpy(void *dest, const void *src, size_t n)
-{
-	size_t		i;
-	char		*to;
-	const char	*from;
-
-	i = 0;
-	to = (char *)dest;
-	from = (const char *)src;
-	while (i < n)
-	{
-		*to = *from;
-		to++;
-		from++;
-		i++;
-	}
-	return (dest);
-}
+#include "libft.h"
 
 char	*ft_strdup(const char *s)
 {
-	char	*str;
-	int		len;
+	char		*str;
+	size_t		len;
 
 	len = ft_strlen(s) + 1;
 	str = malloc(len);
 	if (str == NULL)
-	{
 		return (NULL);
-	}
 	str = ft_memcpy(str, s, len);
 	return ((char *)(str));
 }

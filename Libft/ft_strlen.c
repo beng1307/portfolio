@@ -6,20 +6,22 @@
 /*   By: bgretic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/03 16:16:43 by bgretic           #+#    #+#             */
-/*   Updated: 2024/04/09 14:55:25 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/04/26 13:03:20 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
-{
-	int	lenght;
+#include "libft.h"
 
-	lenght = 0;
-	while (str[lenght] != '\0')
+size_t	ft_strlen(const char *str)
+{
+	size_t	length;
+
+	length = 0;
+	while (str[length] != '\0')
 	{
-		lenght++;
+		length++;
 	}
-	return (lenght);
+	return (length);
 }
 
 //test

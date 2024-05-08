@@ -6,7 +6,7 @@
 /*   By: bgretic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 18:37:32 by bgretic           #+#    #+#             */
-/*   Updated: 2024/05/02 18:18:45 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/05/08 12:29:51 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,27 +18,6 @@
 # include <stdlib.h>
 # include <stdint.h>
 # include <stdarg.h>
-
-
-int         ft_printf(const char *str, ...);
-
-char	    *ft_utoa(unsigned int n);
-
-size_t      ft_print_c(int c);
-
-size_t      ft_print_s(char *arg);
-
-size_t	    ft_print_d(int n);
-
-size_t	    ft_print_u(unsigned int n);
-
-size_t      ft_print_x(size_t x);
-
-size_t      ft_print_X(size_t X);
-
-size_t      ft_print_p(void *p);
-
-int			ft_printf(const char *, ...);
 
 int			ft_atoi(const char *nptr);
 
@@ -78,7 +57,7 @@ size_t		ft_strlen(const char *str);
 
 int			ft_strncmp(const char *str1, const char *str2, size_t num);
 
-char        *ft_strnstr(const char *big, const char *little, size_t len);
+char		*ft_strnstr(const char *big, const char *little, size_t len);
 
 char		*ft_strrchr(char *str, int c);
 
@@ -90,7 +69,7 @@ char		*ft_substr(char const *s, unsigned int start, size_t len);
 
 char		*ft_strjoin(char const *s1, char const *s2);
 
-char        *ft_strtrim(char const *s1, char const *set);
+char		*ft_strtrim(char const *s1, char const *set);
 
 char		*ft_itoa(int n);
 

@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: bgretic <marvin@42.fr>                     +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/05/08 12:02:48 by bgretic           #+#    #+#              #
+#    Updated: 2024/05/08 12:02:50 by bgretic          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = libftprintf.a
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
@@ -9,7 +21,7 @@ Libft/ft_strjoin.c Libft/ft_strtrim.c Libft/ft_itoa.c Libft/ft_strmapi.c Libft/f
 Libft/ft_putstr_fd.c Libft/ft_putendl_fd.c Libft/ft_putnbr_fd.c Libft/ft_split.c ft_print_cs.c  ft_print_diu.c \
 ft_printf.c  ft_print_xXp.c  ft_utoa.c 
 OBJS = $(SRCS:.c=.o)
-FROM = -I Libft
+FROM = -I . -I ./Libft
 LIB = ar rcs
 
 all: $(NAME)

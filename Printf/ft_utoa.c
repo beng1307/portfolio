@@ -1,8 +1,21 @@
-#include "libft.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_utoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bgretic <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/08 12:02:37 by bgretic           #+#    #+#             */
+/*   Updated: 2024/05/08 12:27:46 by bgretic          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "ft_printf.h"
+
+//Counts the number length.
 static int	ft_numlen(long int num)
 {
-	unsigned int len;
+	unsigned int	len;
 
 	len = 0;
 	while (num >= 10)
@@ -10,13 +23,14 @@ static int	ft_numlen(long int num)
 		num /= 10;
 		len++;
 	}
-    len += 2;
+	len += 2;
 	return (len);
 }
 
+//Reverses the string.
 static char	ft_strrev(char *str)
 {
-	char	        temp[11];
+	char			temp[11];
 	unsigned int	i;
 	unsigned int	j;
 
@@ -36,12 +50,13 @@ static char	ft_strrev(char *str)
 	return (*str);
 }
 
+//The function is itoa but unsigned.
 char	*ft_utoa(unsigned int n)
 {
-    char		    *str;
+	char			*str;
 	unsigned int	num;
-	unsigned int    len;
-	unsigned int    i;
+	unsigned int	len;
+	unsigned int	i;
 
 	num = n;
 	len = ft_numlen(num);
@@ -54,7 +69,7 @@ char	*ft_utoa(unsigned int n)
 		str[i++] = (num % 10) + '0';
 		num /= 10;
 	}
-    str[i] = '\0';
+	str[i] = '\0';
 	ft_strrev(str);
 	return (str);
 }

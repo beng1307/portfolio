@@ -6,50 +6,49 @@
 /*   By: bgretic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 12:45:15 by bgretic           #+#    #+#             */
-/*   Updated: 2024/04/18 17:19:58 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/04/26 14:06:54 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-#include <stdlib.h>
+#include "libft.h"
 
-static int	ft_strlen(const char *str)
+static size_t	size_to_allocate(const char *s, unsigned int start, size_t len)
 {
-	int	lenght;
+	size_t	s_len;
+	size_t	mem;
 
-	lenght = 0;
-	while (str[lenght] != '\0')
-	{
-		lenght++;
-	}
-	return (lenght);
+	mem = 0;
+	s_len = (size_t)ft_strlen((char *)s);
+	if (start > s_len)
+		mem = 0;
+	else if (start + len > s_len)
+		mem = s_len - start;
+	else if (start + len <= s_len)
+		mem = len;
+	return (mem);
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(const char *s, unsigned int start, size_t len)
 {
-	char			*str;
-	size_t			i;
-	size_t			j;
+	char		*str;
+	size_t		size;
+	size_t		i;
 
-	str = malloc(len * sizeof(char));
-	i = 0;
-	j = 0;
-	if ((int)start > ft_strlen(s))
-	{
+	if (!s)
 		return (NULL);
-	}
-	while (i < start - 1)
-		i++;
-	while (j < len)
+	i = 0;
+	size = size_to_allocate(s, start, len);
+	str = ft_calloc(size + 1, sizeof(char));
+	if (str == NULL)
+		return (NULL);
+	if (size == 0)
+		return (str);
+	while (s[start + i] != '\0' && i < size)
 	{
-		if (s[i + j] == '\0')
-		{
-			return ((char *)(str));
-		}
-		str[j] = s[i + j];
-		j++;
+		str[i] = s[start + i];
+		i++;
 	}
-	return ((char *)(str));
+	return (str);
 }
 
 //test
@@ -57,12 +56,16 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 #include <stdio.h>
 
 int	main(void)
-{
-	char	*test = "Hello Friene, how are you?";
+{					
+	char	*test = "01234";
 	char	*test2;
 
-	test2 = ft_substr(test, 7, 7);
-	printf("%s", test2);
+	printf("%u\n", ft_strlen(test));
+	test2 = ft_substr(test, 10, 10);
+	if (test2 == NULL)
+		printf("NULL");
+	else
+		printf("%s\n", test2);
 	free(test2);
 }
 */

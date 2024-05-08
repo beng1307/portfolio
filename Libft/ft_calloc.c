@@ -6,41 +6,19 @@
 /*   By: bgretic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:11:41 by bgretic           #+#    #+#             */
-/*   Updated: 2024/04/18 14:20:09 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/04/29 11:16:03 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-#include <stdlib.h>
-
-static void	ft_bzero(void *s, size_t n)
-{
-	size_t	i;
-	char	*terminate;
-
-	i = 0;
-	terminate = (char *)s;
-	while (i < n)
-	{
-		*terminate = '\0';
-		terminate++;
-		i++;
-	}
-}
+#include "libft.h"
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
 	void	*memp;
 
-	if (nmemb < 1)
-		return (NULL);
-	if (size == 0)
-	{
-		memp = malloc(nmemb);
-		if (memp == NULL)
-			return (NULL);
-	}
-	else if (nmemb * size <= 2147483647)
+	if (!nmemb || !size)
+		return (malloc(0));
+	if (nmemb * size <= SIZE_MAX)
 	{
 		memp = malloc(nmemb * size);
 		if (memp == NULL)
