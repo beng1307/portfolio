@@ -6,11 +6,11 @@
 /*   By: bgretic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/07 13:49:13 by bgretic           #+#    #+#             */
-/*   Updated: 2024/04/18 14:01:49 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/04/22 19:19:16 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
@@ -18,7 +18,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	char		*to;
 	const char	*from;
 
-	if (!dest || !src)
+	if (dest == NULL && src == NULL)
 		return (NULL);
 	i = 0;
 	to = (char *)dest;

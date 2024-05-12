@@ -6,12 +6,11 @@
 /*   By: bgretic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 12:29:55 by bgretic           #+#    #+#             */
-/*   Updated: 2024/05/02 18:42:05 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/05/08 12:14:11 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdio.h>
+#include "ft_printf.h"
 
 //Handles the edgecase when there is a % sign without spezifier.
 static size_t	ft_error_handle_single_pers(const char *str)
@@ -46,7 +45,7 @@ static void	ft_print_it(const char *str, size_t *to_return, va_list list)
 	else if (*(str + 1) == '%')
 		*to_return += write(1, "%", 1);
 	else if (*(str + 1) == 's')
-		*to_return += ft_print_s(va_arg(list, char*));
+		*to_return += ft_print_s(va_arg(list, char *));
 	else if (*(str + 1) == 'd' || *(str + 1) == 'i')
 		*to_return += ft_print_d(va_arg(list, int));
 	else if (*(str + 1) == 'u')
@@ -54,15 +53,15 @@ static void	ft_print_it(const char *str, size_t *to_return, va_list list)
 	else if (*(str + 1) == 'x')
 		*to_return += ft_print_x(va_arg(list, size_t));
 	else if (*(str + 1) == 'X')
-		*to_return += ft_print_X(va_arg(list, size_t));
+		*to_return += ft_print_upper_x(va_arg(list, size_t));
 	else if (*(str + 1) == 'p')
-		*to_return += ft_print_p(va_arg(list, void*));
+		*to_return += ft_print_p(va_arg(list, void *));
 }
 
 //Does what printf does.
 int	ft_printf(const char *str, ...)
 {
-	va_list list;
+	va_list	list;
 	size_t	to_return;
 
 	to_return = 0;
@@ -93,7 +92,3 @@ int	main(void)
 	printf("%d\n", test_return = ft_printf("Bens Printf: %s\n", test));
 }
 */
-//Notes
-//
-//%p return 0x if the pointer is NULL, it should return (nil).
-//Do the NULL check everywhere.

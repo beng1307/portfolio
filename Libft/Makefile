@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: bgretic <marvin@42.fr>                     +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/04/26 12:32:52 by bgretic           #+#    #+#              #
+#    Updated: 2024/04/26 12:32:58 by bgretic          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = libft.a
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
@@ -8,16 +20,16 @@ ft_isalnum.c ft_isprint.c ft_memmove.c ft_strlcat.c	ft_strnstr.c ft_substr.c \
 ft_strjoin.c ft_strtrim.c ft_itoa.c ft_strmapi.c ft_striteri.c ft_putchar_fd.c \
 ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_split.c
 OBJS = $(SRCS:.c=.o)
-INCLUDES = -I libft
-LIBC = ar rcs
+FROM = -I libft
+LIB = ar rcs
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(LIBC) $(NAME) $(OBJS)
+	$(LIB) $(NAME) $(OBJS)
 
 %.o: %.c
-	$(CC) $(CFLAGS) $(INCLUDES) -o $@ -c $<
+	$(CC) $(CFLAGS) $(FROM) -o $@ -c $<
 
 clean:
 	rm -f $(OBJS)

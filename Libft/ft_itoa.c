@@ -6,21 +6,19 @@
 /*   By: bgretic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 19:13:48 by bgretic           #+#    #+#             */
-/*   Updated: 2024/04/18 13:46:27 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/04/26 12:44:41 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-static int	ft_numlen(int n)
+static int	ft_numlen(long int num)
 {
-	int	num;
-	int	len;
-	int	digit;
+	long int	digit;
+	int			len;
 
-	num = n;
-	len = 0;
 	digit = 0;
+	len = 0;
 	if (num < 0)
 	{
 		num = -num;
@@ -63,35 +61,28 @@ static char	ft_strrev(char *str)
 	return (*str);
 }
 
-static char	*handle_mmaxint(char *str)
-{
-	str = "-2147483648";
-	return (str);
-}
-
-//Minusnumbers are missing. And implementing the reverse string function.
 char	*ft_itoa(int n)
 {
-	char	*str;
-	int		len;
-	int		i;
+	long int	num;
+	char		*str;
+	int			len;
+	int			i;
 
-	len = ft_numlen(n);
+	num = (long)n;
+	len = ft_numlen(num);
 	str = malloc(len);
 	if (str == NULL)
 		return (NULL);
 	i = 0;
-	if (n == -2147483648)
-		return (handle_mmaxint(str));
-	if (n < 0)
+	if (num < 0)
 	{
 		str[i++] = '-';
-		n = -n;
+		num = -num;
 	}
 	while (i < len - 1)
 	{
-		str[i++] = (n % 10) + '0';
-		n /= 10;
+		str[i++] = (num % 10) + '0';
+		num /= 10;
 	}
 	str[i] = '\0';
 	ft_strrev(str);

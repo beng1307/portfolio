@@ -6,30 +6,20 @@
 /*   By: bgretic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 17:35:35 by bgretic           #+#    #+#             */
-/*   Updated: 2024/04/09 15:02:37 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/04/29 11:58:03 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-static int	ft_strlen(char *str)
+#include "libft.h"
+
+size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
-	int	i;
+	size_t	i;
+	size_t	dest_length;
+	size_t	src_length;
 
 	i = 0;
-	while (str[i] != '\0')
-	{
-		i++;
-	}
-	return (i);
-}
-
-unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
-{
-	unsigned int	i;
-	unsigned int	dest_length;
-	unsigned int	src_length;
-
-	i = 0;
-	dest_length = ft_strlen(dest);
+	dest_length = ft_strlen((const char *)dest);
 	src_length = ft_strlen(src);
 	if (dest_length >= size)
 	{
@@ -44,11 +34,15 @@ unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 	return (dest_length + src_length);
 }
 
-/*int	main(void)
+//test
+/*
+int	main(void)
 {
 	char	test[25] = "Hello";
 	char	test2[25] = "Friene";
 
-	printf("%d\t", ft_strlcat(test,test2,3));
+	printf("%zu\t", ft_strlcat(NULL,test2,0));
+	printf("%zu\t", strlcat(NULL,test2,0));
 	printf("%s", test);
-}*/
+}
+*/

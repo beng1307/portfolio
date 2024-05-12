@@ -6,7 +6,7 @@
 /*   By: bgretic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 14:58:07 by bgretic           #+#    #+#             */
-/*   Updated: 2024/04/18 17:22:49 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/04/22 17:10:17 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,11 @@ char	*ft_strrchr(char *str, int c)
 
 	i = 0;
 	while (str[i] != '\0')
-	{
 		i++;
-	}
-	while (i != 0)
+	while (i != -1)
 	{
-		if (str[i] == c)
-		{
+		if (str[i] == (char)c)
 			return (&str[i]);
-		}
 		i--;
 	}
 	return (0);

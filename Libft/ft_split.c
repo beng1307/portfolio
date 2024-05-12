@@ -6,31 +6,28 @@
 /*   By: bgretic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 12:29:54 by bgretic           #+#    #+#             */
-/*   Updated: 2024/04/18 13:47:12 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/04/29 11:30:06 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-#include <stdlib.h>
+#include "libft.h"
 
-static int	ft_split_lenghtcount(const char *s, char c, int array)
+static int	ft_split_lenghtcount(const char *s, char c)
 {
 	int	count;
-	int	skip_to_arr;
 
 	count = 0;
-	skip_to_arr = 0;
 	while (*s)
 	{
+		count = 0;
 		while (*s == c)
 			s++;
 		while (*s && *s != c)
 		{
-			if (skip_to_arr == array)
-				count++;
+			count++;
 			s++;
 		}
-		skip_to_arr++;
+		break ;
 	}
 	return (count);
 }
@@ -38,15 +35,24 @@ static int	ft_split_lenghtcount(const char *s, char c, int array)
 static int	ft_split_wordcount(char const *s, char c)
 {
 	int	count;
+	int	is_word;
 
+	is_word = 0;
 	count = 0;
 	while (*s)
 	{
 		while (*s == c)
 			s++;
-		count++;
 		while (*s && *s != c)
+		{
+			is_word = 1;
 			s++;
+		}
+		if (is_word == 1)
+		{
+			count++;
+			is_word = 0;
+		}
 	}
 	return (count);
 }
@@ -61,6 +67,7 @@ static int	ft_freemem(char **str, int array)
 		free(str[i]);
 		i++;
 	}
+	free(str);
 	return (0);
 }
 
@@ -73,16 +80,17 @@ static char	**ft_splitcpy(char **str, const char *s, char c)
 	array = 0;
 	while (*s)
 	{
-		str[array] = malloc(ft_split_lenghtcount(s, c, array + 1));
+		if (ft_split_lenghtcount(s, c) == 0)
+			return (str);
+		str[array] = ft_calloc(ft_split_lenghtcount(s, c) + 1, sizeof(char));
 		if (str[array] == NULL)
-			ft_freemem(str, array);
+			return (ft_freemem(str, array), NULL);
 		while (*s && *s == c)
 			s++;
 		while (*s && *s != c)
 		{
-			str[array][i] = *s;
+			str[array][i++] = *s;
 			s++;
-			i++;
 		}
 		array++;
 		i = 0;
@@ -92,12 +100,18 @@ static char	**ft_splitcpy(char **str, const char *s, char c)
 
 char	**ft_split(char const *s, char c)
 {
-	char	**str;
+	char		**str;
+	size_t		wordcount;
 
-	str = malloc(ft_split_wordcount(s, c) * sizeof(char *));
+	if (!s)
+		return (NULL);
+	wordcount = ft_split_wordcount(s, c);
+	str = ft_calloc((wordcount + 1), sizeof(char *));
 	if (str == NULL)
 		return (NULL);
-	ft_splitcpy(str, s, c);
+	str[wordcount] = NULL;
+	if (!(ft_splitcpy(str, s, c)))
+		return (NULL);
 	return (str);
 }
 
@@ -107,14 +121,15 @@ char	**ft_split(char const *s, char c)
 
 int	main(void)
 {
-	char	*test = "Hello,Frienne,and,Hello,Friod!";
-	char	seperator = ',';
+	char	*test = "^^^1^^2a,^^^^3^^^^--h^^^^";
+	char	seperator = '^';
 	char	**test2 = ft_split(test, seperator);
 
-	printf("%s\n", test2[0]);
-	printf("%s\n", test2[1]);
-	printf("%s\n", test2[2]);
-	printf("%s\n", test2[3]);
-	printf("%s\n", test2[4]);
+	int i = 0;	
+	while (test2[i])
+	{
+		printf("%s\n", test2[i]);
+		i++;
+	}
 }
 */

@@ -6,24 +6,24 @@
 /*   By: bgretic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 11:57:39 by bgretic           #+#    #+#             */
-/*   Updated: 2024/04/18 15:26:57 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/04/26 14:36:04 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
+#include "libft.h"
 
-char	*ft_strchr(char *str, int c)
+char	*ft_strchr(const char *str, int c)
 {
 	while (*str)
 	{
-		if (*str == c)
+		if (*str == (char)c)
 		{
-			return (str);
+			return ((char *)str);
 		}
 		str++;
 	}
-	if (c == '\0')
-		return (str + 1);
+	if ((char)c == '\0')
+		return ((char *)str);
 	return (0);
 }
 
@@ -34,7 +34,7 @@ char	*ft_strchr(char *str, int c)
 int	main(void)
 {
 	char	test[25] = "Test string!";
-	char	*test2 = ft_strchr(test, 'z');
+	char	*test2 = ft_strchr(test, '\0');
 
 	if (test2 != 0)
 	{
