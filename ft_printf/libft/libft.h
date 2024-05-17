@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgretic <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 18:37:32 by bgretic           #+#    #+#             */
-/*   Updated: 2024/05/08 12:29:51 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/05/17 15:49:34 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <stdint.h>
 # include <stdarg.h>
+# include <limits.h>
 
 int			ft_atoi(const char *nptr);
 

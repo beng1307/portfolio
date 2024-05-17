@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgretic <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 12:29:55 by bgretic           #+#    #+#             */
-/*   Updated: 2024/05/08 12:14:11 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/05/17 20:16:21 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ static void	ft_print_it(const char *str, size_t *to_return, va_list list)
 	else if (*(str + 1) == 'u')
 		*to_return += ft_print_u(va_arg(list, unsigned int));
 	else if (*(str + 1) == 'x')
-		*to_return += ft_print_x(va_arg(list, size_t));
+		*to_return += ft_print_x(va_arg(list, unsigned long int));
 	else if (*(str + 1) == 'X')
-		*to_return += ft_print_upper_x(va_arg(list, size_t));
+		*to_return += ft_print_upper_x(va_arg(list, unsigned long int));
 	else if (*(str + 1) == 'p')
 		*to_return += ft_print_p(va_arg(list, void *));
 }
@@ -63,32 +63,25 @@ int	ft_printf(const char *str, ...)
 {
 	va_list	list;
 	size_t	to_return;
+	size_t	check;
 
+	if (!str)
+		return (-1);
 	to_return = 0;
 	va_start(list, str);
 	if (ft_error_handle_single_pers(str) == 1)
 		return (-1);
 	while (*str)
 	{
+		check = to_return;
 		if (*str == '%')
 			ft_print_it(str++, &to_return, list);
 		else
 			to_return += write(1, &*str, 1);
+		if (check == to_return && (*(str) != 's'))
+			return (-1);
 		str++;
 	}
 	va_end(list);
 	return ((int)to_return);
 }
-
-//test
-/*
-int	main(void)
-{
-	int	test_return;
-	char	*test = "Hallo";
-	//int	*ptest = NULL;
-
-	printf("%d\n", test_return = printf("Real Printf: %s\n", test));
-	printf("%d\n", test_return = ft_printf("Bens Printf: %s\n", test));
-}
-*/
