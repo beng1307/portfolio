@@ -13,24 +13,20 @@
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
+#include <stdint.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <stdio.h>
 
 #ifndef BUFFER_SIZE
-# define BUFFER_SIZE 42
+# define BUFFER_SIZE 1000
 #endif
 
-typedef struct s_list
-{
-    char            *content;
-    struct s_list   *next;
-}                   t_list;
-
 char    *get_next_line(int fd);
-t_list  *ft_lstnew(void *content);
-void	ft_lstadd_back(t_list **lst, t_list *new);
-char    *ft_strchr(const char *str, int c);
 size_t  ft_strlen(const char *str);
+char    *ft_strchr(const char *str, int c);
+void	ft_bzero(void *s, size_t n);
+void	*ft_calloc(size_t nmemb, size_t size);
 char	*ft_strjoin(char const *s1, char const *s2);
 
 #endif

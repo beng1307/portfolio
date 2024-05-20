@@ -12,34 +12,16 @@
 
 #include "get_next_line.h"
 
-t_list	*ft_lstnew(char *content)
+size_t	ft_strlen(const char *str)
 {
-	t_list	*new_node;
+	size_t	length;
 
-	new_node = malloc(sizeof(t_list));
-	if (!new_node)
-		return (NULL);
-	new_node->content = content;
-	new_node->next = NULL;
-	return (new_node);
-}
-
-void	ft_lstadd_back(t_list **lst, t_list *new)
-{
-	t_list	*lastlst;
-
-	if (new)
+	length = 0;
+	while (str[length] != '\0')
 	{
-		if (!*lst)
-			*lst = new;
-		else
-		{
-			lastlst = *lst;
-			while (lastlst->next != NULL)
-				lastlst = lastlst->next;
-			lastlst->next = new;
-		}
+		length++;
 	}
+	return (length);
 }
 
 char	*ft_strchr(const char *str, int c)
@@ -57,16 +39,31 @@ char	*ft_strchr(const char *str, int c)
 	return (0);
 }
 
-size_t	ft_strlen(const char *str)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	size_t	length;
+	size_t	index;
+	void	*memp;
+	char	*terminate;
 
-	length = 0;
-	while (str[length] != '\0')
+	index = 0;
+	if (!nmemb || !size)
+		return (malloc(0));
+	if (nmemb > SIZE_MAX / size)
 	{
-		length++;
+		memp = malloc(nmemb * size);
+		if (memp == NULL)
+			return (NULL);
+		terminate = (char *)memp;
+		while (index < nmemb * size)
+		{
+			*terminate = '\0';
+			terminate++;
+			index++;
+		}
 	}
-	return (length);
+	else
+		return (NULL);
+	return (memp);
 }
 
 char	*ft_strjoin(char const *s1, char const *s2)
