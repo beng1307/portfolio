@@ -57,25 +57,20 @@ char    *get_next_line(int fd)
         return (NULL);
     check = 1;
     line = malloc(1);
-    buffer = malloc(BUFFER_SIZE + 1);
     if (!line)
         return (NULL);
-    puts("Test 3");
+    buffer = malloc(BUFFER_SIZE + 1);
+    if (!buffer)
+        return (NULL);
     while (check > 0)
     {
-        puts("Test 4");
         if (*buffer && ft_strchr(buffer, '\n') == 0)
-        {
-            puts("Test 5");
-            ft_strjoin(line, buffer);
-            puts("Test 6");
-        }
+            line = ft_strjoin(line, buffer);
         else if (*buffer && ft_strchr(buffer, '\n'))
         {
             line = ft_strjoin(line, cut_buffer(buffer));
             break;
         }
-        puts("Test 5");
         buffer = go_through_file(fd);
         if (!buffer)
             return (NULL);
