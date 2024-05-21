@@ -6,82 +6,74 @@
 /*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 13:32:14 by bgretic           #+#    #+#             */
-/*   Updated: 2024/05/16 19:14:48 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/05/21 19:10:15 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-//Goes through the list.
-static char    *go_through_file(int fd)
+// Goes through the list.
+static char	*go_through_file(int fd)
 {
-    char    *buffer;
-    ssize_t check;
+    char    *buffer_first;
+	char	*buffer_second;
+	ssize_t	check;
 
-    puts("Test 9");
-    buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
-    if (!buffer)
-        return (NULL);
-    puts("Test 7");
-    check = read(fd, buffer, BUFFER_SIZE);
-    if (!(check > 0))
-        return (free(buffer), NULL);
-    puts("Test 8");
-    return (buffer);
+	buffer_first = malloc(BUFFER_SIZE + 1);
+	if (!buffer_first)
+		return (NULL);
+	check = read(fd, buffer_first, BUFFER_SIZE);
+	if (!(check > 0))
+		return (free(buffer_first), NULL);
+	buffer_first[check + 1] = '\0';
+	buffer_second = ft_strdup(buffer_first);
+	if (!buffer_second)
+		return (NULL);
+	return (free(buffer_first), buffer_second);
 }
 
-//Splits the last buffer into two and gives it to linked_list_time.
-static char    *cut_buffer(char *buffer)
+// Splits the last buffer into two and gives it to linked_list_time.
+static char	*cut_buffer(char *buffer)
 {
-    char    *first_part;
-    size_t  len;
+	char	*first_part;
+	size_t	len;
 
-    len = 0;
-    while (buffer[len] != '\n')
-        len++;
-    len++;
-    first_part = ft_calloc(len + 1, sizeof(char));
-    if (!first_part)
-        return (NULL);
-    len = 0;
-    while (buffer[len - 1] != '\n')
-        (first_part)[len++] = *buffer++;
-    return (first_part);
+	len = 0;
+	while (buffer[len] != '\n')
+		len++;
+	len++;
+	first_part = malloc(len + 1);
+	if (!first_part)
+		return (NULL);
+	first_part[len + 1] = '\0';
+	len = 0;
+	while (*(buffer - 1) != '\n')
+		(first_part)[len++] = *buffer++;
+	return (first_part);
 }
 
-//Does get_next_line stuff.
-char    *get_next_line(int fd)
+// Does get_next_line stuff.
+char	*get_next_line(int fd)
 {
-    size_t      check;
-    char        *line;
-    static char *buffer;
+	size_t      check;
+	char	    *line;
+	static char *buffer;
 
-    if (fd < 0 || BUFFER_SIZE <= 0)
-        return (NULL);
-    check = 1;
-    line = malloc(1);
-    if (!line)
-        return (NULL);
-    while (check > 0)
-    {
-        puts("Test 3");
-        if (*buffer && ft_strchr(buffer, '\n') == 0)
-        {
-            puts("Test 4");
-            line = ft_strjoin(line, buffer);
-            puts("Test 5");
-        }
-        else if (*buffer && ft_strchr(buffer, '\n'))
-        {
-            line = ft_strjoin(line, cut_buffer(buffer));
-            break;
-        }
-        puts("Test 4");
-        buffer = go_through_file(fd);
-        puts("Test 5");
-        if (!buffer)
-            return (NULL);
-        puts("Test 6");
-    }
-    return (line);
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
+	check = 1;
+	line = malloc(1);
+	if (!line)
+		return (NULL);
+	while (check > 0)
+	{
+		buffer = go_through_file(fd);
+		if (!buffer)
+			return (NULL);
+		if (*buffer && ft_strchr(buffer, '\n') == 0)
+			line = ft_strjoin(line, buffer);
+		else if (*buffer && ft_strchr(buffer, '\n'))
+			return (line = ft_strjoin(line, cut_buffer(buffer)));
+	}
+	return (line);
 }

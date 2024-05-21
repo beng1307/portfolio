@@ -4,14 +4,18 @@
 
 int main(void)
 {
+    int     i;
     int     fd;
     char    *line;
 
-    puts("Test 1");
+    i = 0;
     fd = open("text.txt", O_RDONLY);
-    puts("Test 2");
-    line = get_next_line(fd);
-    printf("%s", line);
-    free(line);
+    while (i < 5)
+    {
+        line = get_next_line(fd);
+        printf("%s", line);
+        free(line);
+        i++;
+    }
     close (fd);
 }

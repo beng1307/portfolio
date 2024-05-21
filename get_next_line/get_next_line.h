@@ -6,7 +6,7 @@
 /*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 14:51:39 by bgretic           #+#    #+#             */
-/*   Updated: 2024/05/16 19:14:53 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/05/21 17:35:22 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,13 @@
 #include <stdio.h>
 
 #ifndef BUFFER_SIZE
-# define BUFFER_SIZE 1000
+# define BUFFER_SIZE 42
 #endif
 
 char    *get_next_line(int fd);
 size_t  ft_strlen(const char *str);
 char    *ft_strchr(const char *str, int c);
-void	ft_bzero(void *s, size_t n);
-void	*ft_calloc(size_t nmemb, size_t size);
-char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strdup(const char *s);
+char	*ft_strjoin(char *s1, char *s2);
 
 #endif

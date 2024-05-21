@@ -6,7 +6,7 @@
 /*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 14:51:43 by bgretic           #+#    #+#             */
-/*   Updated: 2024/05/16 19:14:51 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/05/21 17:54:58 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ size_t	ft_strlen(const char *str)
 
 char	*ft_strchr(const char *str, int c)
 {
-	if (!str || !c)
-		return (NULL);
 	while (*str)
 	{
 		if (*str == (char)c)
@@ -41,34 +39,27 @@ char	*ft_strchr(const char *str, int c)
 	return (0);
 }
 
-void	*ft_calloc(size_t nmemb, size_t size)
+char	*ft_strdup(const char *s)
 {
-	size_t	index;
-	void	*memp;
-	char	*terminate;
+	char		*str;
+	size_t		len;
+	size_t		index;
 
 	index = 0;
-	if (!nmemb || !size)
-		return (malloc(0));
-	if (nmemb > SIZE_MAX / size)
-	{
-		memp = malloc(nmemb * size);
-		if (memp == NULL)
-			return (NULL);
-		terminate = (char *)memp;
-		while (index < nmemb * size)
-		{
-			*terminate = '\0';
-			terminate++;
-			index++;
-		}
-	}
-	else
+	len = ft_strlen(s);
+	str = malloc(len + 1);
+	if (str == NULL)
 		return (NULL);
-	return (memp);
+	while (index < len)
+	{
+		str[index] = s[index];
+		index++;
+	}
+	str[index] = '\0';
+	return (str);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*str;
 	int		i;
