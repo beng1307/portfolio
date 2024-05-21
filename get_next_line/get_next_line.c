@@ -18,12 +18,15 @@ static char    *go_through_file(int fd)
     char    *buffer;
     ssize_t check;
 
+    puts("Test 9");
     buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
     if (!buffer)
         return (NULL);
+    puts("Test 7");
     check = read(fd, buffer, BUFFER_SIZE);
     if (!(check > 0))
         return (free(buffer), NULL);
+    puts("Test 8");
     return (buffer);
 }
 
@@ -59,21 +62,26 @@ char    *get_next_line(int fd)
     line = malloc(1);
     if (!line)
         return (NULL);
-    buffer = malloc(BUFFER_SIZE + 1);
-    if (!buffer)
-        return (NULL);
     while (check > 0)
     {
+        puts("Test 3");
         if (*buffer && ft_strchr(buffer, '\n') == 0)
+        {
+            puts("Test 4");
             line = ft_strjoin(line, buffer);
+            puts("Test 5");
+        }
         else if (*buffer && ft_strchr(buffer, '\n'))
         {
             line = ft_strjoin(line, cut_buffer(buffer));
             break;
         }
+        puts("Test 4");
         buffer = go_through_file(fd);
+        puts("Test 5");
         if (!buffer)
             return (NULL);
+        puts("Test 6");
     }
     return (line);
 }
