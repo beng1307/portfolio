@@ -6,7 +6,7 @@
 /*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 14:51:43 by bgretic           #+#    #+#             */
-/*   Updated: 2024/05/21 17:54:58 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/05/22 20:32:32 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,24 @@ char	*ft_strjoin(char *s1, char *s2)
 	}
 	str[i + j] = '\0';
 	return (str);
+}
+
+size_t	ft_strlcpy(char *dest, const char *src, size_t size)
+{
+	size_t	i;
+	size_t	src_lenght;
+
+	i = 0;
+	src_lenght = ft_strlen(src);
+	if (size == 0)
+	{
+		return (src_lenght);
+	}
+	while (src[i] != '\0' && i < (size - 1))
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (src_lenght);
 }

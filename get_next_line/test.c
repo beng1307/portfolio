@@ -13,7 +13,7 @@ int main(void)
     while (i < 5)
     {
         line = get_next_line(fd);
-        printf("%s", line);
+        puts(line);
         free(line);
         i++;
     }

@@ -6,7 +6,7 @@
 /*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 14:51:39 by bgretic           #+#    #+#             */
-/*   Updated: 2024/05/21 17:35:22 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/05/22 20:32:53 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,7 @@ size_t  ft_strlen(const char *str);
 char    *ft_strchr(const char *str, int c);
 char	*ft_strdup(const char *s);
 char	*ft_strjoin(char *s1, char *s2);
+size_t	ft_strlcpy(char *dest, const char *src, size_t size);
+
 
 #endif
