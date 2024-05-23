@@ -6,11 +6,20 @@
 /*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 13:32:14 by bgretic           #+#    #+#             */
-/*   Updated: 2024/05/22 21:33:58 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/05/23 20:45:33 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+void	free_that_s(char **buffer)
+{
+	if (*buffer)
+	{
+		free(*buffer);
+		*buffer = NULL;
+	}
+}
 
 // Goes through the list.
 static char	*go_through_file(int fd)
@@ -29,47 +38,60 @@ static char	*go_through_file(int fd)
 }
 
 // Splits the last buffer into two and gives it to linked_list_time.
-static char	*cut_buffer(char **buffer)
+static char	*cut_buffer(char **line)
 {
-	char	*first_part;
-	size_t	len;
+	char		*last_part;
+	size_t		len;
+	size_t		index;
 
 	len = 0;
-	while ((*buffer)[len] != '\n')
+	index = 0;
+	while ((*line)[len] != '\n')
 		len++;
 	len++;
-	first_part = malloc(len + 1);
-	if (!first_part)
+	last_part = malloc(len + 1);
+	if (!last_part)
 		return (NULL);
-	ft_strlcpy(first_part, *buffer, len + 1);
-	*buffer += len;
-	return (first_part);
+	len++;
+	while ((*line)[len + index] != '\0')
+	{
+		last_part[index] = (*line)[len + index];
+		(*line)[len + index] = '\0';
+		index++;
+	}
+	return (last_part);
 }
 
 // Does get_next_line stuff.
 char	*get_next_line(int fd)
 {
-	size_t      check;
+	static char	*buffer;
 	char	    *line;
-	static char *buffer;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	check = 1;
 	line = malloc(1);
 	if (!line)
 		return (NULL);
-	while (check > 0)
+	while (1)
 	{
-		if (buffer && ft_strchr(buffer, '\n') == 0)
-			line = ft_strjoin(line, buffer);
-		else if (buffer && ft_strchr(buffer, '\n'))
-			return (line = ft_strjoin(line, cut_buffer(&buffer)));
-		buffer = go_through_file(fd);
-		if (!buffer && read(fd, buffer, BUFFER_SIZE) > 0)
+		if (buffer)
+		{
+			line = ft_strdup(buffer);
+			if (!line)
+				return (free_that_s(&buffer), NULL);
+			free_that_s(&buffer);
+		}
+		line = ft_strdup(ft_strjoin(line, go_through_file(fd)));
+		if (!line)
 			return (NULL);
-		else if (!buffer && read(fd, buffer, BUFFER_SIZE) <= 0)
-			return (line);
+		if (line && ft_strchr(line, '\n'))
+		{
+			buffer = ft_strdup(cut_buffer(&line));
+			if (!buffer)
+				return (NULL);
+			break ;
+		}
 	}
 	return (line);
 }

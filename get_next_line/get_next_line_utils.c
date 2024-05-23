@@ -6,7 +6,7 @@
 /*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 14:51:43 by bgretic           #+#    #+#             */
-/*   Updated: 2024/05/22 20:32:32 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/05/23 20:31:17 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ char	*ft_strchr(const char *str, int c)
 	}
 	if ((char)c == '\0')
 		return ((char *)str);
-	return (0);
+	return (NULL);
 }
 
-char	*ft_strdup(const char *s)
+char	*ft_strdup(char *s)
 {
 	char		*str;
 	size_t		len;
@@ -56,6 +56,7 @@ char	*ft_strdup(const char *s)
 		index++;
 	}
 	str[index] = '\0';
+	free_that_s(&s);
 	return (str);
 }
 
@@ -83,25 +84,7 @@ char	*ft_strjoin(char *s1, char *s2)
 		j++;
 	}
 	str[i + j] = '\0';
+	free_that_s(&s1);
+	free_that_s(&s2);
 	return (str);
-}
-
-size_t	ft_strlcpy(char *dest, const char *src, size_t size)
-{
-	size_t	i;
-	size_t	src_lenght;
-
-	i = 0;
-	src_lenght = ft_strlen(src);
-	if (size == 0)
-	{
-		return (src_lenght);
-	}
-	while (src[i] != '\0' && i < (size - 1))
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (src_lenght);
 }
