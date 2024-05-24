@@ -12,15 +12,6 @@
 
 #include "get_next_line.h"
 
-void	free_that_s(char **buffer)
-{
-	if (*buffer)
-	{
-		free(*buffer);
-		*buffer = NULL;
-	}
-}
-
 // Goes through the list.
 static char	*go_through_file(int fd)
 {
@@ -32,66 +23,86 @@ static char	*go_through_file(int fd)
 		return (NULL);
 	check = read(fd, buffer, BUFFER_SIZE);
 	if (check <= 0)
-		return (free(buffer), NULL);
+		return (free_that(buffer), NULL);
 	buffer[check] = '\0';
 	return (buffer);
 }
 
 // Splits the last buffer into two and gives it to linked_list_time.
-static char	*cut_buffer(char **line)
+static void	cut_line(char **line)
 {
-	char		*last_part;
-	size_t		len;
-	size_t		index;
+	size_t	index;
 
-	len = 0;
 	index = 0;
-	while ((*line)[len] != '\n')
-		len++;
-	len++;
-	last_part = malloc(len + 1);
+	while ((*line)[index] != '\n')
+		index++;
+	index++;
+	while ((*line)[index] != '\0')
+		(*line)[index++] == '\0';
+}
+
+static char	*get_stash(const char *line)
+{
+	char	*last_part;
+	size_t	index;
+
+	index = 0;
+	line = ft_strchr(line, '\n');
+	if ((line + 1) != '\0')
+		line++;
+	else
+		return (NULL);
+	while (line[index] != '\0')
+		index++;
+	last_part = malloc(index + 1);
 	if (!last_part)
 		return (NULL);
-	len++;
-	while ((*line)[len + index] != '\0')
-	{
-		last_part[index] = (*line)[len + index];
-		(*line)[len + index] = '\0';
-		index++;
-	}
+	index = 0;
+	while (*line != '\0')
+		last_part[index++] = *line++;
+	last_part[index] = '\0';
 	return (last_part);
 }
 
 // Does get_next_line stuff.
 char	*get_next_line(int fd)
 {
-	static char	*buffer;
+	static char	*stash;
+	char		*buffer;
 	char	    *line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	line = malloc(1);
-	if (!line)
-		return (NULL);
 	while (1)
 	{
-		if (buffer)
+		if (stash)
 		{
-			line = ft_strdup(buffer);
+			line = ft_strdup(stash);
 			if (!line)
-				return (free_that_s(&buffer), NULL);
-			free_that_s(&buffer);
+				return (free_that(stash), free_that(line), NULL);
+			free_that(stash);
 		}
-		line = ft_strdup(ft_strjoin(line, go_through_file(fd)));
-		if (!line)
+		buffer = go_through_file(fd);
+		if (!buffer)
 			return (NULL);
+		if (line)
+		{
+			stash = ft_strdup(line);
+			if (!stash)
+				return (free_that(buffer), NULL);
+		}
+		line = ft_strjoin(stash, buffer);
+		if (!line)
+			return (free_that(buffer, stash), NULL);
+		free_that(buffer, stash);
 		if (line && ft_strchr(line, '\n'))
 		{
-			buffer = ft_strdup(cut_buffer(&line));
-			if (!buffer)
-				return (NULL);
+			stash = get_stash(line);
+			if (!stash)
+				return (free_that(line), NULL);
+			cut_line(&line);
 			break ;
 		}
 	}
-	return (line);
+	return (NULL);
 }

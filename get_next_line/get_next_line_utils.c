@@ -12,16 +12,29 @@
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *str)
+void	free_that(char **to_free, ...)
 {
-	size_t	length;
+	va_list	list;
+	char	**more_to_free;
 
-	length = 0;
-	while (str[length] != '\0')
+	if (*to_free)
 	{
-		length++;
+		free(*to_free);
+		*to_free = NULL;
 	}
-	return (length);
+	va_start(list, to_free);
+	while (1)
+	{
+		more_to_free = va_arg(list, char **);
+		if (!more_to_free)
+			break ;
+		if (*more_to_free)
+		{
+			free(*more_to_free);
+			*more_to_free = NULL;
+		}
+	}
+	va_end(list);
 }
 
 char	*ft_strchr(const char *str, int c)
@@ -39,7 +52,7 @@ char	*ft_strchr(const char *str, int c)
 	return (NULL);
 }
 
-char	*ft_strdup(char *s)
+char	*ft_strdup(const char *s)
 {
 	char		*str;
 	size_t		len;
@@ -56,11 +69,10 @@ char	*ft_strdup(char *s)
 		index++;
 	}
 	str[index] = '\0';
-	free_that_s(&s);
 	return (str);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*str;
 	int		i;
@@ -69,10 +81,10 @@ char	*ft_strjoin(char *s1, char *s2)
 	if (!s1 || !s2)
 		return (NULL);
 	str = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
-	i = 0;
-	j = 0;
 	if (str == NULL)
 		return (NULL);
+	i = 0;
+	j = 0;
 	while (s1[i] != '\0')
 	{
 		str[i] = s1[i];
@@ -84,7 +96,5 @@ char	*ft_strjoin(char *s1, char *s2)
 		j++;
 	}
 	str[i + j] = '\0';
-	free_that_s(&s1);
-	free_that_s(&s2);
 	return (str);
 }
