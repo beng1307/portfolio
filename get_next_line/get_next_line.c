@@ -104,6 +104,7 @@ char	*get_next_line(int fd)
 				return (free_that(&stash), NULL);
 			free_that(&stash);
 		}
+		if (!ft_strchr(stash, '\n'))
 		buffer = go_through_file(fd);
 		if (!buffer && line)
 			break ;
