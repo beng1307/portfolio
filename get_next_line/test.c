@@ -10,10 +10,10 @@ int main(void)
 
     i = 0;
     fd = open("text.txt", O_RDONLY);
-    while (i < 5)
+    while (i < 19)
     {
         line = get_next_line(fd);
-        puts(line);
+        printf("%s", line);
         free(line);
         i++;
     }

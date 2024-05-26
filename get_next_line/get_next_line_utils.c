@@ -6,35 +6,31 @@
 /*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 14:51:43 by bgretic           #+#    #+#             */
-/*   Updated: 2024/05/23 20:31:17 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/05/26 15:24:11 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-void	free_that(char **to_free, ...)
+size_t	ft_strlen(const char *str)
 {
-	va_list	list;
-	char	**more_to_free;
+	size_t	length;
 
+	length = 0;
+	while (str[length] != '\0')
+	{
+		length++;
+	}
+	return (length);
+}
+
+void	free_that(char **to_free)
+{
 	if (*to_free)
 	{
 		free(*to_free);
 		*to_free = NULL;
 	}
-	va_start(list, to_free);
-	while (1)
-	{
-		more_to_free = va_arg(list, char **);
-		if (!more_to_free)
-			break ;
-		if (*more_to_free)
-		{
-			free(*more_to_free);
-			*more_to_free = NULL;
-		}
-	}
-	va_end(list);
 }
 
 char	*ft_strchr(const char *str, int c)
@@ -58,8 +54,12 @@ char	*ft_strdup(const char *s)
 	size_t		len;
 	size_t		index;
 
+	if (!s)
+		return (NULL);
 	index = 0;
-	len = ft_strlen(s);
+	len = 0;
+	while (s[len] != '\0')
+		len++;
 	str = malloc(len + 1);
 	if (str == NULL)
 		return (NULL);
