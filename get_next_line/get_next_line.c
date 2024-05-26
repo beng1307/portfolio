@@ -104,7 +104,17 @@ char	*get_next_line(int fd)
 				return (free_that(&stash), NULL);
 			free_that(&stash);
 		}
-		if (!ft_strchr(stash, '\n'))
+		if (line && ft_strchr(line, '\n'))
+		{
+			stash = get_stash(line);
+			if (!stash)
+				return (free_that(&line), NULL);
+			buffer = cut_line(line);
+			free_that(&line);
+			line = ft_strdup(buffer);
+			free_that(&buffer);
+			break ;
+		}
 		buffer = go_through_file(fd);
 		if (!buffer && line)
 			break ;
@@ -128,17 +138,6 @@ char	*get_next_line(int fd)
 		}
 		free_that(&buffer);
 		free_that(&stash);
-		if (line && ft_strchr(line, '\n'))
-		{
-			stash = get_stash(line);
-			if (!stash)
-				return (free_that(&line), NULL);
-			buffer = cut_line(line);
-			free_that(&line);
-			line = ft_strdup(buffer);
-			free_that(&buffer);
-			break ;
-		}
 	}
 	return (line);
 }
