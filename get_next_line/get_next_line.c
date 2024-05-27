@@ -6,40 +6,11 @@
 /*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 13:32:14 by bgretic           #+#    #+#             */
-/*   Updated: 2024/05/27 18:54:28 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/05/27 21:25:03 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-// Goes through the list.
-static char	*go_through_file(int fd, char **line)
-{
-    char    *buffer;
-	char	*temp;
-	ssize_t	check;
-	size_t index;
-
-	index = 0;
-	temp = malloc(BUFFER_SIZE + 1);
-	if (!temp)
-		return (free_that(line), NULL);
-	check = read(fd, temp, BUFFER_SIZE);
-	if (check < 1)
-		return (free_that(&temp), free_that(line), NULL);
-	temp[check] = '\0';
-	buffer = malloc(check + 1);
-	if (!buffer)
-		return (free_that(&temp), NULL);
-	while (temp[index] != '\0')
-	{
-		buffer[index] = temp[index];
-		index++;
-	}
-	buffer[index] = '\0';
-	free_that(&temp);
-	return (buffer);
-}
 
 static char	*cut_line(const char *line)
 {
@@ -85,61 +56,83 @@ static char	*get_stash(const char *line)
 	return (last_part);
 }
 
+int	first_part(char **stash, char **buffer, char **line)
+{
+	if (*stash)
+	{
+		*line = ft_strdup(*stash);
+		if (!*line)
+			return (free_that(stash), -1);
+		free_that(stash);
+	}
+	if (*line && ft_strchr(*line, '\n'))
+	{
+		*stash = get_stash(*line);
+		if (!*stash)
+			return (free_that(line), -1);
+		*buffer = cut_line(*line);
+		free_that(line);
+		*line = ft_strdup(*buffer);
+		if (!*line)
+			return (free_that(stash), free_that(buffer), -1);
+		free_that(buffer);
+		return (1);
+	}
+	return (0);
+}
+
+int	second_part(int fd, char **stash, char **buffer, char **line)
+{
+	*buffer = go_through_file(fd, &*line);
+	if (!*buffer && *line)
+		return (1);
+	else if (!*buffer && !*line)
+		return (-1);
+	if (*line)
+	{
+		*stash = ft_strdup(*line);
+		if (!*stash)
+			return (free_that(buffer), free_that(line), -1);
+		free_that(line);
+		*line = ft_strjoin(*stash, *buffer);
+		if (!*line)
+			return (free_that(buffer), free_that(stash), -1);
+	}
+	else
+	{
+		*line = ft_strdup(*buffer);
+		if (!*line)
+			return (free_that(buffer), -1);
+	}
+	free_that(buffer);
+	free_that(stash);
+	return (0);
+}
+
 // Does get_next_line stuff.
 char	*get_next_line(int fd)
 {
 	static char	*stash;
 	char		*buffer;
-	char	    *line;
+	char		*line;
+	int			check;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, NULL, 0) == -1)
 		return (free_that(&stash), NULL);
 	line = NULL;
+	check = 0;
 	while (1)
 	{
-		if (stash)
-		{
-			line = ft_strdup(stash);
-			if (!line)
-				return (free_that(&stash), NULL);
-			free_that(&stash);
-		}
-		if (line && ft_strchr(line, '\n'))
-		{
-			stash = get_stash(line);
-			if (!stash)
-				return (free_that(&line), NULL);
-			buffer = cut_line(line);
-			free_that(&line);
-			line = ft_strdup(buffer);
-			if (!line)
-				return (free_that(&stash), free_that(&buffer), NULL);
-			free_that(&buffer);
+		check = first_part(&stash, &buffer, &line);
+		if (check == 1)
 			break ;
-		}
-		buffer = go_through_file(fd, &line);
-		if (!buffer && line)
-			break ;
-		else if (!buffer && !line)
+		else if (check == -1)
 			return (NULL);
-		if (line)
-		{
-			stash = ft_strdup(line);
-			if (!stash)
-				return (free_that(&buffer), free_that(&line), NULL);
-			free_that(&line);
-			line = ft_strjoin(stash, buffer);
-			if (!line)
-				return (free_that(&buffer), free_that(&stash), NULL);
-		}
-		else
-		{
-			line = ft_strdup(buffer);
-			if (!line)
-				return (free_that(&buffer), NULL);
-		}
-		free_that(&buffer);
-		free_that(&stash);
+		check = second_part(fd, &stash, &buffer, &line);
+		if (check == 1)
+			break ;
+		else if (check == -1)
+			return (NULL);
 	}
 	return (line);
 }
