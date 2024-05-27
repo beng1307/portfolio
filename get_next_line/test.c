@@ -10,11 +10,13 @@ int main(void)
 
     i = 0;
     fd = open("text.txt", O_RDONLY);
-    while (i < 19)
+    while (i < 23)
     {
         line = get_next_line(fd);
-        printf("%s", line);
-        free(line);
+        if (!line)
+            return (-1);
+        puts(line);
+        free_that(&line);
         i++;
     }
     close (fd);
