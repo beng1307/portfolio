@@ -6,7 +6,7 @@
 /*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 14:51:43 by bgretic           #+#    #+#             */
-/*   Updated: 2024/05/27 21:23:02 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/05/28 20:10:52 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,25 +17,19 @@ char	*go_through_file(int fd, char **line)
 	char	*buffer;
 	char	*temp;
 	ssize_t	check;
-	size_t	index;
 
-	index = 0;
 	temp = malloc(BUFFER_SIZE + 1);
 	if (!temp)
 		return (free_that(line), NULL);
 	check = read(fd, temp, BUFFER_SIZE);
-	if (check < 1)
+	if (check == 0)
 		return (free_that(&temp), NULL);
+	else if (check == -1)
+		return (free_that(&temp), free_that(line), NULL);
 	temp[check] = '\0';
-	buffer = malloc(check + 1);
+	buffer = ft_strdup(temp);
 	if (!buffer)
 		return (free_that(&temp), NULL);
-	while (temp[index] != '\0')
-	{
-		buffer[index] = temp[index];
-		index++;
-	}
-	buffer[index] = '\0';
 	free_that(&temp);
 	return (buffer);
 }

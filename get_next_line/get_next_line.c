@@ -6,7 +6,7 @@
 /*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 13:32:14 by bgretic           #+#    #+#             */
-/*   Updated: 2024/05/27 21:25:03 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/05/28 19:53:57 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,13 @@ static char	*get_stash(const char *line)
 
 int	first_part(char **stash, char **buffer, char **line)
 {
-	if (*stash)
+	if (*stash && (**stash) != '\0')
 	{
 		*line = ft_strdup(*stash);
 		if (!*line)
 			return (free_that(stash), -1);
-		free_that(stash);
 	}
+	free_that(stash);
 	if (*line && ft_strchr(*line, '\n'))
 	{
 		*stash = get_stash(*line);
@@ -72,7 +72,7 @@ int	first_part(char **stash, char **buffer, char **line)
 			return (free_that(line), -1);
 		*buffer = cut_line(*line);
 		free_that(line);
-		*line = ft_strdup(*buffer);
+		*line = ft_strdup(*buffer); //mem leak
 		if (!*line)
 			return (free_that(stash), free_that(buffer), -1);
 		free_that(buffer);
@@ -83,7 +83,7 @@ int	first_part(char **stash, char **buffer, char **line)
 
 int	second_part(int fd, char **stash, char **buffer, char **line)
 {
-	*buffer = go_through_file(fd, &*line);
+	*buffer = go_through_file(fd, line);
 	if (!*buffer && *line)
 		return (1);
 	else if (!*buffer && !*line)
@@ -118,7 +118,7 @@ char	*get_next_line(int fd)
 	int			check;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, NULL, 0) == -1)
-		return (free_that(&stash), NULL);
+		return (NULL);
 	line = NULL;
 	check = 0;
 	while (1)
