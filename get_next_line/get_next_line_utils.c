@@ -6,7 +6,7 @@
 /*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 14:51:43 by bgretic           #+#    #+#             */
-/*   Updated: 2024/05/28 20:10:52 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/05/29 18:09:21 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*go_through_file(int fd, char **line)
 	temp[check] = '\0';
 	buffer = ft_strdup(temp);
 	if (!buffer)
-		return (free_that(&temp), NULL);
+		return (free_that(&temp), free_that(line), NULL);
 	free_that(&temp);
 	return (buffer);
 }

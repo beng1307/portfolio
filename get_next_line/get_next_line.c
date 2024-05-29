@@ -6,11 +6,12 @@
 /*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 13:32:14 by bgretic           #+#    #+#             */
-/*   Updated: 2024/05/28 19:53:57 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/05/29 19:02:05 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <stdio.h>
 
 static char	*cut_line(const char *line)
 {
@@ -72,7 +73,7 @@ int	first_part(char **stash, char **buffer, char **line)
 			return (free_that(line), -1);
 		*buffer = cut_line(*line);
 		free_that(line);
-		*line = ft_strdup(*buffer); //mem leak
+		*line = ft_strdup(*buffer);
 		if (!*line)
 			return (free_that(stash), free_that(buffer), -1);
 		free_that(buffer);
@@ -118,7 +119,7 @@ char	*get_next_line(int fd)
 	int			check;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, NULL, 0) == -1)
-		return (NULL);
+		return (free_that(&stash), NULL);
 	line = NULL;
 	check = 0;
 	while (1)
