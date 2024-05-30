@@ -6,7 +6,7 @@
 /*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 20:00:12 by bgretic           #+#    #+#             */
-/*   Updated: 2024/05/29 18:58:53 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/05/30 14:13:57 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,28 +17,19 @@
 int main(void)
 {
     int     i;
-    int     fd1;
-    int     fd2;
-    int     fd3;
+    int     fd;
     char    *line;
 
     i = 0;
-    fd1 = open("text1.txt", O_RDONLY);
-    fd2 = open("text2.txt", O_RDONLY);
-    fd3 = open("text3.txt", O_RDONLY);
-    while (i < 6)
+    fd = open("text.txt", O_RDONLY);
+    line = get_next_line(fd);
+    while (line)
     {
-        line = get_next_line(fd1);
-        printf("Line: %s\n", line);
-        line = get_next_line(fd2);
-        printf("Line: %s\n", line);
-        line = get_next_line(fd3);
-        printf("Line: %s\n", line);
-        free(line);
+        printf("%s\n", line);
+        free_that(line);
+        line = get_next_line(fd);
         i++;
     }
-    i = 0;    
-    close (fd1);
-    close (fd2);
-    close (fd3);
+    free_that(line);
+    close (fd);
 }

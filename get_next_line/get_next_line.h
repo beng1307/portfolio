@@ -6,7 +6,7 @@
 /*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 14:51:39 by bgretic           #+#    #+#             */
-/*   Updated: 2024/05/30 13:00:11 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/05/30 13:56:45 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,11 @@
 # define GET_NEXT_LINE_H
 
 # include <stdint.h>
-# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42
-# endif
-
-# ifndef MAX_FD
-#  define MAX_FD 4
 # endif
 
 char	*get_next_line(int fd);

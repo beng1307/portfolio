@@ -6,12 +6,11 @@
 /*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 13:32:14 by bgretic           #+#    #+#             */
-/*   Updated: 2024/05/30 13:15:43 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/05/30 13:56:26 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>
 
 static char	*cut_line(const char *line)
 {
@@ -112,23 +111,23 @@ int	second_part(int fd, char **stash, char **buffer, char **line)
 
 char	*get_next_line(int fd)
 {
-	static char	*stash[MAX_FD];
+	static char	*stash;
 	char		*buffer;
 	char		*line;
 	int			check;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, NULL, 0) == -1)
-		return (free_that(&stash[fd]), NULL);
+		return (free_that(&stash), NULL);
 	line = NULL;
 	check = 0;
 	while (1)
 	{
-		check = first_part(&stash[fd], &buffer, &line);
+		check = first_part(&stash, &buffer, &line);
 		if (check == 1)
 			break ;
 		else if (check == -1)
 			return (NULL);
-		check = second_part(fd, &stash[fd], &buffer, &line);
+		check = second_part(fd, &stash, &buffer, &line);
 		if (check == 1)
 			break ;
 		else if (check == -1)
