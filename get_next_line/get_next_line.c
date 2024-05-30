@@ -6,7 +6,7 @@
 /*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 13:32:14 by bgretic           #+#    #+#             */
-/*   Updated: 2024/05/29 19:02:05 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/05/30 13:15:43 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,26 +110,25 @@ int	second_part(int fd, char **stash, char **buffer, char **line)
 	return (0);
 }
 
-// Does get_next_line stuff.
 char	*get_next_line(int fd)
 {
-	static char	*stash;
+	static char	*stash[MAX_FD];
 	char		*buffer;
 	char		*line;
 	int			check;
 
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, NULL, 0) == -1)
-		return (free_that(&stash), NULL);
+		return (free_that(&stash[fd]), NULL);
 	line = NULL;
 	check = 0;
 	while (1)
 	{
-		check = first_part(&stash, &buffer, &line);
+		check = first_part(&stash[fd], &buffer, &line);
 		if (check == 1)
 			break ;
 		else if (check == -1)
 			return (NULL);
-		check = second_part(fd, &stash, &buffer, &line);
+		check = second_part(fd, &stash[fd], &buffer, &line);
 		if (check == 1)
 			break ;
 		else if (check == -1)

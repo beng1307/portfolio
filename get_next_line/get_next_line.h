@@ -6,7 +6,7 @@
 /*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 14:51:39 by bgretic           #+#    #+#             */
-/*   Updated: 2024/05/29 19:02:18 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/05/30 13:00:11 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42
+# endif
+
+# ifndef MAX_FD
+#  define MAX_FD 4
 # endif
 
 char	*get_next_line(int fd);
