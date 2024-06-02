@@ -6,7 +6,7 @@
 /*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 20:00:12 by bgretic           #+#    #+#             */
-/*   Updated: 2024/05/30 14:13:57 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/06/02 16:20:57 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ int main(void)
     while (line)
     {
         printf("%s\n", line);
-        free_that(line);
+        free_that(&line);
         line = get_next_line(fd);
         i++;
     }
-    free_that(line);
+    free_that(&line);
     close (fd);
 }

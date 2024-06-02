@@ -6,7 +6,7 @@
 /*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 13:32:14 by bgretic           #+#    #+#             */
-/*   Updated: 2024/05/30 13:56:26 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/06/02 19:58:18 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ char	*get_next_line(int fd)
 	char		*line;
 	int			check;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, NULL, 0) == -1)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (free_that(&stash), NULL);
 	line = NULL;
 	check = 0;
