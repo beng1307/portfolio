@@ -1,33 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgretic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/15 12:34:21 by bgretic           #+#    #+#             */
-/*   Updated: 2024/04/26 12:46:35 by bgretic          ###   ########.fr       */
+/*   Created: 2024/04/03 18:24:21 by bgretic           #+#    #+#             */
+/*   Updated: 2024/04/09 19:26:38 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	ft_putendl_fd(char *s, int fd)
+int	ft_isdigit(int arg)
 {
-	size_t len;
-
-	len = ft_strlen(s);
-	write(fd, &s, len);
-	write(fd, "\n", 1);
+	if (arg >= '0' && arg <= '9')
+	{
+		return (1);
+	}
+	else
+	{
+		return (0);
+	}
 }
 
 //test
 /*
+#include <stdio.h>
+
 int main(void)
 {
-	char	*test;
+	char	c;
 
-	test = "Hello Friene!";
-	ft_putendl_fd(test, 1);
+	printf("Enter a character: ");
+	scanf("%c",&c);
+
+	if (isdigit(c) == 0)
+	{
+         printf("%c is not a digit.",c);
+	}
+	else
+	{
+		printf("%c is a digit.",c);
+	}
 }
 */

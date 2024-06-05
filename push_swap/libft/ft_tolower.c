@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgretic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/15 12:34:21 by bgretic           #+#    #+#             */
-/*   Updated: 2024/04/26 12:46:35 by bgretic          ###   ########.fr       */
+/*   Created: 2024/04/03 16:16:58 by bgretic           #+#    #+#             */
+/*   Updated: 2024/04/09 15:01:55 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	ft_putendl_fd(char *s, int fd)
+int	ft_tolower(int ch)
 {
-	size_t len;
-
-	len = ft_strlen(s);
-	write(fd, &s, len);
-	write(fd, "\n", 1);
+	if (ch >= 'A' && ch <= 'Z')
+	{
+		ch += 32;
+	}
+	return (ch);
 }
 
 //test
 /*
-int main(void)
+#include <stdio.h>
+ 
+int	main(void)
 {
-	char	*test;
+	char	ch;
 
-	test = "Hello Friene!";
-	ft_putendl_fd(test, 1);
+	ch = 'A';
+	printf("%c in uppercase is represented as  %c", ch, toupper(ch));
 }
 */

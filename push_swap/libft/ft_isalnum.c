@@ -1,32 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgretic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/15 12:21:11 by bgretic           #+#    #+#             */
-/*   Updated: 2024/04/26 12:47:21 by bgretic          ###   ########.fr       */
+/*   Created: 2024/04/03 18:48:20 by bgretic           #+#    #+#             */
+/*   Updated: 2024/04/09 19:25:40 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	ft_putstr_fd(char *s, int fd)
+int	ft_isalnum(int argument)
 {
-	size_t	len;
-
-	len = ft_strlen(s);
-	write(fd, &s, len);
+	if ((argument >= 'a' && argument <= 'z')
+		|| (argument >= 'A' && argument <= 'Z')
+		|| (argument >= '0' && argument <= '9'))
+	{
+		return (1);
+	}
+	else
+	{
+		return (0);
+	}
 }
 
 //test
 /*
+#include <stdio.h>
+
 int	main(void)
 {
-	char	*test;
+	char	c;
 
-	test = "Hello Friene!";
-	ft_putstr_fd(test, 1);
+	printf("Enter a character: ");
+	scanf("%c", &c);
+
+	if (isalnum(c) == 0)
+	{
+		printf("%c is not an alphanumeric character.", c);
+	}
+	else
+	{
+		printf("%c is an alphanumeric character.", c);
+	}
 }
 */

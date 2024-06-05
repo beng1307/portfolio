@@ -1,33 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgretic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/15 12:34:21 by bgretic           #+#    #+#             */
-/*   Updated: 2024/04/26 12:46:35 by bgretic          ###   ########.fr       */
+/*   Created: 2024/04/07 12:17:14 by bgretic           #+#    #+#             */
+/*   Updated: 2024/04/26 14:23:45 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putendl_fd(char *s, int fd)
+void	ft_bzero(void *s, size_t n)
 {
-	size_t len;
+	size_t	i;
+	char	*terminate;
 
-	len = ft_strlen(s);
-	write(fd, &s, len);
-	write(fd, "\n", 1);
+	i = 0;
+	terminate = (char *)s;
+	while (i < n)
+	{
+		*terminate = '\0';
+		terminate++;
+		i++;
+	}
 }
 
 //test
 /*
-int main(void)
-{
-	char	*test;
+#include <stdio.h>
 
-	test = "Hello Friene!";
-	ft_putendl_fd(test, 1);
+int	main(void)
+{
+	char	test[16] = "ITestMyFunction";
+	int		i;
+
+	i = 0;	
+	printf("%s\n", test);
+	ft_bzero(test, 7);
+	while (i < 16)
+	{
+		printf("%c", test[i]);
+		i++;
+	}
 }
 */

@@ -1,33 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgretic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/15 12:34:21 by bgretic           #+#    #+#             */
-/*   Updated: 2024/04/26 12:46:35 by bgretic          ###   ########.fr       */
+/*   Created: 2024/04/05 11:57:39 by bgretic           #+#    #+#             */
+/*   Updated: 2024/04/26 14:36:04 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putendl_fd(char *s, int fd)
+char	*ft_strchr(const char *str, int c)
 {
-	size_t len;
-
-	len = ft_strlen(s);
-	write(fd, &s, len);
-	write(fd, "\n", 1);
+	while (*str)
+	{
+		if (*str == (char)c)
+		{
+			return ((char *)str);
+		}
+		str++;
+	}
+	if ((char)c == '\0')
+		return ((char *)str);
+	return (0);
 }
 
 //test
 /*
-int main(void)
-{
-	char	*test;
+#include <stdio.h>
 
-	test = "Hello Friene!";
-	ft_putendl_fd(test, 1);
+int	main(void)
+{
+	char	test[25] = "Test string!";
+	char	*test2 = ft_strchr(test, '\0');
+
+	if (test2 != 0)
+	{
+		printf("%s", test2);
+	}
+	else if (test2 == 0)
+	{
+		printf("The result is NULL");
+	}
 }
 */

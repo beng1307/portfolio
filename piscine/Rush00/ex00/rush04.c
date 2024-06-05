@@ -53,7 +53,7 @@ void	rush(int x, int y)
 	y_between = y - 2;
 	if (x < 1 || y < 1)
 	{
-		write(1, "Error, parameters entered are out of scope.", 45);
+		write(1, "Error, parameters entered are out of scope.", 44);
 		write(1, "\n", 2);
 		return ;
 	}

@@ -10,10 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stddef.h>
+#include <stdlib.h>
+
 void	rush(int x, int y);
 
-int	main(void)
+int	main(int ac, char **av)
 {
-	rush(5, 3);
+	size_t	arg1;
+	size_t	arg2;
+
+	if (ac == 3)
+	{
+		arg1 = atoi(av[1]);
+		arg2 = atoi(av[2]);
+		rush(arg1, arg2);
+	}
 	return (0);
 }

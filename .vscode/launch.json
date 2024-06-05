@@ -9,10 +9,10 @@
             "name": "GDB Debugging",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/get_next_line/a.out", // Pfad zur ausführbaren Datei
+            "program": "${workspaceFolder}", // Pfad zur ausführbaren Datei
             "args": [], // Argumente für das Programm
             "stopAtEntry": true, // Nicht anhalten beim Programmeinstieg
-            "cwd": "${workspaceFolder}/get_next_line", // Arbeitsverzeichnis
+            "cwd": "${workspaceFolder}", // Arbeitsverzeichnis
             "environment": [],
             "externalConsole": false, // Externe Konsole nicht verwenden
             "MIMode": "gdb", // Verwende GDB als Debugger

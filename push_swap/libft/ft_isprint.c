@@ -1,33 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgretic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/15 12:34:21 by bgretic           #+#    #+#             */
-/*   Updated: 2024/04/26 12:46:35 by bgretic          ###   ########.fr       */
+/*   Created: 2024/04/04 16:44:02 by bgretic           #+#    #+#             */
+/*   Updated: 2024/04/10 12:21:26 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	ft_putendl_fd(char *s, int fd)
+int	ft_isprint(int c)
 {
-	size_t len;
-
-	len = ft_strlen(s);
-	write(fd, &s, len);
-	write(fd, "\n", 1);
+	if (c >= 32 && c <= 126)
+	{
+		return (1);
+	}
+	else
+	{
+		return (0);
+	}
 }
 
 //test
 /*
-int main(void)
-{
-	char	*test;
+#include <stdio.h>
 
-	test = "Hello Friene!";
-	ft_putendl_fd(test, 1);
+int	main(void)
+{
+	int	i;
+
+	i = 0;
+	while(i <= 127)
+	{
+		if (ft_isprint(i) != 0)
+		{
+			printf("%c ", i);
+		}
+		i++;
+	}
 }
 */

@@ -1,33 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgretic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/15 12:34:21 by bgretic           #+#    #+#             */
-/*   Updated: 2024/04/26 12:46:35 by bgretic          ###   ########.fr       */
+/*   Created: 2024/04/03 17:24:56 by bgretic           #+#    #+#             */
+/*   Updated: 2024/04/09 19:26:04 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	ft_putendl_fd(char *s, int fd)
+int	ft_isalpha(int argument)
 {
-	size_t len;
-
-	len = ft_strlen(s);
-	write(fd, &s, len);
-	write(fd, "\n", 1);
+	if ((argument >= 'A' && argument <= 'Z'))
+	{
+		return (1);
+	}
+	else if ((argument >= 'a' && argument <= 'z'))
+	{
+		return (2);
+	}
+	else
+	{
+		return (0);
+	}
 }
 
 //test
 /*
-int main(void)
-{
-	char	*test;
+#include <stdio.h>
 
-	test = "Hello Friene!";
-	ft_putendl_fd(test, 1);
+int	main(void)
+{
+    char	c;
+
+	printf("Enter a character: ");
+	scanf("%c", &c);
+
+	if (isalpha(c) == 0)
+	{
+		printf("%c is not an alphabet.", c);
+	}
+	else
+	{
+		printf("%c is an alphabet.", c);
+	}
 }
 */

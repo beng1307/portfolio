@@ -1,33 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgretic <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/15 12:34:21 by bgretic           #+#    #+#             */
-/*   Updated: 2024/04/26 12:46:35 by bgretic          ###   ########.fr       */
+/*   Created: 2024/04/07 13:24:22 by bgretic           #+#    #+#             */
+/*   Updated: 2024/04/26 12:45:55 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putendl_fd(char *s, int fd)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	size_t len;
+	size_t		i;
+	char		*set;
 
-	len = ft_strlen(s);
-	write(fd, &s, len);
-	write(fd, "\n", 1);
+	i = 0;
+	set = (char *)s;
+	while (i < n)
+	{
+		*set = c;
+		set++;
+		i++;
+	}
+	return (s);
 }
 
 //test
 /*
-int main(void)
-{
-	char	*test;
+#include <stdio.h>
 
-	test = "Hello Friene!";
-	ft_putendl_fd(test, 1);
+int	main(void)
+{
+	char	test[16] = "ITestMyFunction";
+	int		i;
+
+	i = 0;
+	printf("%s\n", test);
+	ft_memset(test, 'x', 7);
+	while (i < 16)
+	{
+		printf("%c", test[i]);
+		i++;
+	}
 }
 */
