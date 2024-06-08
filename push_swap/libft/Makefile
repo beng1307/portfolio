@@ -19,7 +19,9 @@ ft_calloc.c ft_isdigit.c ft_memcpy.c ft_strdup.c ft_strncmp.c ft_toupper.c \
 ft_isalnum.c ft_isprint.c ft_memmove.c ft_strlcat.c	ft_strnstr.c ft_substr.c \
 ft_strjoin.c ft_strtrim.c ft_itoa.c ft_strmapi.c ft_striteri.c ft_putchar_fd.c \
 ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_split.c ft_printf.c \
-ft_printf/ft_print_cs.c ft_printf/ft_print_diu.c ft_printf/ft_print_xXp.c
+ft_printf/ft_print_cs.c ft_printf/ft_print_diu.c ft_printf/ft_print_xXp.c \
+ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c ft_lstlast.c \
+ft_lstnew.c ft_lstsize.c ft_push.c ft_rotate.c ft_rev_rotate.c ft_swap.c 
 OBJS = $(SRCS:.c=.o)
 FROM = -I libft
 LIB = ar rcs
