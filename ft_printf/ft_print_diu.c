@@ -55,9 +55,7 @@ void	ft_putnbr_fd_u(unsigned int nb, int fd)
 		ft_putnbr_fd(nb % 10, fd);
 	}
 	else
-	{
 		ft_putchar_fd(nb + '0', fd);
-	}
 }
 
 //Prints numbers.
