@@ -56,7 +56,7 @@ static char	*get_stash(const char *line)
 	return (last_part);
 }
 
-int	first_part(char **stash, char **buffer, char **line)
+static int	first_part(char **stash, char **buffer, char **line)
 {
 	if (*stash && (**stash) != '\0')
 	{
@@ -81,7 +81,7 @@ int	first_part(char **stash, char **buffer, char **line)
 	return (0);
 }
 
-int	second_part(int fd, char **stash, char **buffer, char **line)
+static int	second_part(int fd, char **stash, char **buffer, char **line)
 {
 	*buffer = go_through_file(fd, line);
 	if (!*buffer && *line)
