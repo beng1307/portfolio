@@ -9,13 +9,13 @@
             "name": "GDB Debugging",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}", // Pfad zur ausführbaren Datei
-            "args": [], // Argumente für das Programm
-            "stopAtEntry": true, // Nicht anhalten beim Programmeinstieg
-            "cwd": "${workspaceFolder}", // Arbeitsverzeichnis
+            "program": "${workspaceFolder}/push_swap/push_swap",
+            "args": ["2", "1", "3", "6", "5", "8"],
+            "stopAtEntry": true,
+            "cwd": "${workspaceFolder}",
             "environment": [],
-            "externalConsole": false, // Externe Konsole nicht verwenden
-            "MIMode": "gdb", // Verwende GDB als Debugger
+            "externalConsole": false,
+            "MIMode": "gdb",
         }
     ]
 }

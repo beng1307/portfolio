@@ -8,6 +8,10 @@ t_list  *ft_lstlast(t_list *lst)
         return (NULL);
     lastlst = lst;
     while (lastlst->next != NULL)
+	{
         lastlst = lastlst->next;
+		if (lastlst->next == NULL)
+			return (lastlst);
+	}
     return (lastlst);
 }

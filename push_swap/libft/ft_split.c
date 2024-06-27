@@ -107,7 +107,7 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	wordcount = ft_split_wordcount(s, c);
 	str = ft_calloc((wordcount + 1), sizeof(char *));
-	if (str == NULL)
+	if (!str)
 		return (NULL);
 	str[wordcount] = NULL;
 	if (!(ft_splitcpy(str, s, c)))
