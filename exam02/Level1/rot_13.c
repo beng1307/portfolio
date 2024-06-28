@@ -12,7 +12,7 @@ int	main(int ac, char **av)
 			if (*str >= 'a' && *str <= 'z')
 				*str = (*str - 'a' + 13) % 26 + 'a';
 			else if (*str >= 'A' && *str <= 'Z')
-				*str = (*str - 'a' + 13) % 26 + 'a';
+				*str = (*str - 'A' + 13) % 26 + 'A';
 			write(1, &*str, 1);
 			str++;
 		}
