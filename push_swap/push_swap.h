@@ -5,9 +5,9 @@
 
 int		is_sorted(t_list *stack_a);
 
-void    ft_pa(t_list *stack_a, t_list *stack_b);
+void    ft_pa(t_list **stack_a, t_list **stack_b);
 
-void    ft_pb(t_list *stack_a, t_list *stack_b);
+void    ft_pb(t_list **stack_a, t_list **stack_b);
 
 void    ft_sa(t_list *stack_a);
 

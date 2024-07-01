@@ -24,6 +24,6 @@ void    ft_rrr(t_list *stack_a, t_list *stack_b)
     {
         ft_lstadd_front(&stack_a, ft_lstlast(stack_a));
         ft_lstadd_front(&stack_b, ft_lstlast(stack_b));
-		ft_putendl_fd("rrr", 1);
+	    ft_putendl_fd("rrr", 1);
     }
 }
