@@ -71,7 +71,7 @@ void	sort_it(t_list *stack_a, t_list *stack_b)
 		ft_pb (&stack_a, &stack_b);
 		ft_pb (&stack_a, &stack_b);
 		ft_pb (&stack_a, &stack_b);
-		ft_rr (stack_a, stack_b);
+		ft_rr (&stack_a, &stack_b);
 		ft_rrr (stack_a, stack_b);
 		ft_sa (stack_a);
 		ft_pa (&stack_a, &stack_b);
@@ -89,17 +89,11 @@ int main(int ac, char **av)
 	stack_a = NULL;
 	stack_b = NULL;
 	if (ac == 2)
-	{
 		stack_a = split_into_list(av[1]);
-		if (!stack_a)
-			return (ft_putendl_fd ("Error", 1), -1);
-	}
 	else if (ac > 2)
-	{
 		stack_a = get_list(ac, (const char **)av);
-		if (!stack_a)
-			return (ft_putendl_fd("Error", 1), -1);
-	}
+	if (!stack_a)
+		return (ft_putendl_fd ("Error", 1), -1);
 	sort_it(stack_a, stack_b);
 	ft_lstclear(&stack_a);
 	ft_lstclear(&stack_b);
@@ -107,8 +101,7 @@ int main(int ac, char **av)
 }
 
 /*
-
-Last thing you did was ft_push, lst_addfront is not that compatible.
-Look it up with the debugger to see where you finished.
-
+You are doing ft_rotate, the problem is delone 
+clears the whole list and not only 1 element.
+Good luck tomorrow man, you got this!
 */
