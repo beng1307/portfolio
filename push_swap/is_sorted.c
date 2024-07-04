@@ -2,11 +2,14 @@
 
 int	is_sorted(t_list *stack_a)
 {
-	while (stack_a && stack_a->next)
+	t_list	*test;
+
+	test = stack_a;
+	while (test && test->next)
 	{	
-		if (stack_a->content > stack_a->next->content)
+		if ((test)->content > (test)->next->content)
 			return (0);
-		stack_a = stack_a->next;
+		test = test->next;
 	}
 	return (1);
 }

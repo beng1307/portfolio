@@ -61,22 +61,23 @@ t_list	*get_list(int argc, const char **arg)
 	return (list);
 }
 
-void	sort_it(t_list *stack_a, t_list *stack_b)
+void	sort_it(t_list **stack_a, t_list **stack_b)
 {
 	while (1)
 	{
-		if (is_sorted(stack_a) == 1 && !stack_b)
+		if (is_sorted(*stack_a) == 1 && !*stack_b)
 			return ;
 		ft_sa (stack_a);
-		ft_pb (&stack_a, &stack_b);
-		ft_pb (&stack_a, &stack_b);
-		ft_pb (&stack_a, &stack_b);
-		ft_rr (&stack_a, &stack_b);
-		ft_rrr (stack_a, stack_b);
+		ft_pb (stack_a, stack_b);
+		ft_pb (stack_a, stack_b);
+		ft_pb (stack_a, stack_b);
+		ft_rr (stack_a, stack_b);
+		ft_rra (stack_a);
+		ft_rrb (stack_b);
 		ft_sa (stack_a);
-		ft_pa (&stack_a, &stack_b);
-		ft_pa (&stack_a, &stack_b);
-		ft_pa (&stack_a, &stack_b);
+		ft_pa (stack_a, stack_b);
+		ft_pa (stack_a, stack_b);
+		ft_pa (stack_a, stack_b);
 	}
 }
 
@@ -94,9 +95,8 @@ int main(int ac, char **av)
 		stack_a = get_list(ac, (const char **)av);
 	if (!stack_a)
 		return (ft_putendl_fd ("Error", 1), -1);
-	sort_it(stack_a, stack_b);
+	sort_it(&stack_a, &stack_b);
 	ft_lstclear(&stack_a);
-	ft_lstclear(&stack_b);
 	return (0);
 }
 
