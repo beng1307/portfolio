@@ -89,9 +89,15 @@ int main(int ac, char **av)
 }
 
 /*
-You are doing ft_rotate, the problem is delone 
-clears the whole list and not only 1 element.
+
+Notes:
+It's the final sprint for finishing the sorting logic!
+You only have to debug the quicksort. It isn't in the right order
+when it swaps the two stacks, but it's a small bugfix.
 Good luck tomorrow man, you got this!
+
+
+For command testing:
 
 		// ft_sa (stack_a);
 		// ft_pb (stack_a, stack_b);
