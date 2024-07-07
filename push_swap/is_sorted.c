@@ -1,10 +1,10 @@
 #include "libft.h"
 
-int	is_sorted(t_list *stack_a)
+int	is_sorted(t_list *stack)
 {
 	t_list	*test;
 
-	test = stack_a;
+	test = stack;
 	while (test && test->next)
 	{	
 		if ((test)->content > (test)->next->content)

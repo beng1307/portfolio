@@ -22,7 +22,7 @@ void    ft_sb(t_list **stack_b)
         temp = (*stack_b)->content;
         (*stack_b)->content = (*stack_b)->next->content;
         (*stack_b)->next->content = temp;
-		ft_putendl_fd("rr", 1);
+		ft_putendl_fd("sb", 1);
 	}
 }
 

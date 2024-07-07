@@ -3,6 +3,14 @@
 
 # include "libft.h"
 
+void	split_stack(t_list **stack_a, t_list **stack_b);
+
+void	split_stack_a(t_list **stack_a);
+
+void	split_stack_b(t_list **stack_b);
+
+void	my_quicksort(t_list **stack_a, t_list **stack_b);
+
 int		is_sorted(t_list *stack_a);
 
 void    ft_pa(t_list **stack_a, t_list **stack_b);

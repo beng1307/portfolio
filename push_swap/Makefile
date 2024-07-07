@@ -63,6 +63,7 @@ SRCS =	libft/ft_atoi.c \
 		ft_rev_rotate.c \
 		ft_swap.c \
 		is_sorted.c \
+		quicksort.c \
 		main.c
 OBJS = $(SRCS:.c=.o)
 FROM = -I libft

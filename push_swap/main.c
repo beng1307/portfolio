@@ -63,22 +63,10 @@ t_list	*get_list(int argc, const char **arg)
 
 void	sort_it(t_list **stack_a, t_list **stack_b)
 {
-	while (1)
-	{
-		if (is_sorted(*stack_a) == 1 && !*stack_b)
-			return ;
-		ft_sa (stack_a);
-		ft_pb (stack_a, stack_b);
-		ft_pb (stack_a, stack_b);
-		ft_pb (stack_a, stack_b);
-		ft_rr (stack_a, stack_b);
-		ft_rra (stack_a);
-		ft_rrb (stack_b);
-		ft_sa (stack_a);
-		ft_pa (stack_a, stack_b);
-		ft_pa (stack_a, stack_b);
-		ft_pa (stack_a, stack_b);
-	}
+		split_stack(stack_a, stack_b);
+		split_stack_a(stack_a);
+		split_stack_b(stack_b);
+		my_quicksort(stack_a, stack_b);
 }
 
 int main(int ac, char **av)
@@ -104,4 +92,16 @@ int main(int ac, char **av)
 You are doing ft_rotate, the problem is delone 
 clears the whole list and not only 1 element.
 Good luck tomorrow man, you got this!
+
+		// ft_sa (stack_a);
+		// ft_pb (stack_a, stack_b);
+		// ft_pb (stack_a, stack_b);
+		// ft_pb (stack_a, stack_b);
+		// ft_rr (stack_a, stack_b);
+		// ft_rra (stack_a);
+		// ft_rrb (stack_b);
+		// ft_sa (stack_a);
+		// ft_pa (stack_a, stack_b);
+		// ft_pa (stack_a, stack_b);
+		// ft_pa (stack_a, stack_b);
 */
