@@ -64,8 +64,6 @@ t_list	*get_list(int argc, const char **arg)
 void	sort_it(t_list **stack_a, t_list **stack_b)
 {
 		split_stack(stack_a, stack_b);
-		split_stack_a(stack_a);
-		split_stack_b(stack_b);
 		my_quicksort(stack_a, stack_b);
 }
 
@@ -96,18 +94,5 @@ You only have to debug the quicksort. It isn't in the right order
 when it swaps the two stacks, but it's a small bugfix.
 Good luck tomorrow man, you got this!
 
-
-For command testing:
-
-		// ft_sa (stack_a);
-		// ft_pb (stack_a, stack_b);
-		// ft_pb (stack_a, stack_b);
-		// ft_pb (stack_a, stack_b);
-		// ft_rr (stack_a, stack_b);
-		// ft_rra (stack_a);
-		// ft_rrb (stack_b);
-		// ft_sa (stack_a);
-		// ft_pa (stack_a, stack_b);
-		// ft_pa (stack_a, stack_b);
-		// ft_pa (stack_a, stack_b);
+You have to check, the quicksortlogic, it has a endless loop.
 */

@@ -26,7 +26,7 @@ void	split_stack(t_list **stack_a, t_list **stack_b)
 	middle_value = get_middle_value(*stack_a, stack_size);
 	while (stack_size-- && node)
 	{
-		if (node->content < middle_value)
+		if (node->content <= middle_value)
 		{
 			node = node->next;
 			ft_pb(stack_a, stack_b);
@@ -35,54 +35,6 @@ void	split_stack(t_list **stack_a, t_list **stack_b)
 		{
 			node = node->next;
 			ft_ra(stack_a);
-		}
-	}
-}
-
-void	split_stack_a(t_list **stack_a)
-{
-	t_list	*node;
-	size_t	stack_size;
-	int		middle_value;
-
-	node = *stack_a;
-	stack_size = ft_lstsize(*stack_a);
-	middle_value = get_middle_value(*stack_a, stack_size);
-	while (stack_size-- && node)
-	{
-		if (node->content < middle_value)
-		{
-			node = node->next;
-			ft_sa(stack_a);
-		}
-		else
-		{
-			node = node->next;
-			ft_ra(stack_a);
-		}
-	}
-}
-
-void	split_stack_b(t_list **stack_b)
-{
-	t_list	*node;
-	size_t	stack_size;
-	int		middle_value;
-
-	node = *stack_b;
-	stack_size = ft_lstsize(*stack_b);
-	middle_value = get_middle_value(*stack_b, stack_size);
-	while (stack_size-- && node)
-	{
-		if (node->content > middle_value)
-		{
-			node = node->next;
-			ft_sb(stack_b);
-		}
-		else
-		{
-			node = node->next;
-			ft_rb(stack_b);
 		}
 	}
 }
