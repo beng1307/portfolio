@@ -42,7 +42,7 @@ library to use in our projects.
 
 These were the first projects I ever worked on at 42. They were
 part of the one-month bootcamp required for admission as
-studens.
+student.
 
 -----------------------------------------------------------------
 
