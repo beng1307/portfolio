@@ -13,7 +13,7 @@ become a good Software Developer.
 
 ## exam02:
 
-Some small programs/ functios for the first common core exam.
+Some small programs/ functions for the first common core exam.
 
 -----------------------------------------------------------------
 
