@@ -61,12 +61,6 @@ t_list	*get_list(int argc, const char **arg)
 	return (list);
 }
 
-void	sort_it(t_list **stack_a, t_list **stack_b)
-{
-		split_stack(stack_a, stack_b);
-		my_quicksort(stack_a, stack_b);
-}
-
 int main(int ac, char **av)
 {
 	t_list *stack_a;
@@ -81,18 +75,12 @@ int main(int ac, char **av)
 		stack_a = get_list(ac, (const char **)av);
 	if (!stack_a)
 		return (ft_putendl_fd ("Error", 1), -1);
-	sort_it(&stack_a, &stack_b);
+	sort_it(&stack_a, &stack_b, 2);
 	ft_lstclear(&stack_a);
 	return (0);
 }
 
 /*
+Change the ints in the sorting algorythm to unsigned ints so it can store the positive number.
 
-Notes:
-It's the final sprint for finishing the sorting logic!
-You only have to debug the quicksort. It isn't in the right order
-when it swaps the two stacks, but it's a small bugfix.
-Good luck tomorrow man, you got this!
-
-You have to check, the quicksortlogic, it has a endless loop.
 */

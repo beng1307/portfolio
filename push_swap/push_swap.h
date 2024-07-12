@@ -3,9 +3,7 @@
 
 # include "libft.h"
 
-void	split_stack(t_list **stack_a, t_list **stack_b);
-
-void	my_quicksort(t_list **stack_a, t_list **stack_b);
+void	sort_it(t_list **stack_a, t_list **stack_b, int stack_size);
 
 int		is_sorted(t_list *stack_a);
 
