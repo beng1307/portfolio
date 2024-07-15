@@ -12,7 +12,7 @@ static int	get_middle_value(t_list *stack, size_t stack_size)
 		return_value += counting_node->content;
 		counting_node = counting_node->next;
 	}
-+	return (return_value / stack_size);
+	return (return_value / stack_size);
 }
 
 static void	split_stack(t_list **stack_a, t_list **stack_b)
