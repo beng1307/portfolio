@@ -76,6 +76,8 @@ int main(int ac, char **av)
 	if (!stack_a)
 		return (ft_putendl_fd ("Error", 1), -1);
 	sort_it(&stack_a, &stack_b);
+	if (!is_sorted(stack_a) || stack_b)
+		ft_putendl_fd("Is not sorted!", 1);
 	ft_lstclear(&stack_a);
 	return (0);
 }

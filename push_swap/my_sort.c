@@ -1,18 +1,5 @@
 #include "push_swap.h"
 
-static void sort_3(t_list **stack_a)
-{
-	if ((*stack_a)->content > (*stack_a)->next->content)
-		ft_sa(stack_a);
-	if ((*stack_a)->next->next->content < (*stack_a)->content)
-		ft_rra(stack_a);
-	else if ((*stack_a)->next->next->content < (*stack_a)->next->content)
-	{
-		ft_rra(stack_a);
-		ft_sa(stack_a);
-	}
-}
-
 static void	split_stack(t_list **stack_a, t_list **stack_b, int stack_size)
 {
 	t_list	*node;
@@ -35,6 +22,34 @@ static void	split_stack(t_list **stack_a, t_list **stack_b, int stack_size)
 	}	
 }
 
+static void sort_3(t_list **stack_a)
+{
+	if ((*stack_a)->content > (*stack_a)->next->content)
+		ft_sa(stack_a);
+	if ((*stack_a)->next->next->content < (*stack_a)->content)
+		ft_rra(stack_a);
+	else if ((*stack_a)->next->next->content < (*stack_a)->next->content)
+	{
+		ft_rra(stack_a);
+		ft_sa(stack_a);
+	}
+}
+
+static int	move_counter(t_list *stack)
+{
+
+}
+
+void	sort_it(t_list **stack_a, t_list **stack_b)
+{
+	int	stack_size;
+
+	stack_size = ft_lstsize(*stack_a);
+	split_stack(stack_a, stack_b, stack_size);
+	sort_3(stack_a);
+}
+
+
 // static int which_half(t_list **stack_a, int value_b, int stack_size)
 // {
 // 	t_list	*node;
@@ -49,16 +64,3 @@ static void	split_stack(t_list **stack_a, t_list **stack_b, int stack_size)
 // 	else
 // 		return (2);
 // } 
-
-void	sort_it(t_list **stack_a, t_list **stack_b)
-{
-	int	stack_size;
-
-	stack_size = ft_lstsize(*stack_a);
-	split_stack(stack_a, stack_b, stack_size);
-	sort_3(stack_a);
-	// while (!is_sorted(*stack_a) || *stack_b)
-	// {
-
-	// }
-}
