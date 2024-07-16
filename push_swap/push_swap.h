@@ -3,7 +3,15 @@
 
 # include "libft.h"
 
-void	sort_it(t_list **stack_a, t_list **stack_b, int stack_size);
+int		get_lowest_value(t_list *stack_a, int stack_size);
+
+int		get_highest_value(t_list *stack_a, int stack_size);
+
+int		get_middle_value(t_list *stack_a, int stack_size);
+
+void	sort_it(t_list **stack_a, t_list **stack_b);
+
+int		is_sorted_b(t_list *stack);
 
 int		is_sorted(t_list *stack_a);
 

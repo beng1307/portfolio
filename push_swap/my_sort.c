@@ -1,56 +1,64 @@
 #include "push_swap.h"
 
-static int	get_middle_value(t_list *stack, size_t stack_size)
+static void sort_3(t_list **stack_a)
 {
-	t_list	*counting_node;
-	size_t	return_value;
-
-	counting_node = stack;
-	return_value = 0;
-	while (counting_node)
+	if ((*stack_a)->content > (*stack_a)->next->content)
+		ft_sa(stack_a);
+	if ((*stack_a)->next->next->content < (*stack_a)->content)
+		ft_rra(stack_a);
+	else if ((*stack_a)->next->next->content < (*stack_a)->next->content)
 	{
-		return_value += counting_node->content;
-		counting_node = counting_node->next;
+		ft_rra(stack_a);
+		ft_sa(stack_a);
 	}
-	return (return_value / stack_size);
 }
 
-static void	split_stack(t_list **stack_a, t_list **stack_b)
+static void	split_stack(t_list **stack_a, t_list **stack_b, int stack_size)
 {
 	t_list	*node;
-	int		middle_value;
-	int		stack_size;
-	static int count = 0;
+	int	lowest_value;
+	int	middle_value;
+	int	highest_value;
 
-	node = *stack_a;
-	stack_size = ft_lstsize(*stack_a);
+	lowest_value = get_lowest_value(*stack_a, stack_size);
 	middle_value = get_middle_value(*stack_a, stack_size);
-	while (stack_size > 0)
+	highest_value = get_highest_value(*stack_a, stack_size);
+	while (stack_size--)
 	{
-		if (node->content <= middle_value)
-		{
-			ft_pb(stack_a, stack_b);
-			ft_putnbr_fd(count++, 1);
-			ft_putchar_fd('\n', 1);
-		}
-		else if (node->content > middle_value)
-		{
-			ft_ra(stack_a);
-			ft_putnbr_fd(count++, 1);
-			ft_putchar_fd('\n', 1);
-		}
 		node = *stack_a;
-		stack_size--;
-	}
+		if (node->content != lowest_value
+			&& node->content != middle_value
+			&& node->content != highest_value)
+			ft_pb(stack_a,stack_b);
+		else
+			ft_ra(stack_a);
+	}	
 }
 
-void	sort_it(t_list **stack_a, t_list **stack_b, int stack_size)
+// static int which_half(t_list **stack_a, int value_b, int stack_size)
+// {
+// 	t_list	*node;
+// 	int		half;
+
+// 	node = *stack_a;
+// 	half = 0;
+// 	while (!(value_b > node->content && value_b < node->next->content))
+// 		half++;
+// 	if (half < stack_size / 2)
+// 		return (1);
+// 	else
+// 		return (2);
+// } 
+
+void	sort_it(t_list **stack_a, t_list **stack_b)
 {
-	if (stack_size <= 1)
-		return ;
-	split_stack(stack_b, stack_a);
-	sort_it(stack_a, stack_b, ft_lstsize(*stack_a));
-	sort_it(stack_b, stack_a, ft_lstsize(*stack_b));
-	while (*stack_b)
-		ft_pa(stack_a, stack_b);
+	int	stack_size;
+
+	stack_size = ft_lstsize(*stack_a);
+	split_stack(stack_a, stack_b, stack_size);
+	sort_3(stack_a);
+	// while (!is_sorted(*stack_a) || *stack_b)
+	// {
+
+	// }
 }

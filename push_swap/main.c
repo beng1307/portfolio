@@ -75,12 +75,10 @@ int main(int ac, char **av)
 		stack_a = get_list(ac, (const char **)av);
 	if (!stack_a)
 		return (ft_putendl_fd ("Error", 1), -1);
-	sort_it(&stack_a, &stack_b, 2);
+	sort_it(&stack_a, &stack_b);
 	ft_lstclear(&stack_a);
 	return (0);
 }
 
 /*
-Change the ints in the sorting algorythm to unsigned ints so it can store the positive number.
-
 */
