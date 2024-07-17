@@ -9,6 +9,8 @@ int		get_highest_value(t_list *stack_a, int stack_size);
 
 int		get_middle_value(t_list *stack_a, int stack_size);
 
+int		fastest_sort(t_list **stack_a, t_list **stack_b);
+
 void	sort_it(t_list **stack_a, t_list **stack_b);
 
 int		is_sorted_b(t_list *stack);

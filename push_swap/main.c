@@ -31,7 +31,7 @@ t_list	*split_into_list(const char *arg)
 {
 	t_list	*list;
 	char	**splitted_arg;
-
+ 
 	list = NULL;
 	splitted_arg = ft_split(arg, ' ');
 	if (!splitted_arg)

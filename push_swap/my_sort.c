@@ -35,9 +35,19 @@ static void sort_3(t_list **stack_a)
 	}
 }
 
-static int	move_counter(t_list *stack)
+static int which_half(t_list **stack_a, int value_b, int stack_size)
 {
+	t_list	*node;
+	int		half;
 
+	node = *stack_a;
+	half = 0;
+	while (!(value_b > node->content && value_b < node->next->content))
+		half++;
+	if (half < stack_size / 2)
+		return (1);
+	else
+		return (2);
 }
 
 void	sort_it(t_list **stack_a, t_list **stack_b)
@@ -49,18 +59,7 @@ void	sort_it(t_list **stack_a, t_list **stack_b)
 	sort_3(stack_a);
 }
 
-
-// static int which_half(t_list **stack_a, int value_b, int stack_size)
-// {
-// 	t_list	*node;
-// 	int		half;
-
-// 	node = *stack_a;
-// 	half = 0;
-// 	while (!(value_b > node->content && value_b < node->next->content))
-// 		half++;
-// 	if (half < stack_size / 2)
-// 		return (1);
-// 	else
-// 		return (2);
-// } 
+/*
+edge case: if first is higher than b_content and last is lower, it 
+does not find the right position
+*/
