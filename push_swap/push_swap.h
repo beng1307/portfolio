@@ -3,6 +3,12 @@
 
 # include "libft.h"
 
+void	check_args(int ac, const char **av);
+
+t_list	*split_into_list(const char *arg);
+
+t_list	*get_list(int argc, const char **arg);
+
 int		get_lowest_value(t_list *stack_a, int stack_size);
 
 int		get_highest_value(t_list *stack_a, int stack_size);
@@ -11,9 +17,15 @@ int		get_middle_value(t_list *stack_a, int stack_size);
 
 int		fastest_sort(t_list **stack_a, t_list **stack_b);
 
-void	sort_it(t_list **stack_a, t_list **stack_b);
+int 	which_half(t_list **stack, int value_b, int stack_sizen, char ab);
 
-int		is_sorted_b(t_list *stack);
+void	split_stack(t_list **stack_a, t_list **stack_b, int stack_size);
+
+void 	sort_3(t_list **stack_a);
+
+void	sort_into_a(t_list **stack_a, t_list **stack_b, int fastest_value);
+
+void	sort_it(t_list **stack_a, t_list **stack_b);
 
 int		is_sorted(t_list *stack_a);
 

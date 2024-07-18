@@ -1,5 +1,29 @@
 #include "push_swap.h"
 
+int which_half(t_list **stack, int value_b, int stack_size, char ab)
+{
+	t_list	*node;
+	int		half;
+
+	node = *stack;
+	half = 0;
+	while ((!(value_b > node->content && value_b < node->next->content)
+		&& value_b != node->content) && ab == 'a')
+	{
+		half++;
+		node = node->next;
+	}
+	while (value_b != node->content && ab == 'b')
+	{
+		half++;
+		node = node->next;
+	}		
+	if (half < stack_size / 2)
+		return (1);
+	else
+		return (2);
+}
+
 static int	count_moves_b(t_list **stack_b, int content_b)
 {
 	t_list	*node_b;
@@ -12,7 +36,7 @@ static int	count_moves_b(t_list **stack_b, int content_b)
 		moves_b++;
 		node_b = node_b->next;
 	}
-	if (which_half(stack_b, node_b->content) == 2)
+	if (which_half(stack_b, node_b->content, ft_lstsize(*stack_b), 'b') == 2)
 	{
 		moves_b = 1; 
 		while (node_b)
@@ -32,7 +56,7 @@ static int	count_moves_a(t_list **stack_a, int content_b)
 
 	node_a = *stack_a;
 	last_node = ft_lstlast(*stack_a);
-	moves_a = 0;
+	moves_a = 1;
 	if (content_b < node_a->content && content_b > last_node->content)
 		return (0);
 	while (!(content_b > node_a->content && content_b < node_a->next->content))
@@ -40,7 +64,7 @@ static int	count_moves_a(t_list **stack_a, int content_b)
 		moves_a++;
 		node_a = node_a->next;
 	}
-	if (which_half(stack_a, node_a->content) == 2)
+	if (which_half(stack_a, content_b, ft_lstsize(*stack_a), 'a') == 2)
 	{
 		moves_a = 0; 
 		while (node_a)
@@ -61,11 +85,11 @@ int	fastest_sort(t_list **stack_a, t_list **stack_b)
 	int		value_to_sort;
 
 	node_b = *stack_b;
-	min_moves = ft_lstsize(stack_a) + ft_lstsize(stack_b);
+	min_moves = ft_lstsize(*stack_a) + ft_lstsize(*stack_b);
 	while (node_b)
 	{
 		moves_a = count_moves_a(stack_a, node_b->content);
-		moves_b = count_moves_a(stack_a, node_b->content);
+		moves_b = count_moves_b(stack_b, node_b->content);
 		if (moves_a + moves_b < min_moves)
 		{
 			value_to_sort = node_b->content;
