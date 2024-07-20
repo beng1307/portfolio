@@ -6,7 +6,7 @@
 /*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 18:37:32 by bgretic           #+#    #+#             */
-/*   Updated: 2024/07/01 21:45:18 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/07/19 15:10:59 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <stdint.h>
 # include <stdarg.h>
+# include <limits.h>
 
 typedef struct  s_list
 {

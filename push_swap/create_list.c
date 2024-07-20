@@ -9,6 +9,7 @@ t_list	*split_into_list(const char *arg)
 	splitted_arg = ft_split(arg, ' ');
 	if (!splitted_arg)
 		return (NULL);
+	check_nums((const char **)splitted_arg);
 	while (*splitted_arg)
 		ft_lstadd_back(&list, ft_lstnew(ft_atoi(*splitted_arg++)));
 	if (!list)
@@ -24,6 +25,7 @@ t_list	*get_list(int argc, const char **arg)
 
 	list = NULL;
 	index = 1;
+	check_nums(&arg[index]);
 	while (index < (size_t)argc)
 	{
 		num = ft_atoi(arg[index++]);

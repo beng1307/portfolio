@@ -3,7 +3,9 @@
 
 # include "libft.h"
 
-void	check_args(int ac, const char **av);
+void	check_form(const char **av);
+
+void	check_nums(const char **args);
 
 t_list	*split_into_list(const char *arg);
 

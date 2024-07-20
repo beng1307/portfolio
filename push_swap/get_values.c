@@ -51,7 +51,7 @@ int	get_middle_value(t_list *stack_a, int stack_size)
 	node = stack_a;
 	lowest_value = get_lowest_value(stack_a, stack_size);
 	highest_value = get_highest_value(stack_a, stack_size);
-	mid = (highest_value + lowest_value) / 2;
+	mid = ((long)highest_value + lowest_value) / 2;
 	middle_value = node->content;
 	while (stack_size--)
 	{

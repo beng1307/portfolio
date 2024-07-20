@@ -7,13 +7,13 @@ int which_half(t_list **stack, int value_b, int stack_size, char ab)
 
 	node = *stack;
 	half = 0;
-	while ((!(value_b > node->content && value_b < node->next->content)
+	while (node && (!(value_b > node->content && value_b < node->next->content)
 		&& value_b != node->content) && ab == 'a')
 	{
 		half++;
 		node = node->next;
 	}
-	while (value_b != node->content && ab == 'b')
+	while (node && value_b != node->content && ab == 'b')
 	{
 		half++;
 		node = node->next;
