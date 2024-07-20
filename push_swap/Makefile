@@ -6,7 +6,7 @@
 #    By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/26 12:32:52 by bgretic           #+#    #+#              #
-#    Updated: 2024/07/18 20:01:50 by bgretic          ###   ########.fr        #
+#    Updated: 2024/07/20 18:46:26 by bgretic          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,6 +69,7 @@ SRCS =	libft/ft_atoi.c \
 		sorting_logic.c \
 		create_list.c \
 		error_handling.c \
+		ps_lstnew.c \
 		main.c
 OBJS = $(SRCS:.c=.o)
 FROM = -I libft

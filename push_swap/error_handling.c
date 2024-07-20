@@ -32,7 +32,7 @@ static void check_form_cases(const char *arg)
 			ft_putendl_fd("Error", 1);
 			exit(-1);
 		}
-		if (*arg == '-' && !(*(arg + 1) >= '1' && *(arg + 1) <= '9'))
+		if (*arg == '-' && !(*(arg + 1) >= '0' && *(arg + 1) <= '9'))
 		{
 			ft_putendl_fd("Error", 1);
 			exit(-1);				

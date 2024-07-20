@@ -8,12 +8,12 @@ static int  ft_abs(int a, int b)
         return (a - b);
 }
 
-int	get_lowest_value(t_list *stack_a, int stack_size)
+int	get_lowest_value(t_list *stk_a, int stack_size)
 {
 	t_list	*node;
 	int		lowest_value;
 
-	node = stack_a;
+	node = stk_a;
 	lowest_value = node->content;
 	while (stack_size--)
 	{
@@ -24,12 +24,12 @@ int	get_lowest_value(t_list *stack_a, int stack_size)
 	return (lowest_value);
 }
 
-int	get_highest_value(t_list *stack_a, int stack_size)
+int	get_highest_value(t_list *stk_a, int stack_size)
 {
 	t_list	*node;
 	int		highest_value;
 
-	node = stack_a;
+	node = stk_a;
 	highest_value = node->content;
 	while (stack_size--)
 	{
@@ -40,7 +40,7 @@ int	get_highest_value(t_list *stack_a, int stack_size)
 	return (highest_value);
 }
 
-int	get_middle_value(t_list *stack_a, int stack_size)
+int	get_middle_value(t_list *stk_a, int stack_size)
 {
 	t_list	*node;
 	int		mid;
@@ -48,9 +48,9 @@ int	get_middle_value(t_list *stack_a, int stack_size)
 	int		highest_value;
 	int		middle_value;
 
-	node = stack_a;
-	lowest_value = get_lowest_value(stack_a, stack_size);
-	highest_value = get_highest_value(stack_a, stack_size);
+	node = stk_a;
+	lowest_value = get_lowest_value(stk_a, stack_size);
+	highest_value = get_highest_value(stk_a, stack_size);
 	mid = ((long)highest_value + lowest_value) / 2;
 	middle_value = node->content;
 	while (stack_size--)

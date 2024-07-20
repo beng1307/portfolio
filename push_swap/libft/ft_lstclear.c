@@ -7,11 +7,12 @@ void    ft_lstclear(t_list **lst)
     if (lst)
     {
         to_clear = *lst;
-        while (to_clear != NULL)
+        while (to_clear)
         {
             to_clear = to_clear->next;
             free(*lst);
             *lst = to_clear;
         }
+		*lst = NULL;
     }
 }

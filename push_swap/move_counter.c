@@ -24,19 +24,19 @@ int which_half(t_list **stack, int value_b, int stack_size, char ab)
 		return (2);
 }
 
-static int	count_moves_b(t_list **stack_b, int content_b)
+static int	count_moves_b(t_list **stk_b, int content_b)
 {
 	t_list	*node_b;
 	int		moves_b;
 
-	node_b = *stack_b;
+	node_b = *stk_b;
 	moves_b = 1;
 	while (node_b->content != content_b)
 	{
 		moves_b++;
 		node_b = node_b->next;
 	}
-	if (which_half(stack_b, node_b->content, ft_lstsize(*stack_b), 'b') == 2)
+	if (which_half(stk_b, node_b->content, ft_lstsize(*stk_b), 'b') == 2)
 	{
 		moves_b = 1; 
 		while (node_b)
@@ -48,14 +48,14 @@ static int	count_moves_b(t_list **stack_b, int content_b)
 	return (moves_b);
 }
 
-static int	count_moves_a(t_list **stack_a, int content_b)
+static int	count_moves_a(t_list **stk_a, int content_b)
 {
 	t_list	*node_a;
 	t_list	*last_node;
 	int		moves_a;
 
-	node_a = *stack_a;
-	last_node = ft_lstlast(*stack_a);
+	node_a = *stk_a;
+	last_node = ft_lstlast(*stk_a);
 	moves_a = 1;
 	if (content_b < node_a->content && content_b > last_node->content)
 		return (0);
@@ -64,7 +64,7 @@ static int	count_moves_a(t_list **stack_a, int content_b)
 		moves_a++;
 		node_a = node_a->next;
 	}
-	if (which_half(stack_a, content_b, ft_lstsize(*stack_a), 'a') == 2)
+	if (which_half(stk_a, content_b, ft_lstsize(*stk_a), 'a') == 2)
 	{
 		moves_a = 0; 
 		while (node_a)
@@ -76,7 +76,7 @@ static int	count_moves_a(t_list **stack_a, int content_b)
 	return (moves_a);
 }
 
-int	fastest_sort(t_list **stack_a, t_list **stack_b)
+int	fastest_sort(t_list **stk_a, t_list **stk_b)
 {
 	t_list	*node_b;
 	int		moves_a;
@@ -84,12 +84,12 @@ int	fastest_sort(t_list **stack_a, t_list **stack_b)
 	int		min_moves;
 	int		value_to_sort;
 
-	node_b = *stack_b;
-	min_moves = ft_lstsize(*stack_a) + ft_lstsize(*stack_b);
+	node_b = *stk_b;
+	min_moves = ft_lstsize(*stk_a) + ft_lstsize(*stk_b);
 	while (node_b)
 	{
-		moves_a = count_moves_a(stack_a, node_b->content);
-		moves_b = count_moves_b(stack_b, node_b->content);
+		moves_a = count_moves_a(stk_a, node_b->content);
+		moves_b = count_moves_b(stk_b, node_b->content);
 		if (moves_a + moves_b < min_moves)
 		{
 			value_to_sort = node_b->content;

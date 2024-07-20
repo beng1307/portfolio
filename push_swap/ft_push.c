@@ -1,41 +1,41 @@
 #include "push_swap.h"
 
-void    ft_pa(t_list **stack_a, t_list **stack_b)
+void    ft_pa(t_list **stk_a, t_list **stk_b)
 {
-	t_list *head;
+	t_list	*head;
+	int		content;
 
-    if (stack_a && (stack_b && *stack_b))
+    if (stk_a && (stk_b && *stk_b))
 	{
-		head = *stack_b;
-		*stack_b = (*stack_b)->next;
-		if (*stack_a)
-    		ft_lstadd_front(stack_a, head);
-		else
-		{
-			*stack_a = ft_lstnew((head)->content);
-			ft_lstdelone(head);
-		}
+		head = *stk_b;
+		content = (*stk_b)->content;
+		*stk_b = (*stk_b)->next;
+		ft_lstdelone(head);
 		head = NULL;
+		if (*stk_a)
+    		ft_lstadd_front(stk_a, head);
+		else
+			*stk_a = ps_lstnew(content, stk_a, stk_b);
 		ft_putendl_fd("pa", 1);
 	}
 }
 
-void    ft_pb(t_list **stack_a, t_list **stack_b)
+void    ft_pb(t_list **stk_a, t_list **stk_b)
 {
 	t_list	*head;
+	int		content;
 
-    if ((stack_a && *stack_a) && stack_b)
+    if ((stk_a && *stk_a) && stk_b)
 	{
-		head = *stack_a;
-		*stack_a = (*stack_a)->next;
-		if (*stack_b)
-			ft_lstadd_front(stack_b, head);
-		else
-		{
-			*stack_b = ft_lstnew((head)->content);
-			ft_lstdelone(head);
-		}
+		head = *stk_a;
+		content = (*stk_a)->content;
+		*stk_a = (*stk_a)->next;
+		ft_lstdelone(head);
 		head = NULL;
+		if (*stk_b)
+			ft_lstadd_front(stk_b, head);
+		else
+			*stk_b = ps_lstnew(content, stk_a, stk_b);
 		ft_putendl_fd("pb", 1);
 	}
 }

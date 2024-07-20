@@ -1,15 +1,15 @@
 #include "push_swap.h"
 
-void    ft_rra(t_list **stack_a)
+void    ft_rra(t_list **stk_a, t_list **stk_b)
 {
     t_list  *lastlst;
     t_list  *head;
 
-    if (stack_a && *stack_a && (*stack_a)->next)
+    if (stk_a && *stk_a && (*stk_a)->next)
 	{
-        lastlst = ft_lstlast(*stack_a);
-        head = *stack_a;
-        ft_lstadd_front(stack_a, ft_lstnew(lastlst->content));
+        lastlst = ft_lstlast(*stk_a);
+        head = *stk_a;
+        ft_lstadd_front(stk_a, ps_lstnew(lastlst->content, stk_a, stk_b));
         while (head->next && head->next->next)
             head = head->next;
         ft_lstdelone(lastlst);
@@ -20,16 +20,16 @@ void    ft_rra(t_list **stack_a)
 	}
 }
 
-void    ft_rrb(t_list **stack_b)
+void    ft_rrb(t_list **stk_a, t_list **stk_b)
 {
     t_list	*lastlst;
     t_list	*head;
 
-    if (stack_b && *stack_b && (*stack_b)->next)
+    if (stk_b && *stk_b && (*stk_b)->next)
 	{
-		lastlst = ft_lstlast(*stack_b);
-		head = *stack_b;
-		ft_lstadd_front(stack_b, ft_lstnew(lastlst->content));
+		lastlst = ft_lstlast(*stk_b);
+		head = *stk_b;
+		ft_lstadd_front(stk_b, ps_lstnew(lastlst->content, stk_a, stk_b));
 		while (head->next && head->next->next)
 			head = head->next;
 		ft_lstdelone(lastlst);
@@ -40,25 +40,25 @@ void    ft_rrb(t_list **stack_b)
 	}
 }
 
-void    ft_rrr(t_list **stack_a, t_list **stack_b)
+void    ft_rrr(t_list **stk_a, t_list **stk_b)
 {
     t_list  *lastlst;
 	t_list	*head;
 
-    if ((stack_a && stack_b)
-        && (*stack_a && (*stack_a)->next)
-            && (*stack_b && (*stack_b)->next))
+    if ((stk_a && stk_b)
+        && (*stk_a && (*stk_a)->next)
+            && (*stk_b && (*stk_b)->next))
     {
-        lastlst = ft_lstlast(*stack_a);
-        head = *stack_a;
-        ft_lstadd_front(stack_a, ft_lstnew(lastlst->content));
+        lastlst = ft_lstlast(*stk_a);
+        head = *stk_a;
+        ft_lstadd_front(stk_a, ps_lstnew(lastlst->content, stk_a, stk_b));
         while (head->next && head->next->next)
             head = head->next;
         ft_lstdelone(lastlst);
 		head->next = NULL;
-		lastlst = ft_lstlast(*stack_b);
-		head = *stack_b;
-		ft_lstadd_front(stack_b, ft_lstnew(lastlst->content));
+		lastlst = ft_lstlast(*stk_b);
+		head = *stk_b;
+		ft_lstadd_front(stk_b, ps_lstnew(lastlst->content, stk_a, stk_b));
 		while (head->next && head->next->next)
 			head = head->next;
 		ft_lstdelone(lastlst);
