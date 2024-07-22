@@ -60,7 +60,7 @@ void	check_form(const char **args)
 	}
 }
 
-static int	is_duplicate(const char **args, long int nbr, size_t index)
+static int	is_duplicate(char **args, long int nbr, size_t index)
 {
 	long int	compare_nbr;
 	size_t		index2;
@@ -76,7 +76,7 @@ static int	is_duplicate(const char **args, long int nbr, size_t index)
 	return (0);
 }
 
-void	check_nums(const char **args)
+int	check_nums(char **args)
 {
 	long int	nbr;
 	size_t		index;
@@ -87,10 +87,8 @@ void	check_nums(const char **args)
 		nbr = ft_long_atoi(args[index]);
 		if (nbr < INT_MIN || nbr > INT_MAX
 			|| is_duplicate(args, nbr, index))
-		{
-			ft_putendl_fd("Error", 1);
-			exit(-1);
-		}
+			return (-1);
 		index++;
 	}
+	return (0);
 }

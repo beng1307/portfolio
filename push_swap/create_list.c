@@ -17,28 +17,30 @@ void	free_that(char **to_free)
 	}
 }
 
-t_list	*split_into_list(const char *arg)
+t_list	*split_into_list(char *arg)
 {
 	t_list	*lst;
+	size_t	index;
 	char	**spl_arg;
-	char	**temp;
  
 	lst = NULL;
+	index = 0;
 	spl_arg = ft_split(arg, ' ');
 	if (!spl_arg)
 		return (NULL);
-	temp = spl_arg;
-	check_nums((const char **)spl_arg);
-	while (*spl_arg)
+	if (check_nums(spl_arg) == -1)
 	{
-		ft_lstadd_back(&lst, newlst(ft_atoi(*spl_arg), &lst, spl_arg, temp));
-		spl_arg++;
+		free_that(spl_arg);
+		ft_putendl_fd("Error", 1);
+		exit(-1);
 	}
-	free_that(temp);
+	while (spl_arg[index])
+		ft_lstadd_back(&lst, newlst(ft_atoi(spl_arg[index++]), &lst, spl_arg));
+	free_that(spl_arg);
 	return (lst);
 }
 
-t_list	*get_list(int argc, const char **arg)
+t_list	*get_list(int argc, char **arg)
 {
 	t_list	*list;
 	int		num;
@@ -46,7 +48,11 @@ t_list	*get_list(int argc, const char **arg)
 
 	list = NULL;
 	index = 1;
-	check_nums(&arg[index]);
+	if (check_nums(&arg[index]) == -1)
+	{
+		ft_putendl_fd("Error", 1);
+		exit(-1);
+	}
 	while (index < (size_t)argc)
 	{
 		num = ft_atoi(arg[index++]);

@@ -58,16 +58,15 @@ t_list *ps_create_new(int content, t_list **list)
     return (new_node);
 }
 
-t_list *newlst(int content, t_list **list, char **spl_arg, char **temp)
+t_list *newlst(int content, t_list **list, char **spl_arg)
 {
     t_list *new_node;
-
-    new_node = malloc(sizeof(t_list));
-    if (!new_node)
+    
+	new_node = malloc(sizeof(t_list));
+	if (!new_node)
 	{
 		ft_lstclear(list);
 		free_that(spl_arg);
-		free_that(temp);
 		exit (-1);
 	}
     new_node->content = content;	

@@ -13,12 +13,15 @@ int main(int ac, char **av)
 	if (ac == 2)
 		stk_a = split_into_list(av[1]);
 	else if (ac > 2)
-		stk_a = get_list(ac, (const char **)av);
+		stk_a = get_list(ac, av);
 	if (!stk_a)
 		return (ft_lstclear(&stk_a), -1);
 	if (is_sorted(stk_a))
 		return (ft_lstclear(&stk_a), 0);
-	sort_it(&stk_a, &stk_b);
+	// if (ft_lstsize(stk_a) < 6)
+	// 	little_sort(&stk_a);
+	// else
+		sort_it(&stk_a, &stk_b);
 	ft_lstclear(&stk_a);
 	return (0);
 }

@@ -3,9 +3,11 @@
 
 # include "libft.h"
 
+// void	small_sort(t_list **stk_a);
+
 void	free_that(char **to_free);
 
-t_list	*newlst(int content, t_list **list, char **spl_arg, char **temp);
+t_list	*newlst(int content, t_list **list, char **spl_arg);
 
 t_list	*ps_create_new(int content, t_list **list);
 
@@ -13,11 +15,11 @@ t_list	*ps_lstnew(int content, t_list **stk_a, t_list **stk_b);
 
 void	check_form(const char **av);
 
-void	check_nums(const char **args);
+int		check_nums(char **args);
 
-t_list	*split_into_list(const char *arg);
+t_list	*split_into_list(char *arg);
 
-t_list	*get_list(int argc, const char **arg);
+t_list	*get_list(int argc, char **arg);
 
 int		get_lowest_value(t_list *stk_a, int stack_size);
 

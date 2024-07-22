@@ -1,5 +1,22 @@
 #include "push_swap.h"
 
+// void	small_sort(t_list **stk_a, t_list **stk_b)
+// {
+// 	t_list	*last_lst;
+
+// 	if (ft_lstsize(*stk_a) <= 3)
+// 		sort_3(stk_a, stk_b);
+// 	else
+// 	{
+// 		while (!is_sorted(*stk_a))
+// 		{
+// 			last_lst = ft_lastlst(*stk_a);
+
+// 		}
+			
+// 	}
+// }
+
 void	sort_it(t_list **stk_a, t_list **stk_b)
 {
 	int	stack_size;

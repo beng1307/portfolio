@@ -100,8 +100,8 @@ static char	**ft_splitcpy(char **str, const char *s, char c)
 
 char	**ft_split(char const *s, char c)
 {
-	char		**str;
-	size_t		wordcount;
+	char	**str;
+	size_t	wordcount;
 
 	if (!s)
 		return (NULL);
