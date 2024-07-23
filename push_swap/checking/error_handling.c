@@ -29,18 +29,18 @@ static void	check_form_cases(const char *arg)
 	{
 		if (!(ft_isdigit(*arg) || *arg == ' ' || *arg == '-'))
 		{
-			ft_putendl_fd("Error", 1);
+			ft_putendl_fd("Error", 2);
 			exit(-1);
 		}
 		if (*arg == '-' && !(*(arg + 1) >= '0' && *(arg + 1) <= '9'))
 		{
-			ft_putendl_fd("Error", 1);
+			ft_putendl_fd("Error", 2);
 			exit(-1);
 		}
 		if (ft_isdigit(*arg) && !(ft_isdigit(*(arg + 1))
 				|| *(arg + 1) == ' ' || *(arg + 1) == '\0'))
 		{
-			ft_putendl_fd("Error", 1);
+			ft_putendl_fd("Error", 2);
 			exit(-1);
 		}
 		arg++;

@@ -31,7 +31,7 @@ t_list	*split_into_list(char *arg)
 	if (check_nums(spl_arg) == -1)
 	{
 		free_that(spl_arg);
-		ft_putendl_fd("Error", 1);
+		ft_putendl_fd("Error", 2);
 		exit(-1);
 	}
 	while (spl_arg[index])
@@ -50,7 +50,7 @@ t_list	*get_list(int argc, char **arg)
 	index = 1;
 	if (check_nums(&arg[index]) == -1)
 	{
-		ft_putendl_fd("Error", 1);
+		ft_putendl_fd("Error", 2);
 		exit(-1);
 	}
 	while (index < (size_t)argc)
