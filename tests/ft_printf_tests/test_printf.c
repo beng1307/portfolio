@@ -16,9 +16,12 @@
 
 int	main(void)
 {
+	int	test;
+
+	test = 0;
 	printf("\n");
-	printf("%d\n", printf("Real Printf: %p %p\n", 0, 0));
+	printf("%d\n", printf("Real Printf: %d\n", test));
 	printf("\n");
-	printf("%d\n", ft_printf("Bens Printf: %p %p\n", 0, 0));
+	printf("%d\n", ft_printf("Bens Printf: %d\n", test));
 	printf("\n");
 }
