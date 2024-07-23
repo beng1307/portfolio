@@ -3,11 +3,21 @@
 
 # include "libft.h"
 
+void	five_back_together(t_list **stk_a, t_list **stk_b);
+
+void	highest_to_a(t_list **stk_a, t_list **stk_b);
+
+int		mini_which_half(t_list **stack, int value_b, int stack_size);
+
+int		which_one(t_list *stk_a, t_list *stk_b);
+
+int		is_highest(t_list *stk_a, t_list *stk_b);
+
 void	small_sort(t_list **stk_a, t_list **stk_b);
 
 void	sort_2(t_list **stk_a, t_list **stk_b, char ab);
 
-void 	sort_3(t_list **stk_a, t_list **stk_b);
+void	sort_3(t_list **stk_a, t_list **stk_b);
 
 void	sort_4(t_list **stk_a, t_list **stk_b, int lst_size);
 
@@ -37,7 +47,7 @@ int		get_middle_value(t_list *stk_a, int stack_size);
 
 int		fastest_sort(t_list **stk_a, t_list **stk_b);
 
-int 	which_half(t_list **stack, int value_b, int stack_sizen, char ab);
+int		which_half(t_list **stack, int value_b, int stack_sizen, char ab);
 
 void	split_stack(t_list **stk_a, t_list **stk_b, int stack_size);
 
@@ -47,26 +57,26 @@ void	sort_it(t_list **stk_a, t_list **stk_b);
 
 int		is_sorted(t_list *stk_a);
 
-void    ft_pa(t_list **stk_a, t_list **stk_b);
+void	ft_pa(t_list **stk_a, t_list **stk_b);
 
-void    ft_pb(t_list **stk_a, t_list **stk_b);
+void	ft_pb(t_list **stk_a, t_list **stk_b);
 
-void    ft_sa(t_list **stk_a);
+void	ft_sa(t_list **stk_a);
 
-void    ft_sb(t_list **stk_b);
+void	ft_sb(t_list **stk_b);
 
-void    ft_ss(t_list **stk_a, t_list **stk_b);
+void	ft_ss(t_list **stk_a, t_list **stk_b);
 
-void    ft_ra(t_list **stk_a, t_list **stk_b);
+void	ft_ra(t_list **stk_a, t_list **stk_b);
 
-void    ft_rb(t_list **stk_a, t_list **stk_b);
+void	ft_rb(t_list **stk_a, t_list **stk_b);
 
-void    ft_rr(t_list **stk_a, t_list **stk_b);
+void	ft_rr(t_list **stk_a, t_list **stk_b);
 
-void    ft_rra(t_list **stk_a, t_list **stk_b);
+void	ft_rra(t_list **stk_a, t_list **stk_b);
 
-void    ft_rrb(t_list **stk_a, t_list **stk_b);
+void	ft_rrb(t_list **stk_a, t_list **stk_b);
 
-void    ft_rrr(t_list **stk_a, t_list **stk_b);
+void	ft_rrr(t_list **stk_a, t_list **stk_b);
 
 #endif

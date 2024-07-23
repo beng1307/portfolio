@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	free_that(char **to_free)
 {
@@ -22,7 +22,7 @@ t_list	*split_into_list(char *arg)
 	t_list	*lst;
 	size_t	index;
 	char	**spl_arg;
- 
+
 	lst = NULL;
 	index = 0;
 	spl_arg = ft_split(arg, ' ');

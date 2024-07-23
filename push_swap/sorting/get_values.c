@@ -1,11 +1,11 @@
-#include "push_swap.h"
+#include "../push_swap.h"
 
-static int  ft_abs(int a, int b)
+static int	ft_abs(int a, int b)
 {
-    if (a - b < 0)
-        return ((a - b) * -1);
-    else
-        return (a - b);
+	if (a - b < 0)
+		return ((a - b) * -1);
+	else
+		return (a - b);
 }
 
 int	get_lowest_value(t_list *stk_a, int stack_size)

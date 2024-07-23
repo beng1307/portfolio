@@ -1,6 +1,6 @@
-#include "push_swap.h"
+#include "../push_swap.h"
 
-int which_half(t_list **stack, int value_b, int stack_size, char ab)
+int	which_half(t_list **stack, int value_b, int stack_size, char ab)
 {
 	t_list	*node;
 	int		half;
@@ -8,7 +8,7 @@ int which_half(t_list **stack, int value_b, int stack_size, char ab)
 	node = *stack;
 	half = 0;
 	while (node && (!(value_b > node->content && value_b < node->next->content)
-		&& value_b != node->content) && ab == 'a')
+			&& value_b != node->content) && ab == 'a')
 	{
 		half++;
 		node = node->next;
@@ -17,7 +17,7 @@ int which_half(t_list **stack, int value_b, int stack_size, char ab)
 	{
 		half++;
 		node = node->next;
-	}		
+	}
 	if (half < stack_size / 2)
 		return (1);
 	else
@@ -38,11 +38,11 @@ static int	count_moves_b(t_list **stk_b, int content_b)
 	}
 	if (which_half(stk_b, node_b->content, ft_lstsize(*stk_b), 'b') == 2)
 	{
-		moves_b = 1; 
+		moves_b = 1;
 		while (node_b)
 		{
 			moves_b++;
-			node_b = node_b->next;			
+			node_b = node_b->next;
 		}
 	}
 	return (moves_b);
@@ -66,13 +66,13 @@ static int	count_moves_a(t_list **stk_a, int content_b)
 	}
 	if (which_half(stk_a, content_b, ft_lstsize(*stk_a), 'a') == 2)
 	{
-		moves_a = 0; 
+		moves_a = 0;
 		while (node_a)
 		{
 			moves_a++;
-			node_a = node_a->next;			
+			node_a = node_a->next;
 		}
-	}	
+	}
 	return (moves_a);
 }
 

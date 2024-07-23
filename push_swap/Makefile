@@ -58,20 +58,20 @@ SRCS =	libft/ft_atoi.c \
 		libft/ft_lstlast.c \
 		libft/ft_lstnew.c \
 		libft/ft_lstsize.c \
-		ft_push.c \
-		ft_rotate.c \
-		ft_rev_rotate.c \
-		ft_swap.c \
-		is_sorted.c \
-		my_sort.c \
-		get_values.c \
-		move_counter.c \
-		sorting_logic.c \
-		create_list.c \
-		error_handling.c \
-		ps_lstnew.c \
-		small_sort.c \
-		sort_5.c \
+		commands/ft_push.c \
+		commands/ft_rotate.c \
+		commands/ft_rev_rotate.c \
+		commands/ft_swap.c \
+		checking/is_sorted.c \
+		checking/error_handling.c \
+		creating/create_list.c \
+		creating/ps_lstnew.c \
+		sorting/my_sort.c \
+		sorting/get_values.c \
+		sorting/move_counter.c \
+		sorting/sorting_logic.c \
+		sorting/small_sort.c \
+		sorting/sort_5.c \
 		main.c
 OBJS = $(SRCS:.c=.o)
 FROM = -I libft

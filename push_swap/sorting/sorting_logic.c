@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	split_stack(t_list **stk_a, t_list **stk_b, int stack_size)
 {
@@ -13,13 +13,12 @@ void	split_stack(t_list **stk_a, t_list **stk_b, int stack_size)
 	while (stack_size--)
 	{
 		node = *stk_a;
-		if (node->content != lowest_value
-			&& node->content != middle_value
+		if (node->content != lowest_value && node->content != middle_value
 			&& node->content != highest_value)
-			ft_pb(stk_a,stk_b);
+			ft_pb(stk_a, stk_b);
 		else
 			ft_ra(stk_a, stk_b);
-	}	
+	}
 }
 
 void	sort_both_stacks(t_list **stk_a, t_list **stk_b, int fastest_value)
@@ -27,9 +26,9 @@ void	sort_both_stacks(t_list **stk_a, t_list **stk_b, int fastest_value)
 	t_list	*lastlst_a;
 
 	lastlst_a = ft_lstlast(*stk_a);
-	while ((*stk_b)->content != fastest_value 
+	while ((*stk_b)->content != fastest_value
 		&& !((*stk_a)->content > fastest_value
-		&& lastlst_a->content < fastest_value))
+			&& lastlst_a->content < fastest_value))
 	{
 		if (which_half(stk_a, fastest_value, ft_lstsize(*stk_a), 'a') == 1
 			&& which_half(stk_b, fastest_value, ft_lstsize(*stk_b), 'b') == 1)
@@ -56,7 +55,7 @@ void	sort_one_stack(t_list **stk_a, t_list **stk_b, int fastest_value)
 			ft_rrb(stk_a, stk_b);
 	}
 	while (!((*stk_a)->content > fastest_value
-		&& lastlst_a->content < fastest_value))
+			&& lastlst_a->content < fastest_value))
 	{
 		if (which_half(stk_a, fastest_value, ft_lstsize(*stk_a), 'a') == 1)
 			ft_ra(stk_a, stk_b);

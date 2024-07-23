@@ -1,12 +1,12 @@
 #include "push_swap.h"
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
-	t_list *stk_a;
-	t_list *stk_b;
+	t_list	*stk_a;
+	t_list	*stk_b;
 
 	if (ac < 2)
-		exit (-1);
+		exit(-1);
 	check_form((const char **)av);
 	stk_a = NULL;
 	stk_b = NULL;
