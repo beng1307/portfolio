@@ -37,7 +37,7 @@ void	sort_it(t_list **stk_a, t_list **stk_b)
 					ft_ra(stk_a, stk_b);
 			else
 				while ((*stk_a)->content != lowest_value)
-					ft_ra(stk_a, stk_b);
+					ft_rra(stk_a, stk_b);
 		}
 	}
 }

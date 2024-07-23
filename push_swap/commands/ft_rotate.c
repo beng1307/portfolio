@@ -44,7 +44,7 @@ void	ft_rr(t_list **stk_a, t_list **stk_b)
 		ft_lstdelone(head);
 		head = *stk_b;
 		ft_lstadd_back(stk_b, ps_lstnew((*stk_b)->content, stk_a, stk_b));
-		stk_b = (*stk_b)->next;
+		*stk_b = (*stk_b)->next;
 		ft_lstdelone(head);
 		head = NULL;
 		ft_putendl_fd("rr", 1);
