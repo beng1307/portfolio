@@ -18,9 +18,9 @@ int main(int ac, char **av)
 		return (ft_lstclear(&stk_a), -1);
 	if (is_sorted(stk_a))
 		return (ft_lstclear(&stk_a), 0);
-	// if (ft_lstsize(stk_a) < 6)
-	// 	little_sort(&stk_a);
-	// else
+	if (ft_lstsize(stk_a) <= 5)
+		small_sort(&stk_a, &stk_b);
+	else
 		sort_it(&stk_a, &stk_b);
 	ft_lstclear(&stk_a);
 	return (0);

@@ -22,19 +22,6 @@ void	split_stack(t_list **stk_a, t_list **stk_b, int stack_size)
 	}	
 }
 
-void sort_3(t_list **stk_a, t_list **stk_b)
-{
-	if ((*stk_a)->content > (*stk_a)->next->content)
-		ft_sa(stk_a);
-	if ((*stk_a)->next->next->content < (*stk_a)->content)
-		ft_rra(stk_a, stk_b);
-	else if ((*stk_a)->next->next->content < (*stk_a)->next->content)
-	{
-		ft_rra(stk_a, stk_b);
-		ft_sa(stk_a);
-	}
-}
-
 void	sort_both_stacks(t_list **stk_a, t_list **stk_b, int fastest_value)
 {
 	t_list	*lastlst_a;

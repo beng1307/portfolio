@@ -70,6 +70,8 @@ SRCS =	libft/ft_atoi.c \
 		create_list.c \
 		error_handling.c \
 		ps_lstnew.c \
+		small_sort.c \
+		sort_5.c \
 		main.c
 OBJS = $(SRCS:.c=.o)
 FROM = -I libft

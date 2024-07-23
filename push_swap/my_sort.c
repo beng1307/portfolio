@@ -1,21 +1,19 @@
 #include "push_swap.h"
 
-// void	small_sort(t_list **stk_a, t_list **stk_b)
-// {
-// 	t_list	*last_lst;
+void	small_sort(t_list **stk_a, t_list **stk_b)
+{
+	int	lst_size;
 
-// 	if (ft_lstsize(*stk_a) <= 3)
-// 		sort_3(stk_a, stk_b);
-// 	else
-// 	{
-// 		while (!is_sorted(*stk_a))
-// 		{
-// 			last_lst = ft_lastlst(*stk_a);
-
-// 		}
-			
-// 	}
-// }
+	lst_size = ft_lstsize(*stk_a);
+	if (lst_size == 2)
+		sort_2(stk_a, stk_b, 'a');
+	else if (lst_size == 3)
+		sort_3(stk_a, stk_b);
+	else if (lst_size == 4)
+		sort_4(stk_a, stk_b, lst_size);
+	else if (lst_size == 5)
+		sort_5(stk_a, stk_b);
+}
 
 void	sort_it(t_list **stk_a, t_list **stk_b)
 {

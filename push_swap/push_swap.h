@@ -3,7 +3,15 @@
 
 # include "libft.h"
 
-// void	small_sort(t_list **stk_a);
+void	small_sort(t_list **stk_a, t_list **stk_b);
+
+void	sort_2(t_list **stk_a, t_list **stk_b, char ab);
+
+void 	sort_3(t_list **stk_a, t_list **stk_b);
+
+void	sort_4(t_list **stk_a, t_list **stk_b, int lst_size);
+
+void	sort_5(t_list **stk_a, t_list **stk_b);
 
 void	free_that(char **to_free);
 
@@ -32,8 +40,6 @@ int		fastest_sort(t_list **stk_a, t_list **stk_b);
 int 	which_half(t_list **stack, int value_b, int stack_sizen, char ab);
 
 void	split_stack(t_list **stk_a, t_list **stk_b, int stack_size);
-
-void 	sort_3(t_list **stk_a, t_list **stk_b);
 
 void	sort_into_a(t_list **stk_a, t_list **stk_b, int fastest_value);
 
