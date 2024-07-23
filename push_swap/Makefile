@@ -65,7 +65,7 @@ SRCS =	libft/ft_atoi.c \
 		checking/is_sorted.c \
 		checking/error_handling.c \
 		creating/create_list.c \
-		creating/ps_lstnew.c \
+		creating/new_lists.c \
 		sorting/my_sort.c \
 		sorting/get_values.c \
 		sorting/move_counter.c \
