@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   error_handling.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bgretic <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/24 12:21:48 by bgretic           #+#    #+#             */
+/*   Updated: 2024/07/24 12:21:50 by bgretic          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
 static long int	ft_long_atoi(const char *str)
@@ -19,31 +31,36 @@ static long int	ft_long_atoi(const char *str)
 	{
 		nbr = nbr * 10 + *str - '0';
 		str++;
+		if (nbr / 2 > INT_MAX)
+			return (nbr * (long)sign);
 	}
 	return (nbr * (long)sign);
 }
 
 static void	check_form_cases(const char *arg)
 {
+	int	is_error;
+	int	is_empty;
+
+	is_error = 0;
+	is_empty = 1;
 	while (*arg)
 	{
+		if (ft_isdigit(*arg))
+			is_empty = 0;
 		if (!(ft_isdigit(*arg) || *arg == ' ' || *arg == '-'))
-		{
-			ft_putendl_fd("Error", 2);
-			exit(-1);
-		}
+			is_error = 1;
 		if (*arg == '-' && !(*(arg + 1) >= '0' && *(arg + 1) <= '9'))
-		{
-			ft_putendl_fd("Error", 2);
-			exit(-1);
-		}
+			is_error = 1;
 		if (ft_isdigit(*arg) && !(ft_isdigit(*(arg + 1))
 				|| *(arg + 1) == ' ' || *(arg + 1) == '\0'))
-		{
-			ft_putendl_fd("Error", 2);
-			exit(-1);
-		}
+			is_error = 1;
 		arg++;
+	}
+	if (is_error == 1 || is_empty == 1)
+	{
+		ft_putendl_fd("Error", 2);
+		exit(-1);
 	}
 }
 
