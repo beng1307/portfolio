@@ -1,15 +1,15 @@
 #include "minitalk.h"
 
-static int	decrypt_length(int signum, int length)
+static int	decrypt_length_or_pid(int signum, int to_decrypt)
 {
 	if (signum == SIGUSR2)
-		length = (length << 1) | 1;
+		to_decrypt = (to_decrypt << 1) | 1;
 	else if (signum == SIGUSR1)
-		length <<= 1;
-	return (length);
+		to_decrypt <<= 1;
+	return (to_decrypt);
 }
 
-static void	decrypt_content(int signum, int *length, int *length_index)
+static void	decrypt_content(int signum, int *length, int *length_index, int pid)
 {
 	static char	character = 0;
 	static int	bit_index = 0;
@@ -29,6 +29,7 @@ static void	decrypt_content(int signum, int *length, int *length_index)
 		{
 			ft_putchar_fd('\n', 1);
 			*length_index = 0;
+			kill(SIGUSR1, pid);
 		}
 	}
 }
@@ -36,12 +37,16 @@ static void	decrypt_content(int signum, int *length, int *length_index)
 static void decrypt_message(int signum)
 {
 	static int	length_index = 0;
+	static int	pid_index = 0;
 	static int	length = 0;
+	static int	client_pid = 0;
 
-	if (length_index++ < 32)
-		length = decrypt_length(signum, length);
+	if (pid_index++ < 32)
+		client_pid = decrypt_length_or_pid(signum, client_pid);
+	else if (length_index++ < 32)
+		length = decrypt_length_or_pid(signum, length);
 	else
-		decrypt_content(signum, &length, &length_index);
+		decrypt_content(signum, &length, &length_index, client_pid);
 }
 
 int main(void)
