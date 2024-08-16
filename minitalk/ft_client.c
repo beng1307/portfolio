@@ -9,13 +9,14 @@ static int	check_input(int ac, char **av)
 		return (ft_putendl_fd("Write the right amount of arguments!", 2), -1);
 	if (!av[2][index])
 		return (ft_putendl_fd("Please write something!", 2), -1);
-	if (!av[2])
 	while (av[1][index])
 	{
 		if (!ft_isdigit(av[1][index]))
 			return (ft_putendl_fd("Please put only digits in!", 2), -1);
 		index++;
 	}
+	if (ft_latoi(av[1]) > INT_MAX)
+		return (ft_putendl_fd("Oh no, i overflow! ..not", 2), -1);
 	return(0);
 }
 
@@ -49,7 +50,7 @@ static void send_message(int pid, char *str)
 			else if (((*str << bit_index) & 128) >= 128)
 				kill(pid, SIGUSR2);
 			bit_index++;
-			usleep(42);
+			usleep(10);
 		}
 		str++;
 	}
