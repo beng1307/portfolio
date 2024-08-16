@@ -6,7 +6,7 @@
 /*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 18:37:32 by bgretic           #+#    #+#             */
-/*   Updated: 2024/08/16 16:12:01 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/08/16 19:52:26 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ typedef struct  s_list
     void            *content;
     struct s_list   *next;
 }                   t_list;
+
+void		free_that(char **to_free);
 
 long int		ft_latoi(const char *str);
 
