@@ -1,5 +1,4 @@
 #include "minitalk.h"
-#include <stdio.h>
 
 static int	decrypt_length(int signum, int length)
 {

@@ -32,7 +32,7 @@ static void	send_length(int pid, int length)
 		else if (((length << bit_index) & 2147483648) >= 2147483648)
 			kill(pid, SIGUSR2);
 		bit_index++;
-		usleep(42);
+		usleep(100);
 	}
 }
 
@@ -50,7 +50,7 @@ static void send_message(int pid, char *str)
 			else if (((*str << bit_index) & 128) >= 128)
 				kill(pid, SIGUSR2);
 			bit_index++;
-			usleep(10);
+			usleep(100);
 		}
 		str++;
 	}
