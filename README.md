@@ -38,6 +38,14 @@ library to use in our projects.
 
 -----------------------------------------------------------------
 
+## minitalk:
+
+Minitalk involves two processes communicating with each other via signals.
+A client can send a message to a server, and the server will print the
+received message.
+
+-----------------------------------------------------------------
+
 ## piscine:
 
 These were the first projects I ever worked on at 42. They were
@@ -46,7 +54,13 @@ student.
 
 -----------------------------------------------------------------
 
-## push_swap: (in progress)
+## push_swap:
 
 It's a sorting algorithm that prints the needed instructions to
 sort an undefined number of integers.
+
+-----------------------------------------------------------------
+
+## so_long: (in progress)
+
+Once completed, it will be a small 2D game.

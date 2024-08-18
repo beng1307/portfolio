@@ -23,15 +23,15 @@ $(LIBFT):
 	cd libft && make all
 
 
-#fractol
-FRACTOL = fractol
+#So_Long
+SO_LONG = SO_LONG
 
-FRACTOL_SRCS = main.c
+SO_LONG_SRCS = main.c
 
-FRACTOL_OBJS = $(FRACTOL_SRCS:.c=.o)
+SO_LONG_OBJS = $(SO_LONG_SRCS:.c=.o)
 
-$(FRACTOL): $(FRACTOL_OBJS) $(LIBFT)
-	$(COMPILE) $(FRACTOL_OBJS) $(LIBFT) $(LIBFT_H) -o $(FRACTOL)
+$(SO_LONG): $(SO_LONG_OBJS) $(LIBFT)
+	$(COMPILE) $(SO_LONG_OBJS) $(LIBFT) $(LIBFT_H) -o $(SO_LONG)
 
 
 #anti-relink
@@ -40,14 +40,14 @@ $(FRACTOL): $(FRACTOL_OBJS) $(LIBFT)
 
 
 #commands
-all: $(FRACTOL)
+all: $(SO_LONG)
 
 clean:
-	@rm -f $(FRACTOL_OBJS)
+	@rm -f $(SO_LONG_OBJS)
 	@cd libft && make clean
 
 fclean:	clean
-	@rm -f $(FRACTOL)
+	@rm -f $(SO_LONG)
 	@cd libft && make fclean
 
 re: fclean all
