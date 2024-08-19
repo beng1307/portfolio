@@ -6,12 +6,16 @@
 #    By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/26 12:32:52 by bgretic           #+#    #+#              #
-#    Updated: 2024/07/20 18:46:26 by bgretic          ###   ########.fr        #
+#    Updated: 2024/08/19 18:58:46 by bgretic          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #for compiling
 COMPILE = cc -Wall -Werror -Wextra
+
+
+#including mlx
+MLX = -lmlx -lXext -lX11
 
 
 #make libft.a
@@ -24,14 +28,14 @@ $(LIBFT):
 
 
 #So_Long
-SO_LONG = SO_LONG
+SO_LONG = so_long
 
 SO_LONG_SRCS = main.c
 
 SO_LONG_OBJS = $(SO_LONG_SRCS:.c=.o)
 
 $(SO_LONG): $(SO_LONG_OBJS) $(LIBFT)
-	$(COMPILE) $(SO_LONG_OBJS) $(LIBFT) $(LIBFT_H) -o $(SO_LONG)
+	$(COMPILE) $(MLX) $(SO_LONG_OBJS) $(LIBFT) $(LIBFT_H) -o $(SO_LONG)
 
 
 #anti-relink
