@@ -37,10 +37,3 @@ int	main(int ac, char **av)
 	ft_lstclear(&stk_a);
 	return (0);
 }
-
-/*
-
-segfault with maxint
-duplicate check doesnt work with 1 string
-
-*/
