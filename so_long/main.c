@@ -1,22 +1,32 @@
 #include "so_long.h"
 
-int	main(void)
+static void	*init_window(void *mlx)
+{
+	void	*window;
+
+	window = mlx_new_window(mlx, 800, 600, "So_Long");
+	if (!window)
+	{
+		free(mlx);
+		perror("mlx_new_window");
+		exit(-1);
+	}
+	return (window);
+}
+
+int	main(int ac, char **av)
 {
 	void	*mlx;
 	void	*window;
-	void	*image;
-	int		width = 16;
-	int		height = 16;
+	char	**map;
 
+	if (ac != 2)
+		return (ft_printf("Write the right amount of arguments!"), -1);
+	map = check_map(av[1]);
 	mlx = mlx_init();
 	if (!mlx)
 		return (perror("mlx_init"), -1);
-	window = mlx_new_window(mlx, 800, 600, "So_Long");
-	if (!window)
-		return (perror("mlx_new_window"), free(mlx), -1);
-	image = mlx_xpm_file_to_image(mlx, "Orc-Peon-Cyan.xpm", &width, &height);
-	if (!image)
-		return (perror("mlx_xpm_file_to_image"), free(mlx), -1);
-	mlx_put_image_to_window(mlx, window, image, 400, 300);
+	window = init_window(mlx);
+	init_images();
 	sleep(10);
 }
