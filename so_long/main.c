@@ -22,7 +22,7 @@ int	main(int ac, char **av)
 
 	if (ac != 2)
 		return (ft_printf("Write the right amount of arguments!"), -1);
-	map = check_map(av[1]);
+	map = check_and_parse_map(av[1]);
 	mlx = mlx_init();
 	if (!mlx)
 		return (perror("mlx_init"), -1);
