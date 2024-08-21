@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/21 11:42:51 by bgretic           #+#    #+#             */
+/*   Updated: 2024/08/21 11:42:52 by bgretic          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 static void	*init_window(void *mlx)
@@ -27,6 +39,6 @@ int	main(int ac, char **av)
 	if (!mlx)
 		return (perror("mlx_init"), -1);
 	window = init_window(mlx);
-	init_images();
+	init_images(mlx, window, map);
 	sleep(10);
 }

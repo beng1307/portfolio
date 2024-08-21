@@ -1,22 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   init_images.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/21 11:43:01 by bgretic           #+#    #+#             */
-/*   Updated: 2024/08/21 11:43:02 by bgretic          ###   ########.fr       */
+/*   Created: 2024/08/21 11:42:29 by bgretic           #+#    #+#             */
+/*   Updated: 2024/08/21 11:50:04 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+static void	init_images(void *mlx, void *window, char **map)
+{	
+	create_images();
 
-#include "libft/libft.h"
-#include <errno.h>
-#include <mlx.h>
-#include <stdio.h>
-
-
-#endif
+}

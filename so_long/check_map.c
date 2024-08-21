@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_map.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/21 11:42:44 by bgretic           #+#    #+#             */
+/*   Updated: 2024/08/21 12:51:27 by bgretic          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 #include <stdint.h>
 #include <stdlib.h>
@@ -40,15 +52,23 @@ static void	is_rectangular(char **map)
 		length_other_lines = ft_strlen(map[index++]);
 		if (length_first_line != length_other_lines)
 		{
-			ft_putendl_fd("The Map is not rectangular!", 2);
+			ft_putendl_fd("Error", 2);
+			ft_putstr_fd("The Map is not rectangular!", 2);
 			exit(-1);
 		}
 	}
 }
 
-static void	is_there_a_path(char **map)
+static void	are_the_chars_correct(char **map)
 {
+	int	index;
 
+	index = 0;
+	while (map[index])
+	{
+		ft_strchr();
+		
+	}
 }
 
 char	**check_and_parse_map(char *file_name)
@@ -57,5 +77,7 @@ char	**check_and_parse_map(char *file_name)
 
 	map = parse_map(file_name);
 	is_rectangular(map);
-	is_there_a_path(map);
+	are_the_chars_correct(map);
+	// is_there_a_path(map);
+	return(map);
 }
