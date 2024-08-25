@@ -11,10 +11,6 @@
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include <stdint.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <fcntl.h>
 
 static char	**parse_map(char *file_name)
 {
@@ -22,7 +18,6 @@ static char	**parse_map(char *file_name)
 	char	*line;
 	int		file;
 	int		index;
-
 
 	file = open("file_name", O_RDONLY);
 	if (!file)
@@ -34,24 +29,25 @@ static char	**parse_map(char *file_name)
 	while (line)
 	{
 		map[index++] = line;
-		line = get_next_line(fd);
+		line = get_next_line(file);
 	}
 	return (map);
 }
 
-static void	is_rectangular(char **map)
+static void	is_the_map_rectangular(char **map)
 {
-	int	index;
+	int	line_index;
 	int	length_first_line;
 	int	length_other_lines;
 
-	index = 0;
-	length_first_line = ft_strlen(map[index++]);
-	while (map[index])
+	line_index = 0;
+	length_first_line = ft_strlen(map[line_index++]);
+	while (map[line_index])
 	{
-		length_other_lines = ft_strlen(map[index++]);
+		length_other_lines = ft_strlen(map[line_index++]);
 		if (length_first_line != length_other_lines)
 		{
+			free_that(map);
 			ft_putendl_fd("Error", 2);
 			ft_putstr_fd("The Map is not rectangular!", 2);
 			exit(-1);
@@ -59,25 +55,55 @@ static void	is_rectangular(char **map)
 	}
 }
 
-static void	are_the_chars_correct(char **map)
+void	is_the_map_content_correct(char **map)
 {
-	int	index;
+	int	line_index;
+	int	column_index;
 
-	index = 0;
-	while (map[index])
+	line_index = 0;
+	column_index = 0;
+	while (map[line_index])
 	{
-		ft_strchr();
-		
+		while (map[line_index][column_index])
+		{
+			if (!ft_strchr("01CEP", map[line_index][column_index++]))
+			{
+				free_that(map);
+				fr_putendl_fd("Error", 2);
+				ft_putstr_fd("The Map has an impostor in it!", 2);
+				exit(-1);
+			}
+		}
+		line_index++;
 	}
 }
 
-char	**check_and_parse_map(char *file_name)
+char	**parse_and_check_map(char *file_name)
 {
 	char	**map;
 
 	map = parse_map(file_name);
-	is_rectangular(map);
-	are_the_chars_correct(map);
+	if (!map)
+	{
+		fr_putendl_fd("Error", 2);
+		ft_putstr_fd("Map parsing failed!", 2);
+		exit(-1);		
+	}
+	is_the_map_rectangular(map);
+	is_the_map_content_correct(map);
+	is_the_map_complete(map);
+	check_walls(map);
 	// is_there_a_path(map);
 	return(map);
 }
+
+
+
+/*
+
+TODO
+
+* Check if there is a possible way out of the map for the player!
+
+*/
+

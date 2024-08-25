@@ -13,6 +13,10 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
+
 # include <unistd.h>
 # include <stddef.h>
 # include <stdlib.h>
@@ -24,6 +28,19 @@ typedef struct  s_list
     void            *content;
     struct s_list   *next;
 }                   t_list;
+
+char			*get_next_line(int fd);
+
+char			*go_through_file(int fd, char **line);
+
+char			*ft_strchr(const char *str, int c);
+
+void			free_that(void **buffer);
+
+char			*ft_strdup(const char *s);
+
+char			*ft_strjoin(const char *s1, const char *s2);
+
 
 int		        ft_printf(const char *str, ...);
 

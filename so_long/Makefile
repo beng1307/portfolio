@@ -30,7 +30,7 @@ $(LIBFT):
 #So_Long
 SO_LONG = so_long
 
-SO_LONG_SRCS = main.c
+SO_LONG_SRCS = main.c background.c
 
 SO_LONG_OBJS = $(SO_LONG_SRCS:.c=.o)
 
