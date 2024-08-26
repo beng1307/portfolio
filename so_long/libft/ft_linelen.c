@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_that.c                                     :+:      :+:    :+:   */
+/*   ft_linelen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/26 17:51:25 by bgretic           #+#    #+#             */
-/*   Updated: 2024/08/26 17:53:47 by bgretic          ###   ########.fr       */
+/*   Created: 2024/08/26 16:07:47 by bgretic           #+#    #+#             */
+/*   Updated: 2024/08/26 17:17:12 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	free_that(char **to_free)
+size_t	ft_linelen(char **str_arr)
 {
-	if (*to_free)
+	size_t	length;
+
+	length = 0;
+	while (str_arr[length] != NULL)
 	{
-		free(*to_free);
-		*to_free = NULL;
+		length++;
 	}
+	return (length);
 }

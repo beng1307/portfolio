@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgretic <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 18:37:32 by bgretic           #+#    #+#             */
-/*   Updated: 2024/04/29 10:37:14 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/08/26 17:56:38 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,15 @@ typedef struct  s_list
     struct s_list   *next;
 }                   t_list;
 
+size_t			ft_linelen(char **str_arr);
+
 char			*get_next_line(int fd);
 
 char			*go_through_file(int fd, char **line);
 
 char			*ft_strchr(const char *str, int c);
 
-void			free_that(void **buffer);
+void			free_that(char **buffer);
 
 char			*ft_strdup(const char *s);
 

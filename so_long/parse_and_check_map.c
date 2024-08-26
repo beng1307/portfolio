@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_map.c                                        :+:      :+:    :+:   */
+/*   parse_and_check_map.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 11:42:44 by bgretic           #+#    #+#             */
-/*   Updated: 2024/08/21 12:51:27 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/08/26 17:49:45 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ static char	**parse_map(char *file_name)
 	int		file;
 	int		index;
 
-	file = open("file_name", O_RDONLY);
+	map = NULL;
+	file = open(file_name, O_RDONLY);
 	if (!file)
 		return (perror("open"), NULL);
 	index = 0;
@@ -50,7 +51,7 @@ static void	is_the_map_rectangular(char **map)
 			free_that(map);
 			ft_putendl_fd("Error", 2);
 			ft_putstr_fd("The Map is not rectangular!", 2);
-			exit(-1);
+			exit(1);
 		}
 	}
 }
@@ -69,9 +70,9 @@ void	is_the_map_content_correct(char **map)
 			if (!ft_strchr("01CEP", map[line_index][column_index++]))
 			{
 				free_that(map);
-				fr_putendl_fd("Error", 2);
+				ft_putendl_fd("Error", 2);
 				ft_putstr_fd("The Map has an impostor in it!", 2);
-				exit(-1);
+				exit(1);
 			}
 		}
 		line_index++;
@@ -85,9 +86,9 @@ char	**parse_and_check_map(char *file_name)
 	map = parse_map(file_name);
 	if (!map)
 	{
-		fr_putendl_fd("Error", 2);
+		ft_putendl_fd("Error", 2);
 		ft_putstr_fd("Map parsing failed!", 2);
-		exit(-1);		
+		exit(1);		
 	}
 	is_the_map_rectangular(map);
 	is_the_map_content_correct(map);

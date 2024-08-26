@@ -6,12 +6,12 @@
 #    By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/26 12:32:52 by bgretic           #+#    #+#              #
-#    Updated: 2024/08/19 18:58:46 by bgretic          ###   ########.fr        #
+#    Updated: 2024/08/26 18:12:30 by bgretic          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 #for compiling
-COMPILE = cc -Wall -Werror -Wextra
+COMPILE = cc -g -Wall -Werror -Wextra
 
 
 #including mlx
@@ -30,7 +30,8 @@ $(LIBFT):
 #So_Long
 SO_LONG = so_long
 
-SO_LONG_SRCS = main.c background.c
+SO_LONG_SRCS = main.c background.c check_walls.c init_sprites.c \
+is_the_map_complete.c parse_and_check_map.c put_map_content.c
 
 SO_LONG_OBJS = $(SO_LONG_SRCS:.c=.o)
 
