@@ -19,15 +19,28 @@
 #include <mlx.h>
 #include <stdio.h>
 #include <stdbool.h>
+#include <X11/keysym.h>
 
-typedef struct
+#define UP 76
+#define DOWN 80
+#define LEFT 75
+#define RIGHT 77
+
+
+typedef struct s_assets
 {
 	void	*player;
 	void	*exit_point;
 	void	*collectibles;
 	void	*empty_spaces;
 	void	*walls;
-}			assets;
+}			t_assets;
+
+typedef struct s_mlx
+{
+	void	*mlx;
+	void	*win;
+}			t_mlx;
 
 
 

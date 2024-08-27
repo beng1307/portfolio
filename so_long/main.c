@@ -28,30 +28,30 @@ static void	*init_window(void *mlx, char **map)
 
 int	main(int ac, char **av)
 {
-	assets	*sprites;
-	void	*mlx;
-	void	*window;
-	char	**map;
+	t_mlx		*mlx;
+	t_assets	*sprites;
+	char		**map;
 
 	if (ac != 2)
 		return (ft_printf("Write the right amount of arguments!"), -1);
 	map = parse_and_check_map(av[1]);
-	mlx = mlx_init();
-	if (!mlx)
+	mlx->pmlx = mlx_init();
+	if (!mlx_content)
 		return (perror("mlx_init"), 1);
 	sprites = init_sprites(mlx, map);
 	if (!sprites)
 		exit(1);
-	window = init_window(mlx, map);
-	if (!window)
+	mlx->pwin = init_window(mlx, map);
+	if (!mlx_contnet->win)
 	{
 		ft_putendl_fd("Error", 2);
 		ft_putstr_fd("Window initialization failed!", 2);
-		return (mlx_destroy_display(mlx), free(mlx), -1);
+		return (mlx_destroy_display(mlx), free(mlx), 1);
 	}
 	put_background(mlx, window, ft_strlen(map[0]), ft_linelen(map));
 	put_map_content(mlx, window, map, sprites);
-	sleep(10);
+	handle_events(mlx, window, map);
+	mlx_loop(mlx);
 }
 
 //floodfill
