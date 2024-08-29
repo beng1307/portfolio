@@ -22,7 +22,7 @@ ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_split.c ft_printf.c \
 ft_printf/ft_print_cs.c ft_printf/ft_print_diu.c ft_printf/ft_print_xXp.c \
 ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c ft_lstlast.c \
 ft_lstnew.c ft_lstsize.c get_next_line/get_next_line.c ft_linelen.c\
-get_next_line/get_next_line_utils.c ft_free_that.c
+get_next_line/get_next_line_utils.c free_that.c free_str_arr.c
 OBJS = $(SRCS:.c=.o)
 FROM = -I libft
 LIB = ar rcs

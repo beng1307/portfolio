@@ -35,7 +35,7 @@ static int	*count_map_content(char **map, int line_index, int column_index)
 	return (array);
 }
 
-void	is_the_map_complete(char **map)
+void	is_the_map_complete(t_mlx **game)
 {
 	int	line_index;
 	int	column_index;
@@ -43,20 +43,14 @@ void	is_the_map_complete(char **map)
 
 	line_index = 0;
 	column_index = 0;
-	while (map[line_index])
+	while ((*game)->map[line_index])
 	{
-		while (map[line_index][column_index])
-			map_content = count_map_content(map, line_index, column_index++);
+		while ((*game)->map[line_index][column_index])
+			map_content = count_map_content((*game)->map, line_index, column_index++);
 		column_index = 0;
 		line_index++;
 	}
 	if (map_content[0] != 1 || map_content[1] != 1
 		|| map_content[2] == 0 || map_content[3] == 0)
-	{
-		free_that(map);
-		ft_putendl_fd("Error", 2);
-		ft_putstr_fd("The Map is not compliant with the requirements!", 2);
-		exit(1);		
-	}
+		exit_game(game, "The map does not meet the criteria!");
 }
-

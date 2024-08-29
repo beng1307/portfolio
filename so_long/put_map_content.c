@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-void	put_map_content(void *mlx, void *win, char **map, assets *sprites)
+void	put_map_content(t_mlx *game)
 {
 	int	line;
 	int	column;
@@ -24,15 +24,15 @@ void	put_map_content(void *mlx, void *win, char **map, assets *sprites)
 		while (map[line][column])
 		{
 			if (map[line][column] == '0')
-				mlx_put_image_to_window(mlx, win, sprites->empty_spaces, line * 32, column * 32);
+				mlx_put_image_to_window(game->mlx, game->win, game->sprites->empty_spaces, line * 32, column * 32);
 			else if (map[line][column] == '1')
-				mlx_put_image_to_window(mlx, win, sprites->walls, line * 32, column * 32);
+				mlx_put_image_to_window(game->mlx, game->win, game->sprites->walls, line * 32, column * 32);
 			else if (map[line][column] == 'C')
-				mlx_put_image_to_window(mlx, win, sprites->collectibles, line * 32, column * 32);
+				mlx_put_image_to_window(game->mlx, game->win, game->sprites->collectibles, line * 32, column * 32);
 			else if (map[line][column] == 'E')
-				mlx_put_image_to_window(mlx, win, sprites->exit_point, line * 32, column * 32);
+				mlx_put_image_to_window(game->mlx, game->win, game->sprites->exit_point, line * 32, column * 32);
 			else if (map[line][column] == 'P')
-				mlx_put_image_to_window(mlx, win, sprites->player, line * 32, column * 32);
+				mlx_put_image_to_window(game->mlx, game->win, game->sprites->player, line * 32, column * 32);
 			column++;
 		}
 		column = 0;

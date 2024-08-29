@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-void	put_background(void *mlx, void *window, int win_width, int win_height)
+void	put_background(t_mlx **game, int win_width, int win_height)
 {	
 	void	*background;
 	int		sprite_size;
@@ -22,10 +22,10 @@ void	put_background(void *mlx, void *window, int win_width, int win_height)
 	sprite_size = 160;
 	y_coord = 0;
 	x_coord = 0;
-	background = mlx_xpm_file_to_image(mlx, "sprites/grass.xpm", &sprite_size, &sprite_size);
+	background = mlx_xpm_file_to_image((*game)->mlx, "sprites/grass.xpm", &sprite_size, &sprite_size);
 	while (y_coord != win_height)
 	{
-		mlx_put_image_to_window(mlx, window, background, y_coord, x_coord);
+		mlx_put_image_to_window((*game)->mlx, window, background, y_coord, x_coord);
 		x_coord += sprite_size;
 		if (x_coord == win_width)
 		{

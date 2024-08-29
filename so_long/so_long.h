@@ -25,6 +25,7 @@
 #define DOWN 80
 #define LEFT 75
 #define RIGHT 77
+#define	ESCAPE 53
 
 
 typedef struct s_assets
@@ -38,26 +39,33 @@ typedef struct s_assets
 
 typedef struct s_mlx
 {
-	void	*mlx;
-	void	*win;
-}			t_mlx;
+	void		*mlx;
+	void		*win;
+	char		**map;
+	t_assets 	*sprites;
+}				t_mlx;
 
 
+char		**parse_and_check_map(char *file_name, t_mlx **game);
 
-assets	*init_sprites(void *mlx, char **map);
+void		is_the_map_complete(t_mlx **game);
 
-void	is_the_map_content_correct(char **map);
+void		check_walls(t_mlx **game);
 
-void	is_the_map_complete(char **map);
+void		exit_game(t_mlx **game, char *message);
 
-void	check_walls(char **map);
+void		init_mlx(t_mlx **game);
 
-char	**parse_and_check_map(char *file_name);
+void		init_window(t_mlx **game);
+
+t_assets	init_sprites(t_mlx **game);
+
+void		put_background(t_mlx **game, int win_width, int win_height);
+
+void		put_map_content(t_mlx *game);
+
+void		handle_events(t_mlx **game);
 
 
-
-void	put_background(void *mlx, void *window, int win_width, int win_height);
-
-void	put_map_content(void *mlx, void *win, char **map, assets *sprites);
 
 #endif

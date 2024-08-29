@@ -35,67 +35,50 @@ static char	**parse_map(char *file_name)
 	return (map);
 }
 
-static void	is_the_map_rectangular(char **map)
+static void	is_the_map_rectangular(t_mlx **game)
 {
 	int	line_index;
 	int	length_first_line;
 	int	length_other_lines;
 
 	line_index = 0;
-	length_first_line = ft_strlen(map[line_index++]);
-	while (map[line_index])
+	length_first_line = ft_strlen((*game)->map[line_index++]);
+	while ((*game)->map[line_index])
 	{
-		length_other_lines = ft_strlen(map[line_index++]);
+		length_other_lines = ft_strlen((*game)->map[line_index++]);
 		if (length_first_line != length_other_lines)
-		{
-			free_that(map);
-			ft_putendl_fd("Error", 2);
-			ft_putstr_fd("The Map is not rectangular!", 2);
-			exit(1);
-		}
-	}
+			game_exit(game, "The map is not rectangular!");
+	}	
 }
 
-void	is_the_map_content_correct(char **map)
+static void	is_the_map_content_correct(t_mlx **game)
 {
 	int	line_index;
 	int	column_index;
 
 	line_index = 0;
 	column_index = 0;
-	while (map[line_index])
+	while ((*game)->map[line_index])
 	{
-		while (map[line_index][column_index])
+		while ((*game)->map[line_index][column_index])
 		{
-			if (!ft_strchr("01CEP", map[line_index][column_index++]))
-			{
-				free_that(map);
-				ft_putendl_fd("Error", 2);
-				ft_putstr_fd("The Map has an impostor in it!", 2);
-				exit(1);
-			}
+			if (!ft_strchr("01CEP", (*game)->map[line_index][column_index++]))
+				exit_game(game, "Map content is not correct!");
 		}
 		line_index++;
 	}
 }
 
-char	**parse_and_check_map(char *file_name)
+char	**parse_and_check_map(char *file_name, t_mlx **game)
 {
-	char	**map;
-
-	map = parse_map(file_name);
-	if (!map)
-	{
-		ft_putendl_fd("Error", 2);
-		ft_putstr_fd("Map parsing failed!", 2);
-		exit(1);		
-	}
-	is_the_map_rectangular(map);
-	is_the_map_content_correct(map);
-	is_the_map_complete(map);
-	check_walls(map);
+	(*game)->map = parse_map(file_name, game);
+	if (!(*game)->map)
+		exit_game(game, "Map parsing failed!");
+	is_the_map_rectangular(game);
+	is_the_map_content_correct(game);
+	is_the_map_complete(game);
+	check_walls(game);
 	// is_there_a_path(map);
-	return(map);
 }
 
 

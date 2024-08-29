@@ -12,48 +12,38 @@
 
 #include "so_long.h"
 
-static void	check_top_and_bottom_wall(char **map)
+static void	check_top_and_bottom_wall(t_mlx **game)
 {
 	int	column_index;
 	int	last_line;
 
 	column_index = 0;
-	last_line = ft_linelen(map);
-	while (map[0][column_index] && map[last_line][column_index])
+	last_line = ft_linelen((*game)->map);
+	while ((*game)->map[0][column_index] && (*game)->map[last_line][column_index])
 	{
-		if (!ft_strchr("1", map[0][column_index])
-			|| !ft_strchr("1", map[last_line][column_index++]))
-		{
-			free_that(map);
-			ft_putendl_fd("Error", 2);
-			ft_putstr_fd("The Wall is not alright!", 2);
-			exit(1);
-		}
+		if (!ft_strchr("1", (*game)->map[0][column_index])
+			|| !ft_strchr("1", (*game)->map[last_line][column_index++]))
+			exit_game(game, "Walls are not ok!");
 	}
 }
 
-static void check_walls_in_between(char **map)
+static void check_walls_in_between(t_mlx **game)
 {
 	int	line_index;
 	int	last_column;
 
 	line_index = 1;
-	last_column = ft_strlen(map[0]);
-	while (map[line_index + 1])
+	last_column = ft_strlen((*game)->map[0]);
+	while ((*game)->map[line_index + 1])
 	{
-		if (map[line_index][0] != '1' || map[line_index][last_column] != '1')
-		{
-			free_that(map);
-			ft_putendl_fd("Error", 2);
-			ft_putstr_fd("The Wall is not alright!", 2);
-			exit(1);
-		}
+		if ((*game)->map[line_index][0] != '1' || (*game)->map[line_index][last_column] != '1')
+			exit_game(game, "Walls are not ok!");
 		line_index++;
 	}
 }
 
-void	check_walls(char **map)
+void	check_walls(t_mlx **game)
 {
-	check_top_and_bottom_wall(map);
-	check_walls_in_between(map);
+	check_top_and_bottom_wall(game);
+	check_walls_in_between(game);
 }

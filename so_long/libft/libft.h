@@ -37,6 +37,8 @@ char			*go_through_file(int fd, char **line);
 
 char			*ft_strchr(const char *str, int c);
 
+void	        free_str_arr(char ***arr);
+
 void			free_that(char **buffer);
 
 char			*ft_strdup(const char *s);
