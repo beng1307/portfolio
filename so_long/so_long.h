@@ -28,6 +28,12 @@
 #define	ESCAPE 53
 
 
+typedef struct s_player_pos
+{
+	int	x;
+	int	y;
+}		t_player_pos;
+
 typedef struct s_assets
 {
 	void	*player;
@@ -39,12 +45,18 @@ typedef struct s_assets
 
 typedef struct s_mlx
 {
-	void		*mlx;
-	void		*win;
-	char		**map;
-	t_assets 	*sprites;
-}				t_mlx;
+	void			*mlx;
+	void			*win;
+	char			**map;
+	t_assets 		*sprites;
+	t_player_pos 	*p_pos;
+	int				moves;
+	bool			collected;
+}					t_mlx;
 
+void		all_collectibles_collected(t_mlx **game);
+
+void		get_player_pos(t_mlx **game);
 
 char		**parse_and_check_map(char *file_name, t_mlx **game);
 
