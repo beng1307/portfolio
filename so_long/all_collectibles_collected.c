@@ -1,4 +1,4 @@
-#include "so_long"
+#include "so_long.h"
 
 void	all_collectibles_collected(t_mlx **game)
 {
@@ -9,11 +9,11 @@ void	all_collectibles_collected(t_mlx **game)
 		return ;
 	line = 0;
 	column = 0;
-	while (game->map[line])
+	while ((*game)->map[line])
 	{
-		while (game->map[line][column])
+		while ((*game)->map[line][column])
 		{
-			if (game->map[line][column] == 'C')
+			if ((*game)->map[line][column] == 'C')
 				return ;
 			column++;
 		}

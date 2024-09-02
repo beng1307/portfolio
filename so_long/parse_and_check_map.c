@@ -47,8 +47,10 @@ static void	is_the_map_rectangular(t_mlx **game)
 	{
 		length_other_lines = ft_strlen((*game)->map[line_index++]);
 		if (length_first_line != length_other_lines)
-			game_exit(game, "The map is not rectangular!");
-	}	
+			exit_game(game, "The map is not rectangular!");
+	}
+	if (length_first_line > 40 || line_index > 32)
+		exit_game(game, "Map is too big!");
 }
 
 static void	is_the_map_content_correct(t_mlx **game)
@@ -65,6 +67,7 @@ static void	is_the_map_content_correct(t_mlx **game)
 			if (!ft_strchr("01CEP", (*game)->map[line_index][column_index++]))
 				exit_game(game, "Map content is not correct!");
 		}
+		column_index = 0;
 		line_index++;
 	}
 }

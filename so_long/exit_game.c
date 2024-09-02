@@ -1,30 +1,30 @@
 #include "so_long.h"
 
-static void	free_sprites(t_assets **sprites)
+static void	free_sprites(void *mlx, t_assets **sprites)
 {
 	if ((*sprites)->player)
 	{
-		mlx_destroy_image((*game)->mlx, (*sprites)->player);
+		mlx_destroy_image(mlx, (*sprites)->player);
 		(*sprites)->player = NULL;
 	}
 	if ((*sprites)->exit_point)
 	{
-		mlx_destroy_image((*game)->mlx, (*sprites)->exit_point);
+		mlx_destroy_image(mlx, (*sprites)->exit_point);
 		(*sprites)->exit_point = NULL;
 	}
 	if ((*sprites)->collectibles)
 	{
-		mlx_destroy_image((*game)->mlx, (*sprites)->collectibles);
+		mlx_destroy_image(mlx, (*sprites)->collectibles);
 		(*sprites)->collectibles = NULL;
 	}
 	if ((*sprites)->empty_spaces)
 	{
-		mlx_destroy_image((*game)->mlx, (*sprites)->empty_spaces);
+		mlx_destroy_image(mlx, (*sprites)->empty_spaces);
 		(*sprites)->empty_spaces = NULL;
 	}
 	if ((*sprites)->walls)
 	{
-		mlx_destroy_image((*game)->mlx, (*sprites)->walls);
+		mlx_destroy_image(mlx, (*sprites)->walls);
 		(*sprites)->walls = NULL;
 	}
 }
@@ -35,7 +35,7 @@ static void	free_game(t_mlx **game)
 		free_str_arr(&(*game)->map);
 	if ((*game)->sprites)
 	{
-		free_sprites(&(*game)->sprites);
+		free_sprites();
 		free((*game)->sprites);
 		(*game)->sprites = NULL;
 	}

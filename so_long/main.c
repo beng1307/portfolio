@@ -20,13 +20,13 @@ int	main(int ac, char **av)
 		return (ft_printf("Write the right amount of arguments!"), -1);
 	game = (t_mlx *)malloc(sizeof(t_mlx));
 	if (!game)
-		return (perror(malloc), 1);
+		return (perror("malloc"), 1);
 	parse_and_check_map(av[1], &game);
 	init_mlx(&game);
 	init_window(&game);
 	get_player_pos(&game);
-	init_sprites(game->mlx, game->map);
-	put_background(&game, ft_strlen((*game)->map[0]), ft_linelen((*game)->map));
+	init_sprites(&game);
+	put_background(&game, ft_strlen(game->map[0]), ft_linelen(game->map));
 	put_map_content(game);
 	handle_events(&game);
 	mlx_loop(&game);
