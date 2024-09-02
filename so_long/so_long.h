@@ -54,6 +54,8 @@ typedef struct s_mlx
 	bool			collected;
 }					t_mlx;
 
+bool		check_path(char **map, int y, int x);
+
 void		all_collectibles_collected(t_mlx **game);
 
 void		get_player_pos(t_mlx **game);

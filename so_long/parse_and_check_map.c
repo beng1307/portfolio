@@ -69,16 +69,49 @@ static void	is_the_map_content_correct(t_mlx **game)
 	}
 }
 
+static char	**copy_map(char **map)
+{
+	int		line;
+	int		line_length;
+	char	**map_copy;
+
+	line = 0;
+	line_length = ft_linelen(map);
+	map_copy = (char **)malloc(line_length + 1 * sizeof(char *));
+	if (!map_copy)
+		return (perror("malloc"), NULL);
+	map_copy[line_length] = NULL;
+	while (map[line])
+	{
+		map_copy[line] = ft_strdup(map[line]);
+		if (!map_copy[line])
+			return (free_str_arr(map_copy), NULL);
+		line++;
+	}
+	return (map_copy);
+}
+
 char	**parse_and_check_map(char *file_name, t_mlx **game)
 {
+	char **map_copy;
+
 	(*game)->map = parse_map(file_name, game);
 	if (!(*game)->map)
 		exit_game(game, "Map parsing failed!");
+	free_str_arr(&map_copy);
 	is_the_map_rectangular(game);
 	is_the_map_content_correct(game);
 	is_the_map_complete(game);
 	check_walls(game);
-	// is_there_a_path(map);
+	map_copy = copy_map((*game)->map);
+	if (!map_copy)
+		exit_game(game, "Map copy parsing failed!");
+	if(!check_path(map_copy, (*game)->p_pos->y, (*game)->p_pos->x))
+	{
+		free_str_arr(&map_copy);
+		exit_game(game, "There is no possible exit!");
+	}
+	free_str_arr(&map_copy);
 }
 
 

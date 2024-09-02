@@ -18,7 +18,7 @@ void	init_sprites(t_mlx **game)
 
 	sprite_size = 32;
 	(*game)->sprites->player = mlx_xpm_file_to_image(mlx, "sprites/player.xpm", &sprite_size, &sprite_size);
-	(*game)->sprites->exit_point = mlx_xpm_file_to_image(mlx, "sprites/downstairs.xpm", &sprite_size, &sprite_size);
+	(*game)->sprites->exit_point = mlx_xpm_file_to_image(mlx, "sprites/door_closed.xpm", &sprite_size, &sprite_size);
 	(*game)->sprites->collectibles = mlx_xpm_file_to_image(mlx, "sprites/chest_closed.xpm", &sprite_size, &sprite_size);
 	(*game)->sprites->empty_spaces = mlx_xpm_file_to_image(mlx, "sprites/dark_ground.xpm", &sprite_size, &sprite_size);
 	(*game)->sprites->walls = mlx_xpm_file_to_image(mlx, "sprites/walls.xpm", &sprite_size, &sprite_size);
