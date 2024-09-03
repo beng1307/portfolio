@@ -18,14 +18,12 @@ void	put_map_content(t_mlx *game)
 	int	column;
 
 	line = 0;
-	column = 0;
 	while (game->map[line])
 	{
+		column = 0;
 		while (game->map[line][column])
 		{
-			if (game->map[line][column] == '0')
-				mlx_put_image_to_window(game->mlx, game->win, game->sprites->empty_spaces, column * 32, line * 32);
-			else if (game->map[line][column] == '1')
+			if (game->map[line][column] == '1')
 				mlx_put_image_to_window(game->mlx, game->win, game->sprites->walls, column * 32, line * 32);
 			else if (game->map[line][column] == 'C')
 				mlx_put_image_to_window(game->mlx, game->win, game->sprites->collectibles, column * 32, line * 32);
@@ -35,7 +33,6 @@ void	put_map_content(t_mlx *game)
 				mlx_put_image_to_window(game->mlx, game->win, game->sprites->player, column * 32, line * 32);
 			column++;
 		}
-		column = 0;
 		line++;
 	}
 }
