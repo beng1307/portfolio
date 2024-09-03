@@ -64,7 +64,7 @@ void	exit_game(t_mlx **game, char *message)
 	if (message)
 	{
 		ft_putendl_fd("Error", 2);
-		ft_putstr_fd(message, 2);
+		ft_putendl_fd(message, 2);
 		exit (1);
 	}
 	else

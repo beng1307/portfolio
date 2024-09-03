@@ -12,12 +12,14 @@ static int	handle_keys(int key, t_mlx **game)
 		move_right(game);
 	else if(key == ESCAPE)
 		exit_game(game, NULL);
+	all_collectibles_collected(game);
+	open_door(game);
+	put_background(game, ft_strlen((*game)->map[0]), ft_linelen((*game)->map));
+	put_map_content(*game);
 	return (0);
 }
 
 void	handle_events(t_mlx **game)
 {
-	all_collectibles_collected(game);
-	open_door(game);
 	mlx_key_hook((*game)->win, handle_keys, game);
 }

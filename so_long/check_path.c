@@ -1,5 +1,25 @@
 #include "so_long.h"
 
+// static bool	are_collectibles_left(char **map)
+// {
+// 	int	line;
+// 	int	column;
+
+// 	line = 0;
+// 	while (map[line])
+// 	{
+// 		column = 0;
+// 		while (map[line][column])
+// 		{
+// 			if (map[line][column] == 'C')
+// 				return (true);
+// 			column++;
+// 		}
+// 		line++;
+// 	}
+// 	return (false);
+// }
+
 bool	check_path(char **map, int y, int x)
 {
 	if (map[y][x] == 'E')

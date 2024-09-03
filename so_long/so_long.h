@@ -21,12 +21,11 @@
 #include <stdbool.h>
 #include <X11/keysym.h>
 
-#define UP 76
-#define DOWN 80
-#define LEFT 75
-#define RIGHT 77
-#define	ESCAPE 53
-
+#define UP 65362
+#define DOWN 65364
+#define LEFT 65361
+#define RIGHT 65363
+#define ESCAPE 65307
 
 typedef struct s_player_pos
 {

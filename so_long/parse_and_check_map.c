@@ -26,7 +26,7 @@ static void	is_the_map_rectangular(t_mlx **game)
 		if (length_first_line != length_other_lines)
 			exit_game(game, "The map is not rectangular!");
 	}
-	if (length_first_line > 40 || line_index > 32)
+	if (length_first_line >= 40 || line_index >= 32)
 		exit_game(game, "Map is too big!");
 }
 
