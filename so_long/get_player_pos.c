@@ -1,5 +1,12 @@
 #include "so_long.h"
 
+static void	init_player_position(t_mlx	**game)
+{
+	(*game)->p_pos = malloc(sizeof(t_player_pos));
+	if (!(*game)->p_pos)
+		exit_game(game, "Player position couldn't get allocated!");
+}
+
 void get_player_pos(t_mlx **game)
 {
 	int line;
@@ -9,11 +16,12 @@ void get_player_pos(t_mlx **game)
 	column = 0;
 	(*game)->moves = 0;
 	(*game)->collected = false;
-	while (game[line])
+	init_player_position(game);
+	while ((*game)->map[line])
 	{
-		while (game[line][column])
+		while ((*game)->map[line][column])
 		{
-			if (game[line][column] == 'P')
+			if ((*game)->map[line][column] == 'P')
 			{
 				(*game)->p_pos->y = line;
 				(*game)->p_pos->x = column;

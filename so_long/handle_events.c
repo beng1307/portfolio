@@ -1,6 +1,6 @@
 #include "so_long.h"
 
-static void	handle_keys(int key, t_mlx **game)
+static int	handle_keys(int key, t_mlx **game)
 {
 	if (key == UP)
 		move_up(game);
@@ -10,8 +10,9 @@ static void	handle_keys(int key, t_mlx **game)
 		move_left(game);
 	else if (key == RIGHT)
 		move_right(game);
-	else if(key == ESCAPE);
-		exit_game(game);
+	else if(key == ESCAPE)
+		exit_game(game, NULL);
+	return (0);
 }
 
 void	handle_events(t_mlx **game)

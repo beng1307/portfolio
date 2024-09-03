@@ -19,20 +19,20 @@ void	put_map_content(t_mlx *game)
 
 	line = 0;
 	column = 0;
-	while (map[line])
+	while (game->map[line])
 	{
-		while (map[line][column])
+		while (game->map[line][column])
 		{
-			if (map[line][column] == '0')
-				mlx_put_image_to_window(game->mlx, game->win, game->sprites->empty_spaces, line * 32, column * 32);
-			else if (map[line][column] == '1')
-				mlx_put_image_to_window(game->mlx, game->win, game->sprites->walls, line * 32, column * 32);
-			else if (map[line][column] == 'C')
-				mlx_put_image_to_window(game->mlx, game->win, game->sprites->collectibles, line * 32, column * 32);
-			else if (map[line][column] == 'E')
-				mlx_put_image_to_window(game->mlx, game->win, game->sprites->exit_point, line * 32, column * 32);
-			else if (map[line][column] == 'P')
-				mlx_put_image_to_window(game->mlx, game->win, game->sprites->player, line * 32, column * 32);
+			if (game->map[line][column] == '0')
+				mlx_put_image_to_window(game->mlx, game->win, game->sprites->empty_spaces, column * 32, line * 32);
+			else if (game->map[line][column] == '1')
+				mlx_put_image_to_window(game->mlx, game->win, game->sprites->walls, column * 32, line * 32);
+			else if (game->map[line][column] == 'C')
+				mlx_put_image_to_window(game->mlx, game->win, game->sprites->collectibles, column * 32, line * 32);
+			else if (game->map[line][column] == 'E')
+				mlx_put_image_to_window(game->mlx, game->win, game->sprites->exit_point, column * 32, line * 32);
+			else if (game->map[line][column] == 'P')
+				mlx_put_image_to_window(game->mlx, game->win, game->sprites->player, column * 32, line * 32);
 			column++;
 		}
 		column = 0;

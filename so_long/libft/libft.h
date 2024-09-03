@@ -45,7 +45,6 @@ char			*ft_strdup(const char *s);
 
 char			*ft_strjoin(const char *s1, const char *s2);
 
-
 int		        ft_printf(const char *str, ...);
 
 size_t	        ft_print_c(int c);

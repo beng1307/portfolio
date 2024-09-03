@@ -54,13 +54,25 @@ typedef struct s_mlx
 	bool			collected;
 }					t_mlx;
 
+char		**parse_map(char *file_name);
+
+void		move_up(t_mlx **game);
+
+void		move_down(t_mlx **game);
+
+void		move_left(t_mlx **game);
+
+void		move_right(t_mlx **game);
+
+void		open_door(t_mlx **game);
+
 bool		check_path(char **map, int y, int x);
 
 void		all_collectibles_collected(t_mlx **game);
 
 void		get_player_pos(t_mlx **game);
 
-char		**parse_and_check_map(char *file_name, t_mlx **game);
+void		parse_and_check_map(char *file_name, t_mlx **game);
 
 void		is_the_map_complete(t_mlx **game);
 
@@ -72,7 +84,7 @@ void		init_mlx(t_mlx **game);
 
 void		init_window(t_mlx **game);
 
-t_assets	init_sprites(t_mlx **game);
+void		init_sprites(t_mlx **game);
 
 void		put_background(t_mlx **game, int win_width, int win_height);
 

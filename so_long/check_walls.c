@@ -18,7 +18,7 @@ static void	check_top_and_bottom_wall(t_mlx **game)
 	int	last_line;
 
 	column_index = 0;
-	last_line = ft_linelen((*game)->map);
+	last_line = ft_linelen((*game)->map) - 1;
 	while ((*game)->map[0][column_index] && (*game)->map[last_line][column_index])
 	{
 		if (!ft_strchr("1", (*game)->map[0][column_index])
@@ -33,7 +33,7 @@ static void check_walls_in_between(t_mlx **game)
 	int	last_column;
 
 	line_index = 1;
-	last_column = ft_strlen((*game)->map[0]);
+	last_column = ft_strlen((*game)->map[0]) - 1;
 	while ((*game)->map[line_index + 1])
 	{
 		if ((*game)->map[line_index][0] != '1' || (*game)->map[line_index][last_column] != '1')

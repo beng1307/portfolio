@@ -24,12 +24,11 @@ int	main(int ac, char **av)
 	parse_and_check_map(av[1], &game);
 	init_mlx(&game);
 	init_window(&game);
-	get_player_pos(&game);
 	init_sprites(&game);
 	put_background(&game, ft_strlen(game->map[0]), ft_linelen(game->map));
 	put_map_content(game);
 	handle_events(&game);
-	mlx_loop(&game);
+	mlx_loop(game->mlx);
 	exit_game(&game, NULL);
 }
 

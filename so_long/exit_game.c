@@ -1,31 +1,31 @@
 #include "so_long.h"
 
-static void	free_sprites(void *mlx, t_assets **sprites)
+static void	free_sprites(void *mlx, t_assets *sprites)
 {
-	if ((*sprites)->player)
+	if (sprites->player)
 	{
-		mlx_destroy_image(mlx, (*sprites)->player);
-		(*sprites)->player = NULL;
+		mlx_destroy_image(mlx, sprites->player);
+		sprites->player = NULL;
 	}
-	if ((*sprites)->exit_point)
+	if (sprites->exit_point)
 	{
-		mlx_destroy_image(mlx, (*sprites)->exit_point);
-		(*sprites)->exit_point = NULL;
+		mlx_destroy_image(mlx, sprites->exit_point);
+		sprites->exit_point = NULL;
 	}
-	if ((*sprites)->collectibles)
+	if (sprites->collectibles)
 	{
-		mlx_destroy_image(mlx, (*sprites)->collectibles);
-		(*sprites)->collectibles = NULL;
+		mlx_destroy_image(mlx, sprites->collectibles);
+		sprites->collectibles = NULL;
 	}
-	if ((*sprites)->empty_spaces)
+	if (sprites->empty_spaces)
 	{
-		mlx_destroy_image(mlx, (*sprites)->empty_spaces);
-		(*sprites)->empty_spaces = NULL;
+		mlx_destroy_image(mlx, sprites->empty_spaces);
+		sprites->empty_spaces = NULL;
 	}
-	if ((*sprites)->walls)
+	if (sprites->walls)
 	{
-		mlx_destroy_image(mlx, (*sprites)->walls);
-		(*sprites)->walls = NULL;
+		mlx_destroy_image(mlx, sprites->walls);
+		sprites->walls = NULL;
 	}
 }
 
@@ -35,16 +35,24 @@ static void	free_game(t_mlx **game)
 		free_str_arr(&(*game)->map);
 	if ((*game)->sprites)
 	{
-		free_sprites();
+		free_sprites((*game)->mlx, (*game)->sprites);
 		free((*game)->sprites);
 		(*game)->sprites = NULL;
 	}
+	if ((*game)->p_pos)
+	{
+		free((*game)->p_pos);
+		(*game)->p_pos = NULL;
+	}
 	if ((*game)->win)
+	{
 		mlx_destroy_window((*game)->mlx, (*game)->win);
+		(*game)->win = NULL;
+	}
 	if ((*game)->mlx)
 	{
-		mlx_destroy_mlx((*game)->mlx);
 		free((*game)->mlx);
+		(*game)->mlx = NULL;
 	}
 	free(*game);
 	*game = NULL;
