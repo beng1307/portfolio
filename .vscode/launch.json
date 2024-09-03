@@ -10,7 +10,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/so_long/so_long",
-            "args": ["${workspaceFolder}/so_long/map.ber"],
+            "args": ["${workspaceFolder}/so_long/maze.ber"],
             "stopAtEntry": true,
             "cwd": "${workspaceFolder}",
             "environment": [],

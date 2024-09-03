@@ -22,4 +22,5 @@ static int	handle_keys(int key, t_mlx **game)
 void	handle_events(t_mlx **game)
 {
 	mlx_key_hook((*game)->win, handle_keys, game);
+	mlx_hook((*game)->win, 17, 0, exit_game, game);
 }

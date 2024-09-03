@@ -77,7 +77,7 @@ void		is_the_map_complete(t_mlx **game);
 
 void		check_walls(t_mlx **game);
 
-void		exit_game(t_mlx **game, char *message);
+int			exit_game(t_mlx **game, char *message);
 
 void		init_mlx(t_mlx **game);
 

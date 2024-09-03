@@ -51,16 +51,17 @@ static void	free_game(t_mlx **game)
 	}
 	if ((*game)->mlx)
 	{
+		mlx_destroy_display((*game)->mlx);
 		free((*game)->mlx);
 		(*game)->mlx = NULL;
 	}
-	free(*game);
-	*game = NULL;
 }
 
-void	exit_game(t_mlx **game, char *message)
+int	exit_game(t_mlx **game, char *message)
 {
 	free_game(game);
+	free(*game);
+	*game = NULL;
 	if (message)
 	{
 		ft_putendl_fd("Error", 2);
