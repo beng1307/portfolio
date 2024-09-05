@@ -6,7 +6,7 @@
 /*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 11:42:44 by bgretic           #+#    #+#             */
-/*   Updated: 2024/08/26 17:49:45 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/09/05 18:56:31 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,8 @@ static char	**copy_map(char **map)
 
 void	parse_and_check_map(char *file_name, t_mlx **game)
 {
-	char **map_copy;
+	char	**map_copy;
+	int		c_count;
 
 	(*game)->map = parse_map(file_name);
 	if (!(*game)->map)
@@ -84,7 +85,8 @@ void	parse_and_check_map(char *file_name, t_mlx **game)
 	map_copy = copy_map((*game)->map);
 	if (!map_copy)
 		exit_game(game, "Map copy parsing failed!");
-	if (!check_path(map_copy, (*game)->p_pos->y, (*game)->p_pos->x))
+	c_count = count_collectibles(map_copy);
+	if (!check_path(map_copy, (*game)->p_pos->y, (*game)->p_pos->x, &c_count))
 	{
 		free_str_arr(&map_copy);
 		exit_game(game, "There is no possible exit!");

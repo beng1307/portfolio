@@ -6,7 +6,7 @@
 /*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 11:43:01 by bgretic           #+#    #+#             */
-/*   Updated: 2024/08/26 17:27:13 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/09/05 19:45:31 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define SO_LONG_H
 
 #include "libft/libft.h"
-#include "minilibx-linux/mlx.h"
+#include "mlx.h"
 #include <fcntl.h>
 #include <errno.h>
 #include <stdio.h>
@@ -53,6 +53,8 @@ typedef struct s_mlx
 	bool			collected;
 }					t_mlx;
 
+int			count_collectibles(char **map);
+
 char		**parse_map(char *file_name);
 
 void		move_up(t_mlx **game);
@@ -65,7 +67,7 @@ void		move_right(t_mlx **game);
 
 void		open_door(t_mlx **game);
 
-bool		check_path(char **map, int y, int x);
+bool		check_path(char **map, int y, int x, int *c_count);
 
 void		all_collectibles_collected(t_mlx **game);
 

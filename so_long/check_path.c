@@ -1,39 +1,52 @@
 #include "so_long.h"
 
-// static bool	are_collectibles_left(char **map)
-// {
-// 	int	line;
-// 	int	column;
-
-// 	line = 0;
-// 	while (map[line])
-// 	{
-// 		column = 0;
-// 		while (map[line][column])
-// 		{
-// 			if (map[line][column] == 'C')
-// 				return (true);
-// 			column++;
-// 		}
-// 		line++;
-// 	}
-// 	return (false);
-// }
-
-bool	check_path(char **map, int y, int x)
+int	count_collectibles(char **map)
 {
-	if (map[y][x] == 'E')
+	int	line;
+	int	column;
+	int	count;
+
+	line = 0;
+	count = 0;
+	while (map[line])
+	{
+		column = 0;
+		while (map[line][column])
+		{
+			if (map[line][column] == 'C')
+				count++;
+			column++;
+		}
+		line++;
+	}
+	return (count);
+}
+
+static bool	exit_found(char map_coord)
+{
+	static bool	exit_possible = false;
+
+	if (map_coord == 'E')
+		exit_possible = true;
+	return (exit_possible);
+}
+
+bool	check_path(char **map, int y, int x, int *c_count)
+{
+	if (exit_found(map[y][x]) && !*c_count)
 		return (true);
-	if (map[y][x] == '1' || map[y][x] == 'X')
+	else if (map[y][x] == '1' || map[y][x] == 'X' || map[y][x] == 'E')
 		return (false);
+	else if (map[y][x] == 'C')
+		(*c_count)--;
 	map[y][x] = 'X';
-	if (check_path(map, y - 1, x))
+	if (check_path(map, y - 1, x, c_count))
 		return (true);
-	if (check_path(map, y + 1, x))
+	if (check_path(map, y + 1, x, c_count))
 		return (true);
-	if (check_path(map, y, x - 1))
+	if (check_path(map, y, x - 1, c_count))
 		return (true);
-	if (check_path(map, y, x + 1))
+	if (check_path(map, y, x + 1, c_count))
 		return (true);
 	return (false);
 }
