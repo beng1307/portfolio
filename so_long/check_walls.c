@@ -14,31 +14,31 @@
 
 static void	check_top_and_bottom_wall(t_mlx **game)
 {
-	int	column_index;
-	int	last_line;
+	int	column;
+	int	lst_line;
 
-	column_index = 0;
-	last_line = ft_linelen((*game)->map) - 1;
-	while ((*game)->map[0][column_index] && (*game)->map[last_line][column_index])
+	column = 0;
+	lst_line = ft_linelen((*game)->map) - 1;
+	while ((*game)->map[0][column] && (*game)->map[lst_line][column])
 	{
-		if (!ft_strchr("1", (*game)->map[0][column_index])
-			|| !ft_strchr("1", (*game)->map[last_line][column_index++]))
-			exit_game(game, "Walls are not ok!");
+		if (!ft_strchr("1", (*game)->map[0][column])
+			|| !ft_strchr("1", (*game)->map[lst_line][column++]))
+			exit_error(game, "Walls are not ok!");
 	}
 }
 
 static void check_walls_in_between(t_mlx **game)
 {
-	int	line_index;
-	int	last_column;
+	int	line;
+	int	lst_col;
 
-	line_index = 1;
-	last_column = ft_strlen((*game)->map[0]) - 1;
-	while ((*game)->map[line_index + 1])
+	line = 1;
+	lst_col = ft_strlen((*game)->map[0]) - 1;
+	while ((*game)->map[line + 1])
 	{
-		if ((*game)->map[line_index][0] != '1' || (*game)->map[line_index][last_column] != '1')
-			exit_game(game, "Walls are not ok!");
-		line_index++;
+		if ((*game)->map[line][0] != '1' || (*game)->map[line][lst_col] != '1')
+			exit_error(game, "Walls are not ok!");
+		line++;
 	}
 }
 

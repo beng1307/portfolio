@@ -4,7 +4,7 @@ static void	init_player_position(t_mlx	**game)
 {
 	(*game)->p_pos = malloc(sizeof(t_player_pos));
 	if (!(*game)->p_pos)
-		exit_game(game, "Player position couldn't get allocated!");
+		exit_error(game, "Player position couldn't get allocated!");
 }
 
 void get_player_pos(t_mlx **game)

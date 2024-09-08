@@ -11,7 +11,7 @@ static int	handle_keys(int key, t_mlx **game)
 	else if (key == RIGHT)
 		move_right(game);
 	else if(key == ESCAPE)
-		exit_game(game, NULL);
+		exit_game(game);
 	all_collectibles_collected(game);
 	open_door(game);
 	put_background(game, ft_strlen((*game)->map[0]), ft_linelen((*game)->map));

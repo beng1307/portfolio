@@ -15,7 +15,7 @@ void	move_up(t_mlx **game)
 		&& (*game)->collected == true)
 	{
 		ft_putendl_fd("You won, thank you for playing!", 1);
-		exit_game(game, NULL);
+		exit_game(game);
 	}
 }
 
@@ -34,7 +34,7 @@ void	move_down(t_mlx **game)
 		&& (*game)->collected == true)
 	{
 		ft_putendl_fd("You won, thank you for playing!", 1);
-		exit_game(game, NULL);
+		exit_game(game);
 	}
 }
 
@@ -53,7 +53,7 @@ void	move_left(t_mlx **game)
 		&& (*game)->collected == true)
 	{
 		ft_putendl_fd("You won, thank you for playing!", 1);
-		exit_game(game, NULL);
+		exit_game(game);
 	}
 }
 
@@ -72,6 +72,6 @@ void	move_right(t_mlx **game)
 		&& (*game)->collected == true)
 	{
 		ft_putendl_fd("You won, thank you for playing!", 1);
-		exit_game(game, NULL);
+		exit_game(game);
 	}	
 }

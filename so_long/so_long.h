@@ -14,7 +14,7 @@
 # define SO_LONG_H
 
 #include "libft/libft.h"
-#include "mlx.h"
+#include "minilibx-linux/mlx.h"
 #include <fcntl.h>
 #include <errno.h>
 #include <stdio.h>
@@ -79,7 +79,9 @@ void		is_the_map_complete(t_mlx **game);
 
 void		check_walls(t_mlx **game);
 
-int			exit_game(t_mlx **game, char *message);
+int			exit_error(t_mlx **game, char *message);
+
+int			exit_game(t_mlx **game);
 
 void		init_mlx(t_mlx **game);
 

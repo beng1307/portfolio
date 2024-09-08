@@ -57,17 +57,20 @@ static void	free_game(t_mlx **game)
 	}
 }
 
-int	exit_game(t_mlx **game, char *message)
+int	exit_game(t_mlx **game)
 {
 	free_game(game);
 	free(*game);
 	*game = NULL;
-	if (message)
-	{
-		ft_putendl_fd("Error", 2);
-		ft_putendl_fd(message, 2);
-		exit (1);
-	}
-	else
-		exit (0);
+	exit(0);
+}
+
+int	exit_error(t_mlx **game, char *message)
+{
+	free_game(game);
+	free(*game);
+	*game = NULL;
+	ft_putendl_fd("Error", 2);
+	ft_putendl_fd(message, 2);
+	exit(1);
 }

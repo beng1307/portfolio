@@ -29,17 +29,4 @@ int	main(int ac, char **av)
 	put_map_content(game);
 	handle_events(&game);
 	mlx_loop(game->mlx);
-	exit_game(&game, NULL);
 }
-
-//floodfill
-
-/*
-TODO
-
-I changed the t_mlx mlx into game
-and the sprites are not in the game struct.
-Change it everywhere else!
-
-Also create a function for moving and for closing/freeing everything.
-*/

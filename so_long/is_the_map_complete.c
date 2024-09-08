@@ -52,5 +52,5 @@ void	is_the_map_complete(t_mlx **game)
 	}
 	if (map_content[0] != 1 || map_content[1] != 1
 		|| map_content[2] == 0 || map_content[3] == 0)
-		exit_game(game, "The map does not meet the criteria!");
+		exit_error(game, "The map does not meet the criteria!");
 }

@@ -24,10 +24,10 @@ static void	is_the_map_rectangular(t_mlx **game)
 	{
 		length_other_lines = ft_strlen((*game)->map[line_index++]);
 		if (length_first_line != length_other_lines)
-			exit_game(game, "The map is not rectangular!");
+			exit_error(game, "The map is not rectangular!");
 	}
 	if (length_first_line >= 40 || line_index >= 32)
-		exit_game(game, "Map is too big!");
+		exit_error(game, "Map is too big!");
 }
 
 static void	is_the_map_content_correct(t_mlx **game)
@@ -42,7 +42,7 @@ static void	is_the_map_content_correct(t_mlx **game)
 		while ((*game)->map[line_index][column_index])
 		{
 			if (!ft_strchr("01CEP", (*game)->map[line_index][column_index++]))
-				exit_game(game, "Map content is not correct!");
+				exit_error(game, "Map content is not correct!");
 		}
 		column_index = 0;
 		line_index++;
@@ -76,7 +76,7 @@ void	parse_and_check_map(char *file_name, t_mlx **game)
 
 	(*game)->map = parse_map(file_name);
 	if (!(*game)->map)
-		exit_game(game, "Map parsing failed!");
+		exit_error(game, "Map parsing failed!");
 	is_the_map_rectangular(game);
 	is_the_map_content_correct(game);
 	is_the_map_complete(game);
@@ -84,23 +84,12 @@ void	parse_and_check_map(char *file_name, t_mlx **game)
 	get_player_pos(game);
 	map_copy = copy_map((*game)->map);
 	if (!map_copy)
-		exit_game(game, "Map copy parsing failed!");
+		exit_error(game, "Map copy parsing failed!");
 	c_count = count_collectibles(map_copy);
 	if (!check_path(map_copy, (*game)->p_pos->y, (*game)->p_pos->x, &c_count))
 	{
 		free_str_arr(&map_copy);
-		exit_game(game, "There is no possible exit!");
+		exit_error(game, "There is no possible exit!");
 	}
 	free_str_arr(&map_copy);
 }
-
-
-
-/*
-
-TODO
-
-* Check if there is a possible way out of the map for the player!
-
-*/
-
