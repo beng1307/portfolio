@@ -6,7 +6,7 @@
 /*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 13:32:14 by bgretic           #+#    #+#             */
-/*   Updated: 2024/06/11 16:45:05 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/09/09 19:00:54 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ static int	first_part(char **stash, char **buffer, char **line)
 		if (!*stash)
 			return (free_that(line), -1);
 		*buffer = cut_line(*line);
+		if (!*buffer)
+			return (free_that(line), free_that(stash), 0);
 		free_that(line);
 		*line = ft_strdup(*buffer);
 		if (!*line)

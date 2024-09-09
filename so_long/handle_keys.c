@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   handle_keys.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/09 17:45:55 by bgretic           #+#    #+#             */
+/*   Updated: 2024/09/09 17:48:36 by bgretic          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 void	move_up(t_mlx **game)
@@ -73,5 +85,5 @@ void	move_right(t_mlx **game)
 	{
 		ft_putendl_fd("You won, thank you for playing!", 1);
 		exit_game(game);
-	}	
+	}
 }

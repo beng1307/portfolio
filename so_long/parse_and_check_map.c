@@ -6,7 +6,7 @@
 /*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 11:42:44 by bgretic           #+#    #+#             */
-/*   Updated: 2024/09/05 18:56:31 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/09/09 20:14:08 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	parse_and_check_map(char *file_name, t_mlx **game)
 {
 	char	**map_copy;
 	int		c_count;
-
+	
 	(*game)->map = parse_map(file_name);
 	if (!(*game)->map)
 		exit_error(game, "Map parsing failed!");

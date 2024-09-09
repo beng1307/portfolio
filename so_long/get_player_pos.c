@@ -1,15 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_player_pos.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/09 17:45:45 by bgretic           #+#    #+#             */
+/*   Updated: 2024/09/09 17:48:18 by bgretic          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
-static void	init_player_position(t_mlx	**game)
+static void	init_player_position(t_mlx **game)
 {
 	(*game)->p_pos = malloc(sizeof(t_player_pos));
 	if (!(*game)->p_pos)
 		exit_error(game, "Player position couldn't get allocated!");
 }
 
-void get_player_pos(t_mlx **game)
+void	get_player_pos(t_mlx **game)
 {
-	int line;
+	int	line;
 	int	column;
 
 	line = 0;

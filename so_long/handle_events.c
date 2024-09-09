@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   handle_events.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/09 17:45:50 by bgretic           #+#    #+#             */
+/*   Updated: 2024/09/09 17:48:28 by bgretic          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 static int	handle_keys(int key, t_mlx **game)
@@ -10,7 +22,7 @@ static int	handle_keys(int key, t_mlx **game)
 		move_left(game);
 	else if (key == RIGHT)
 		move_right(game);
-	else if(key == ESCAPE)
+	else if (key == ESCAPE)
 		exit_game(game);
 	all_collectibles_collected(game);
 	open_door(game);

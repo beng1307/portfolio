@@ -6,7 +6,7 @@
 /*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 11:42:51 by bgretic           #+#    #+#             */
-/*   Updated: 2024/08/26 17:28:25 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/09/09 20:12:31 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	main(int ac, char **av)
 {
-	t_mlx		*game;
+	t_mlx	*game;
 
 	if (ac != 2)
 		return (ft_printf("Write the right amount of arguments!"), -1);

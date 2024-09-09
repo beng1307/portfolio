@@ -6,7 +6,7 @@
 /*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 15:39:52 by bgretic           #+#    #+#             */
-/*   Updated: 2024/08/26 17:49:01 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/09/09 17:47:57 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ static void	check_top_and_bottom_wall(t_mlx **game)
 	lst_line = ft_linelen((*game)->map) - 1;
 	while ((*game)->map[0][column] && (*game)->map[lst_line][column])
 	{
-		if (!ft_strchr("1", (*game)->map[0][column])
-			|| !ft_strchr("1", (*game)->map[lst_line][column++]))
+		if (!ft_strchr("1", (*game)->map[0][column]) || !ft_strchr("1",
+				(*game)->map[lst_line][column++]))
 			exit_error(game, "Walls are not ok!");
 	}
 }
 
-static void check_walls_in_between(t_mlx **game)
+static void	check_walls_in_between(t_mlx **game)
 {
 	int	line;
 	int	lst_col;

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   open_door.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/09 17:45:18 by bgretic           #+#    #+#             */
+/*   Updated: 2024/09/09 17:49:34 by bgretic          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 void	open_door(t_mlx **game)
@@ -11,7 +23,8 @@ void	open_door(t_mlx **game)
 	if ((*game)->collected)
 	{
 		mlx_destroy_image((*game)->mlx, (*game)->sprites->exit_point);
-		(*game)->sprites->exit_point = mlx_xpm_file_to_image((*game)->mlx, "so_long/sprites/door_open.xpm", &sprite_size, &sprite_size);
+		(*game)->sprites->exit_point = mlx_xpm_file_to_image((*game)->mlx,
+				"sprites/door_open.xpm", &sprite_size, &sprite_size);
 		if (!(*game)->sprites->exit_point)
 			exit_error(game, "Door didn't open!");
 		already_done = true;

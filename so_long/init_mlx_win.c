@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_mlx_win.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/09 17:45:58 by bgretic           #+#    #+#             */
+/*   Updated: 2024/09/09 18:26:45 by bgretic          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 void	init_mlx(t_mlx **game)
@@ -9,8 +21,8 @@ void	init_mlx(t_mlx **game)
 
 void	init_window(t_mlx **game)
 {
-	int		width;
-	int		height;
+	int	width;
+	int	height;
 
 	width = ft_strlen((*game)->map[0]) * 32;
 	height = ft_linelen((*game)->map) * 32;
