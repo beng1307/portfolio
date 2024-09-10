@@ -6,7 +6,7 @@
 /*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 13:32:14 by bgretic           #+#    #+#             */
-/*   Updated: 2024/09/09 19:00:54 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/09/10 21:22:12 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static char	*cut_line(const char *line)
 	while (line[index] != '\n')
 		index++;
 	index++;
-	buffer = malloc(index + 1);
+	buffer = malloc(index);
 	if (!buffer)
 		return (NULL);
 	index = 0;

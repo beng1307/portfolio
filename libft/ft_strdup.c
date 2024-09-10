@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bgretic <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 18:22:19 by bgretic           #+#    #+#             */
-/*   Updated: 2024/04/26 12:53:57 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/09/09 18:31:55 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	*ft_strdup(const char *s)
 {
 	char		*str;
 	size_t		len;
-
+	 
 	len = ft_strlen(s) + 1;
 	str = malloc(len);
 	if (str == NULL)

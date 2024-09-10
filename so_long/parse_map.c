@@ -6,7 +6,7 @@
 /*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 17:46:14 by bgretic           #+#    #+#             */
-/*   Updated: 2024/09/09 18:49:07 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/09/10 21:25:32 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	**parse_map(char *file_name)
 	int		file;
 	int		index;
 
-	map = malloc(32 * sizeof(char *));
+	map = ft_calloc(32 * sizeof(char *), 1);
 	if (!map)
 		return (perror("malloc"), NULL);
 	file = open(file_name, O_RDONLY);
@@ -45,7 +45,7 @@ char	**parse_map(char *file_name)
 	index = 0;
 	line = get_next_line(file);
 	if (!line)
-		return (ft_putendl_fd("File was empty!", 2), NULL);
+		return (free_str_arr(&map), NULL);
 	while (line)
 	{
 		map[index++] = line;

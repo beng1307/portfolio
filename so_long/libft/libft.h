@@ -6,7 +6,7 @@
 /*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 18:37:32 by bgretic           #+#    #+#             */
-/*   Updated: 2024/09/09 17:55:23 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/09/10 21:42:18 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define LIBFT_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
+#  define BUFFER_SIZE 6
 # endif
 
 # include <stdarg.h>

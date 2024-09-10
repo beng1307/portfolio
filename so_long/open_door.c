@@ -6,7 +6,7 @@
 /*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 17:45:18 by bgretic           #+#    #+#             */
-/*   Updated: 2024/09/09 17:49:34 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/09/10 18:19:10 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	open_door(t_mlx **game)
 				"sprites/door_open.xpm", &sprite_size, &sprite_size);
 		if (!(*game)->sprites->exit_point)
 			exit_error(game, "Door didn't open!");
+		put_map_content(*game);
 		already_done = true;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 17:45:58 by bgretic           #+#    #+#             */
-/*   Updated: 2024/09/09 18:26:45 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/09/10 19:41:42 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	init_window(t_mlx **game)
 
 	width = ft_strlen((*game)->map[0]) * 32;
 	height = ft_linelen((*game)->map) * 32;
-	(*game)->win = NULL;
 	(*game)->win = mlx_new_window((*game)->mlx, width, height, "So_Long");
 	if (!(*game)->win)
 		exit_error(game, "Window initalisation failed!");

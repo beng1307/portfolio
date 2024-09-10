@@ -6,7 +6,7 @@
 /*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 15:39:59 by bgretic           #+#    #+#             */
-/*   Updated: 2024/09/09 17:49:06 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/09/10 19:35:58 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	is_the_map_complete(t_mlx **game)
 
 	line_index = 0;
 	column_index = 0;
+	map_content = NULL;
 	while ((*game)->map[line_index])
 	{
 		while ((*game)->map[line_index][column_index])
@@ -51,7 +52,10 @@ void	is_the_map_complete(t_mlx **game)
 		column_index = 0;
 		line_index++;
 	}
-	if (map_content[0] != 1 || map_content[1] != 1 || map_content[2] == 0
-		|| map_content[3] == 0)
-		exit_error(game, "The map does not meet the criteria!");
+	if (map_content)
+	{
+		if (map_content[0] != 1 || map_content[1] != 1 || map_content[2] == 0
+			|| map_content[3] == 0)
+			exit_error(game, "The map does not meet the criteria!");
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 17:45:50 by bgretic           #+#    #+#             */
-/*   Updated: 2024/09/09 17:48:28 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/09/10 18:35:29 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ static int	handle_keys(int key, t_mlx **game)
 		exit_game(game);
 	all_collectibles_collected(game);
 	open_door(game);
-	put_background(game, ft_strlen((*game)->map[0]), ft_linelen((*game)->map));
-	put_map_content(*game);
 	return (0);
 }
 

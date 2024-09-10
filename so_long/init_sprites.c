@@ -6,7 +6,7 @@
 /*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 15:39:56 by bgretic           #+#    #+#             */
-/*   Updated: 2024/09/09 20:19:31 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/09/10 15:34:47 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,8 @@ void	init_sprites(t_mlx **game)
 	int	sprite_size;
 
 	sprite_size = 32;
-	(*game)->sprites = malloc(sizeof(t_assets));
+	(*game)->sprites = ft_calloc(sizeof(t_assets), 1);
 	if (!(*game)->sprites)
 		exit_error(game, "Sprites couldn't get allocated!");
-	(*game)->sprites->player = NULL;
-	(*game)->sprites->exit_point = NULL;
-	(*game)->sprites->collectibles = NULL;
-	(*game)->sprites->empty_spaces = NULL;
-	(*game)->sprites->walls = NULL;
 	get_sprites_out_of_assets(game, &sprite_size);
 }

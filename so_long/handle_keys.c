@@ -6,11 +6,12 @@
 /*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 17:45:55 by bgretic           #+#    #+#             */
-/*   Updated: 2024/09/09 17:48:36 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/09/10 18:42:47 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include <stdio.h>
 
 void	move_up(t_mlx **game)
 {
@@ -20,6 +21,12 @@ void	move_up(t_mlx **game)
 		(*game)->map[(*game)->p_pos->y - 1][(*game)->p_pos->x] = 'P';
 		(*game)->map[(*game)->p_pos->y][(*game)->p_pos->x] = '0';
 		(*game)->p_pos->y--;
+		mlx_put_image_to_window(
+			(*game)->mlx, (*game)->win, (*game)->sprites->player,
+			(*game)->p_pos->x * 32, (*game)->p_pos->y * 32);
+		mlx_put_image_to_window(
+			(*game)->mlx, (*game)->win, (*game)->sprites->empty_spaces,
+			(*game)->p_pos->x * 32, ((*game)->p_pos->y + 1) * 32);
 		(*game)->moves++;
 		ft_printf("Move: %d\n", (*game)->moves);
 	}
@@ -39,6 +46,12 @@ void	move_down(t_mlx **game)
 		(*game)->map[(*game)->p_pos->y + 1][(*game)->p_pos->x] = 'P';
 		(*game)->map[(*game)->p_pos->y][(*game)->p_pos->x] = '0';
 		(*game)->p_pos->y++;
+		mlx_put_image_to_window(
+			(*game)->mlx, (*game)->win, (*game)->sprites->player,
+			(*game)->p_pos->x * 32, (*game)->p_pos->y * 32);
+		mlx_put_image_to_window(
+			(*game)->mlx, (*game)->win, (*game)->sprites->empty_spaces,
+			(*game)->p_pos->x * 32, ((*game)->p_pos->y - 1) * 32);
 		(*game)->moves++;
 		ft_printf("Move: %d\n", (*game)->moves);
 	}
@@ -58,6 +71,12 @@ void	move_left(t_mlx **game)
 		(*game)->map[(*game)->p_pos->y][(*game)->p_pos->x - 1] = 'P';
 		(*game)->map[(*game)->p_pos->y][(*game)->p_pos->x] = '0';
 		(*game)->p_pos->x--;
+		mlx_put_image_to_window(
+			(*game)->mlx, (*game)->win, (*game)->sprites->player,
+			(*game)->p_pos->x * 32, (*game)->p_pos->y * 32);
+		mlx_put_image_to_window(
+			(*game)->mlx, (*game)->win, (*game)->sprites->empty_spaces,
+			((*game)->p_pos->x + 1) * 32, (*game)->p_pos->y * 32);
 		(*game)->moves++;
 		ft_printf("Move: %d\n", (*game)->moves);
 	}
@@ -77,6 +96,12 @@ void	move_right(t_mlx **game)
 		(*game)->map[(*game)->p_pos->y][(*game)->p_pos->x + 1] = 'P';
 		(*game)->map[(*game)->p_pos->y][(*game)->p_pos->x] = '0';
 		(*game)->p_pos->x++;
+		mlx_put_image_to_window(
+			(*game)->mlx, (*game)->win, (*game)->sprites->player,
+			(*game)->p_pos->x * 32, (*game)->p_pos->y * 32);
+		mlx_put_image_to_window(
+			(*game)->mlx, (*game)->win, (*game)->sprites->empty_spaces,
+			((*game)->p_pos->x - 1) * 32, (*game)->p_pos->y * 32);
 		(*game)->moves++;
 		ft_printf("Move: %d\n", (*game)->moves);
 	}

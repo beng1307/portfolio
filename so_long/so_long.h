@@ -6,7 +6,7 @@
 /*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 11:43:01 by bgretic           #+#    #+#             */
-/*   Updated: 2024/09/09 20:12:08 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/09/10 16:43:29 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ typedef struct s_mlx
 	int				moves;
 	bool			collected;
 }					t_mlx;
+
+bool				check_file_name(char *filename);
 
 int					count_collectibles(char **map);
 

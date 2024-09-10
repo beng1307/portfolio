@@ -6,11 +6,23 @@
 /*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 11:42:44 by bgretic           #+#    #+#             */
-/*   Updated: 2024/09/09 20:14:08 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/09/10 19:04:14 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+bool	check_file_name(char *filename)
+{
+	if (!filename)
+		return (false);
+	if (!ft_strnstr(filename, ".ber", ft_strlen(filename)))
+		return (false);
+	if ((*filename == '.' && *(filename + 1) == 'b')
+		|| (*filename == '.' && *(filename + 2) == '.'))
+		return (false);
+	return (true);
+}
 
 static void	is_the_map_rectangular(t_mlx **game)
 {
@@ -73,7 +85,7 @@ void	parse_and_check_map(char *file_name, t_mlx **game)
 {
 	char	**map_copy;
 	int		c_count;
-	
+
 	(*game)->map = parse_map(file_name);
 	if (!(*game)->map)
 		exit_error(game, "Map parsing failed!");
