@@ -6,7 +6,7 @@
 #    By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/26 12:32:52 by bgretic           #+#    #+#              #
-#    Updated: 2024/09/09 18:29:16 by bgretic          ###   ########.fr        #
+#    Updated: 2024/09/11 15:51:35 by bgretic          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ ft_strjoin.c ft_strtrim.c ft_itoa.c ft_strmapi.c ft_striteri.c ft_putchar_fd.c \
 ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_split.c ft_printf.c \
 ft_printf/ft_print_cs.c ft_printf/ft_print_diu.c ft_printf/ft_print_xXp.c \
 ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c ft_lstlast.c \
-ft_lstnew.c ft_lstsize.c get_next_line/get_next_line.c ft_linelen.c \
+ft_lstnew.c ft_lstsize.c get_next_line.c ft_linelen.c \
 free_that.c free_str_arr.c ft_realloc.c
 OBJS = $(SRCS:.c=.o)
 FROM = -I libft

@@ -6,11 +6,11 @@
 /*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 13:32:14 by bgretic           #+#    #+#             */
-/*   Updated: 2024/09/10 21:22:12 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/09/11 15:58:09 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "libft.h"
 
 static void	get_line(char **stash, char **line, int *error)
 {

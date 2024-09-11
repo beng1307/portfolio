@@ -12,7 +12,7 @@ void	*ft_realloc(void *old_memory, size_t old_size, size_t new_size)
 	}
 	new_memory = (void *)ft_calloc(new_size, 1);
 	if (!new_memory)
-		return (NULL);
+		return (free(old_memory), NULL);
 	if (new_size > old_size)
 		size = old_size;
 	else

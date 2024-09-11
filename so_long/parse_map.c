@@ -6,7 +6,7 @@
 /*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 17:46:14 by bgretic           #+#    #+#             */
-/*   Updated: 2024/09/10 21:25:32 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/09/11 16:10:52 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ char	**parse_map(char *file_name)
 	char	*line;
 	int		file;
 	int		index;
+	int		error;
 
 	map = ft_calloc(32 * sizeof(char *), 1);
 	if (!map)
@@ -43,13 +44,15 @@ char	**parse_map(char *file_name)
 	if (!file)
 		return (perror("open"), NULL);
 	index = 0;
-	line = get_next_line(file);
+	line = get_next_line(file, &error);
 	if (!line)
 		return (free_str_arr(&map), NULL);
 	while (line)
 	{
 		map[index++] = line;
-		line = get_next_line(file);
+		line = get_next_line(file, &error);
+		if (error)
+			return (free_str_arr(&map), NULL);
 	}
 	map[index] = NULL;
 	remove_newline(map);

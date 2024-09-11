@@ -1,7 +1,7 @@
-#include <fcntl.h> // für open
-#include <unistd.h> // für close
-#include <stdio.h>  // für perror
-#include "../libft.h"  // für get_next_line
+#include <fcntl.h>
+#include <unistd.h>
+#include <stdio.h>
+#include "../libft.h"
 
 int main(int argc, char **argv)
 {
@@ -10,7 +10,7 @@ int main(int argc, char **argv)
         return (1);
     }
 
-    int fd = open(argv[1], O_RDONLY);  // Nimmt das Argument als Dateiname
+    int fd = open(argv[1], O_RDONLY);
     char *str = NULL;
     int error = 0;
 
@@ -18,12 +18,10 @@ int main(int argc, char **argv)
         perror("open");
         return (1);
     }
-
     str = get_next_line(fd, &error);
     if (!str && error) {
         return (ft_printf("gnl hat gefailed!\n"), 1);
     }
-
     ft_printf("%s", str);
     while (str) {
         free(str);
