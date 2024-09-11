@@ -12,128 +12,58 @@
 
 #include "../libft.h"
 
-static char	*cut_line(const char *line)
+static void	get_line(char **stash, char **line, int *error)
 {
-	char	*buffer;
-	size_t	index;
+	static int	index1 = 0;
+	static int	index2 = 0;
 
-	index = 0;
-	while (line[index] != '\n')
-		index++;
-	index++;
-	buffer = malloc(index);
-	if (!buffer)
-		return (NULL);
-	index = 0;
-	while (*line != '\n')
-		buffer[index++] = *line++;
-	if (*line == '\n')
-		buffer[index++] = *line++;
-	buffer[index] = '\0';
-	return (buffer);
+	if (!*stash || !(*stash)[index2])
+		return (free_that(stash));
+	while ((*stash)[index1] && (*stash)[index1] != '\n')
+		index1++;
+	*line = (char *)ft_calloc((index1 - index2) + 2, sizeof(char));
+	if (!*line)
+		return (*error = 1, free_that(stash));
+	ft_strlcpy(*line, &((*stash)[index2]), (index1 - index2) + 2);
+	if ((*stash)[index1] == '\n')
+		index1++;
+	index2 = index1;
 }
 
-static char	*get_stash(const char *line)
+static int	fill_stash(char **stash, char *buffer, int readed_chars)
 {
-	char	*last_part;
-	size_t	index;
-
-	index = 0;
-	line = ft_strchr(line, '\n');
-	if ((*line + 1) != '\0')
-		line++;
-	else
-		return (NULL);
-	while (line[index] != '\0')
-		index++;
-	last_part = malloc(index + 1);
-	if (!last_part)
-		return (NULL);
-	index = 0;
-	while (*line != '\0')
-		last_part[index++] = *line++;
-	last_part[index] = '\0';
-	return (last_part);
-}
-
-static int	first_part(char **stash, char **buffer, char **line)
-{
-	if (*stash && (**stash) != '\0')
-	{
-		*line = ft_strdup(*stash);
-		if (!*line)
-			return (free_that(stash), -1);
-	}
-	free_that(stash);
-	if (*line && ft_strchr(*line, '\n'))
-	{
-		*stash = get_stash(*line);
-		if (!*stash)
-			return (free_that(line), -1);
-		*buffer = cut_line(*line);
-		if (!*buffer)
-			return (free_that(line), free_that(stash), 0);
-		free_that(line);
-		*line = ft_strdup(*buffer);
-		if (!*line)
-			return (free_that(stash), free_that(buffer), -1);
-		free_that(buffer);
+	*stash = ft_realloc(
+		*stash, ft_strlen(*stash) + 1, (ft_strlen(*stash) + readed_chars) + 1);
+	if (!*stash)
 		return (1);
-	}
+	ft_strlcat(*stash, buffer, (ft_strlen(*stash) + readed_chars) + 1);
 	return (0);
 }
 
-static int	second_part(int fd, char **stash, char **buffer, char **line)
+char	*get_next_line(int fd, int *error)
 {
-	*buffer = go_through_file(fd, line);
-	if (!*buffer && *line)
-		return (1);
-	else if (!*buffer && !*line)
-		return (-1);
-	if (*line)
-	{
-		*stash = ft_strdup(*line);
-		if (!*stash)
-			return (free_that(buffer), free_that(line), -1);
-		free_that(line);
-		*line = ft_strjoin(*stash, *buffer);
-		if (!*line)
-			return (free_that(buffer), free_that(stash), -1);
-	}
-	else
-	{
-		*line = ft_strdup(*buffer);
-		if (!*line)
-			return (free_that(buffer), -1);
-	}
-	free_that(buffer);
-	free_that(stash);
-	return (0);
-}
-
-char	*get_next_line(int fd)
-{
-	static char	*stash;
-	char		*buffer;
+	static char	*stash = NULL;
+	static char	buffer[BUFFER_SIZE + 1];
 	char		*line;
-	int			check;
+	int			readed_chars;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (free_that(&stash), NULL);
 	line = NULL;
-	check = 0;
+	readed_chars = 0;
+	ft_bzero(buffer, BUFFER_SIZE + 1);
 	while (1)
 	{
-		check = first_part(&stash, &buffer, &line);
-		if (check == 1)
+		readed_chars = read(fd, buffer, BUFFER_SIZE);
+		if (readed_chars == 0)
 			break ;
-		else if (check == -1)
-			return (NULL);
-		check = second_part(fd, &stash, &buffer, &line);
-		if (check == 1)
-			break ;
-		else if (check == -1)
-			return (NULL);
+		if (readed_chars == -1)
+			return (*error = 1, free_that(&stash), NULL);
+		if (fill_stash(&stash, buffer, readed_chars) == 1)
+			return (*error = 1, NULL);
+		ft_bzero(buffer, BUFFER_SIZE + 1);
+		readed_chars = 0;
 	}
+	get_line(&stash, &line, error);
 	return (line);
 }

@@ -31,9 +31,7 @@ typedef struct s_list
 
 size_t				ft_linelen(char **str_arr);
 
-char				*get_next_line(int fd);
-
-char				*go_through_file(int fd, char **line);
+char				*get_next_line(int fd, int *error);
 
 char				*ft_strchr(const char *str, int c);
 
@@ -80,6 +78,8 @@ int					ft_atoi(const char *nptr);
 void				ft_bzero(void *s, size_t n);
 
 void				*ft_calloc(size_t nmemb, size_t size);
+
+void				*ft_realloc(void *old_memory, size_t old_size, size_t new_size);
 
 int					ft_isalnum(int argument);
 
