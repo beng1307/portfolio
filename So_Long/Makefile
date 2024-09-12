@@ -6,7 +6,7 @@
 #    By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/26 12:32:52 by bgretic           #+#    #+#              #
-#    Updated: 2024/09/12 12:58:10 by bgretic          ###   ########.fr        #
+#    Updated: 2024/09/12 14:38:32 by bgretic          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,8 +42,8 @@ events/exit_game.c map/get_player_pos.c
 SO_LONG_OBJS = $(SO_LONG_SRCS:.c=.o)
 
 
-$(SO_LONG): $(SO_LONG_OBJS)
-	$(COMPILE) $(MLX) $(SO_LONG_OBJS) $(LIBFT) -o $(SO_LONG)
+$(SO_LONG): $(SO_LONG_OBJS) $(LIBFT)
+	$(COMPILE) $(SO_LONG_OBJS) $(LIBFT) $(MLX) -o $(SO_LONG)
 
 
 #anti-relink

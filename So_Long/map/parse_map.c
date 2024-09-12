@@ -6,7 +6,7 @@
 /*   By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 17:46:14 by bgretic           #+#    #+#             */
-/*   Updated: 2024/09/12 12:38:38 by bgretic          ###   ########.fr       */
+/*   Updated: 2024/09/12 14:25:39 by bgretic          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char	**parse_map(t_mlx **game, char *file_name, int *error)
 	if (!map)
 		return (perror("malloc"), NULL);
 	(*game)->file = open(file_name, O_RDONLY);
-	if ((*game)->file)
+	if (!(*game)->file)
 		return (free_str_arr(&map), perror("open"), NULL);
 	index = 0;
 	line = get_next_line((*game)->file, error);
