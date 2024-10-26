@@ -21,7 +21,7 @@ ft_strjoin.c ft_strtrim.c ft_itoa.c ft_strmapi.c ft_striteri.c ft_putchar_fd.c \
 ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_split.c ft_printf.c \
 ft_printf/ft_print_cs.c ft_printf/ft_print_diu.c ft_printf/ft_print_xXp.c \
 ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstdelone.c ft_lstlast.c \
-ft_lstnew.c ft_lstsize.c get_next_line.c ft_linelen.c \
+ft_lstnew.c ft_lstsize.c get_next_line.c ft_linelen.c ft_cmp.c\
 free_that.c free_str_arr.c ft_realloc.c
 OBJS = $(SRCS:.c=.o)
 FROM = -I libft
@@ -30,16 +30,16 @@ LIB = ar rcs
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(LIB) $(NAME) $(OBJS)
+	@$(LIB) $(NAME) $(OBJS)
 
 %.o: %.c
-	$(CC) $(CFLAGS) $(FROM) -o $@ -c $<
+	@$(CC) $(CFLAGS) $(FROM) -o $@ -c $<
 
 clean:
-	rm -f $(OBJS)
+	@rm -f $(OBJS)
 
 fclean:	clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 
 re: fclean all
 

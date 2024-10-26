@@ -1,12 +1,15 @@
 #include <unistd.h>
 
-int ft_atoi(char *num)
+int ft_atoi(char *str)
 {
-	int	number = 0;
+	int	num = 0;
 
-	while (*num)
-		number = number * 10 + *num++ - '0';
-	return (number);
+	while (*str)
+	{
+		num = num * 10 + *str - '0';
+		str++;
+	}
+	return (num);
 }
 
 void	ft_putnbr(int num)

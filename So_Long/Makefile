@@ -6,7 +6,7 @@
 #    By: bgretic <bgretic@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/26 12:32:52 by bgretic           #+#    #+#              #
-#    Updated: 2024/09/12 14:38:32 by bgretic          ###   ########.fr        #
+#    Updated: 2024/09/12 15:45:29 by bgretic          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,9 +22,6 @@ MLX = -lmlx -lXext -lX11
 LIBFT = libft/libft.a
 
 LIBFT_H = -I libft
-
-$(LIBFT):
-	cd libft && make all
 
 
 #So_Long
@@ -45,6 +42,8 @@ SO_LONG_OBJS = $(SO_LONG_SRCS:.c=.o)
 $(SO_LONG): $(SO_LONG_OBJS) $(LIBFT)
 	$(COMPILE) $(SO_LONG_OBJS) $(LIBFT) $(MLX) -o $(SO_LONG)
 
+$(LIBFT):
+	cd libft && make all
 
 #anti-relink
 %.o: %.c
